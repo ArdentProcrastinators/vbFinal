@@ -9,3 +9,7 @@ C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.vbproj.Gene
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.exe
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.xml
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.pdb
+C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\bin\Debug\Card Game.exe.config
+C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\obj\Debug\Card Game.exe
+C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\obj\Debug\Card Game.xml
+C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\obj\Debug\Card Game.pdb
