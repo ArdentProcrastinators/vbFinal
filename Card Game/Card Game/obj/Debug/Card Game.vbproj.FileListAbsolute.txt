@@ -13,3 +13,10 @@ C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\bin\Debug\Card Game.ex
 C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\obj\Debug\Card Game.exe
 C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\obj\Debug\Card Game.xml
 C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\obj\Debug\Card Game.pdb
+C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\bin\Debug\Card Game.exe
+C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\bin\Debug\Card Game.pdb
+C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\bin\Debug\Card Game.xml
+C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\obj\Debug\Card Game.vbprojResolveAssemblyReference.cache
+C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.Form1.resources
+C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.Resources.resources
+C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\obj\Debug\Card Game.vbproj.GenerateResource.Cache
