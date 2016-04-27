@@ -86,7 +86,6 @@
             lblNumCreatures.Text = DireCreatures.Count
         End If
 
-
     End Sub
 End Class
 

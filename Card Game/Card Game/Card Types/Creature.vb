@@ -29,4 +29,10 @@ Public Class Creature
         'Sets current health incase creature blocks immediately.
         CurrentHealth = MaxHealth
     End Sub
+
+    Public Sub Buff(ByVal IBuffPower As Integer, ByVal IBuffHealth As Integer)
+        BuffPower += IBuffPower
+        BuffHealth += IBuffHealth
+        CurrentHealth += IBuffHealth
+    End Sub
 End Class
