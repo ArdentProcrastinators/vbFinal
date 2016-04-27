@@ -20,11 +20,10 @@
         'Note: Ctrl + G to open debug window
 
         'Referenced variables in some for loops
-        Dim cardCount As Integer
-            cardCount = deckInfo.Count
+        Dim cardCount As Integer = deckInfo.Count
 
 
-            Dim cardPos(cardCount) As Integer
+        Dim cardPos(cardCount) As Integer
             Dim cardIndex(cardCount) As Integer
             Dim cardsLeft As New List(Of Integer)
             Dim posLeft As New List(Of Integer)
