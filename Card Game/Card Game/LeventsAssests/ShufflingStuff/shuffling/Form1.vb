@@ -6,7 +6,7 @@
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         For I As Integer = 1 To 60
-            'adds 30 elements
+            'adds 60 elements
             deckInfo.Add(1)
         Next
 
@@ -30,8 +30,8 @@
             Dim posLeft As New List(Of Integer)
 
 
-            'Sets the 30 cards and adds 30 members to each list
-            For V As Integer = 1 To cardCount
+        'Sets the 60 cards and adds 60 members to each list
+        For V As Integer = 1 To cardCount
                 cardsLeft.Add(V)
                 posLeft.Add(V)
 

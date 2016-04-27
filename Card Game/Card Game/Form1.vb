@@ -15,6 +15,9 @@
         ShuffleCards(deckInfo2)
         'Generates a test creature with ID of 1 and on Radiant side
         GenerateCreature(1, True)
+        Debug.Print("Power: " & IDTable.IDPower(1))
+        Debug.Print("Health: " & IDTable.IDHealth(1))
+
     End Sub
 
     Public Sub ShuffleCards(deckInfo() As String)

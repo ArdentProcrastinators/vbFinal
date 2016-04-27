@@ -19,3 +19,7 @@ C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\LeventsAssests\ShufflingStuf
 C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\LeventsAssests\ShufflingStuff\shuffling\obj\Debug\shuffling.Resources.resources
 C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\LeventsAssests\ShufflingStuff\shuffling\obj\Debug\shuffling.vbproj.GenerateResource.Cache
 C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\LeventsAssests\ShufflingStuff\shuffling\obj\Debug\shuffling.exe
+C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\LeventsAssests\ShufflingStuff\shuffling\bin\Debug\shuffling.exe.config
+C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\LeventsAssests\ShufflingStuff\shuffling\obj\Debug\shuffling.exe
+C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\LeventsAssests\ShufflingStuff\shuffling\obj\Debug\shuffling.xml
+C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\LeventsAssests\ShufflingStuff\shuffling\obj\Debug\shuffling.pdb
