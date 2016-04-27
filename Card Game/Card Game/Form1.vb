@@ -24,44 +24,23 @@
 
     Public Sub ShuffleCards(deckInfo As List(Of Integer))
 
-        'Note: Ctrl + G to open debug window
-
         'Referenced variables in some for loops
         Dim cardCount As Integer = deckInfo.Count
 
-
-        Dim cardPos(cardCount) As Integer
-        Dim cardIndex(cardCount) As Integer
         Dim cardsLeft As New List(Of Integer)
-        Dim posLeft As New List(Of Integer)
-
 
         'Sets the 30 cards and adds 30 members to each list
         For V As Integer = 1 To cardCount
             cardsLeft.Add(V)
-            posLeft.Add(V)
-
-            cardPos(V) = V
-            cardIndex(V) = V
         Next
 
         'Shuffles cards
-        For I As Integer = 1 To cardCount
+        For I As Integer = 0 To cardCount - 1
 
             Randomize()
-            Dim x As Integer = Int(cardsLeft.Count() * Rnd() + 1)
-            Dim y As Integer = Int(posLeft.Count() * Rnd() + 1)
-            cardPos(I) = cardsLeft(x - 1)
-            cardIndex(I) = posLeft(y - 1)
-            cardsLeft.Remove(cardsLeft(x - 1))
-            posLeft.Remove(posLeft(y - 1))
-
-        Next
-
-        'Sorts cardPos and cardIndex into Deckinfo, which stores card indexes based on position. (Example: deckinfo(1) will show the index of the first card in the deck)
-        For Z As Integer = 1 To cardCount
-
-            deckInfo.Item(cardPos(Z) - 1) = cardIndex(Z)
+            Dim x As Integer = Int(cardsLeft.Count() * Rnd())
+            deckInfo.Item(I) = cardsLeft(x)
+            cardsLeft.Remove(cardsLeft(x))
 
         Next
 
@@ -99,16 +78,13 @@
     End Sub
     'Sub is called when a creature is played
     Public Sub GenerateCreature(CreatureID As Integer, Radiant As Boolean)
-        'Fetches the creatures Power and Health from their IDs
-        Dim CreaturePower As Integer = IDTable.IDPower(CreatureID)
-        Dim CreatureHealth As Integer = IDTable.IDHealth(CreatureID)
         'If Radiant played it
         If Radiant Then
             'Adds a new creature to the Radiant's creature list
             'Hover over the word Creature to see what the values represent
             'The I In front represents that the value is an input, and Is only used to set the values in the class correctly
             'View the Creature.vb class for more info, located in CardTypes Folder
-            RadiantCreatures.Add(New Creature(CreaturePower, CreatureHealth, CreatureID))
+            RadiantCreatures.Add(New Creature(1, 1, CreatureID))
             '//TESTING// Sets the labels on the designer to the creatures power and health
             lblTestP.Text = "Health: " & RadiantCreatures(RadiantCreatures.Count - 1).MaxPower
             lblTestT.Text = "Power: " & RadiantCreatures(RadiantCreatures.Count - 1).MaxHealth
@@ -116,7 +92,7 @@
             lblNumCreatures.Text = RadiantCreatures.Count
         Else
             'Same as above only for the Dire side
-            DireCreatures.Add(New Creature(CreaturePower, CreatureHealth, CreatureID))
+            DireCreatures.Add(New Creature(1, 1, CreatureID))
             lblTestP.Text = "Health: " & DireCreatures(DireCreatures.Count - 1).MaxPower
             lblTestT.Text = "Power: " & DireCreatures(DireCreatures.Count - 1).MaxHealth
             lblNumCreatures.Text = DireCreatures.Count
@@ -127,14 +103,19 @@
     Public Sub UpdateHand()
 
         Static cardsInHand As Integer
+
+        If cardsInHand <> 0 Then
+            For I As Integer = 1 To handInfo.Count
+
+                Me.Controls("card" & I).Dispose()
+
+            Next
+        End If
+
+        cardsInHand = 0
         Dim cardScale As Decimal = 0.3
-        Dim handGroup As New GroupBox
-        handGroup.Name = "grpHand"
 
         For I As Integer = 1 To handInfo.Count
-
-            grpHand.Dispose()
-            Me.Controls.Add(handGroup)
 
             Dim newCard As New Card
             newCard.Image = My.Resources.Ardent_Procrastinor
@@ -143,17 +124,14 @@
             newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height
             newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
             newCard.Left = cardScale * My.Resources.Ardent_Procrastinor.Width * cardsInHand + (Me.Width - handInfo.Count * cardScale * My.Resources.Ardent_Procrastinor.Width) / 2
-<<<<<<< HEAD
-            handGroup.Controls.Add(newCard)
-            handGroup.Left = 0
-            handGroup.Top = 400
-=======
->>>>>>> origin/master
-
+            newCard.Visible = True
+            newCard.Name = "card" & I
             Me.Controls.Add(newCard)
+
             cardsInHand += 1
 
         Next
+
 
     End Sub
 
