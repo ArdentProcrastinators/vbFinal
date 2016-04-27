@@ -5,7 +5,7 @@
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        For I As Integer = 1 To 30
+        For I As Integer = 1 To 60
             'adds 30 elements
             deckInfo.Add(1)
         Next
@@ -80,6 +80,8 @@
     End Sub
 
     Private Sub hand_Click(sender As Object, e As EventArgs) Handles btnViewHand.Click
+
+        Debug.Print("Hand:")
 
         For I As Integer = 0 To handInfo.Count - 1
 
