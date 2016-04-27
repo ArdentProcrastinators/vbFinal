@@ -30,8 +30,8 @@
             Dim posLeft As New List(Of Integer)
 
 
-            'Sets the 30 cards and adds 30 members to each list
-            For V As Integer = 1 To cardCount
+        'Sets the 60 cards and adds 60 members to each list
+        For V As Integer = 1 To cardCount
                 cardsLeft.Add(V)
                 posLeft.Add(V)
 
