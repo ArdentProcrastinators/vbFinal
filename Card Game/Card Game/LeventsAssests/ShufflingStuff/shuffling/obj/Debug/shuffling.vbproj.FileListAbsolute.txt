@@ -1,0 +1,10 @@
+H:\VB\shuffling\shuffling\bin\Debug\shuffling.exe.config
+H:\VB\shuffling\shuffling\bin\Debug\shuffling.exe
+H:\VB\shuffling\shuffling\bin\Debug\shuffling.pdb
+H:\VB\shuffling\shuffling\bin\Debug\shuffling.xml
+H:\VB\shuffling\shuffling\obj\Debug\shuffling.Form1.resources
+H:\VB\shuffling\shuffling\obj\Debug\shuffling.Resources.resources
+H:\VB\shuffling\shuffling\obj\Debug\shuffling.vbproj.GenerateResource.Cache
+H:\VB\shuffling\shuffling\obj\Debug\shuffling.exe
+H:\VB\shuffling\shuffling\obj\Debug\shuffling.xml
+H:\VB\shuffling\shuffling\obj\Debug\shuffling.pdb
