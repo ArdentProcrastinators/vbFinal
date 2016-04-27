@@ -6,7 +6,7 @@
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         For I As Integer = 1 To 60
-            'adds 30 elements
+            'adds 60 elements
             deckInfo.Add(1)
         Next
 
@@ -20,11 +20,10 @@
         'Note: Ctrl + G to open debug window
 
         'Referenced variables in some for loops
-        Dim cardCount As Integer
-            cardCount = deckInfo.Count
+        Dim cardCount As Integer = deckInfo.Count
 
 
-            Dim cardPos(cardCount) As Integer
+        Dim cardPos(cardCount) As Integer
             Dim cardIndex(cardCount) As Integer
             Dim cardsLeft As New List(Of Integer)
             Dim posLeft As New List(Of Integer)
