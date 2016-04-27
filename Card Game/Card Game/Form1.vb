@@ -97,13 +97,16 @@
     End Sub
     'Sub is called when a creature is played
     Public Sub GenerateCreature(CreatureID As Integer, Radiant As Boolean)
+        'Fetches the creatures Power and Health from their IDs
+        Dim CreaturePower As Integer = IDTable.IDPower(CreatureID)
+        Dim CreatureHealth As Integer = IDTable.IDHealth(CreatureID)
         'If Radiant played it
         If Radiant Then
             'Adds a new creature to the Radiant's creature list
             'Hover over the word Creature to see what the values represent
             'The I In front represents that the value is an input, and Is only used to set the values in the class correctly
             'View the Creature.vb class for more info, located in CardTypes Folder
-            RadiantCreatures.Add(New Creature(1, 1, CreatureID))
+            RadiantCreatures.Add(New Creature(CreaturePower, CreatureHealth, CreatureID))
             '//TESTING// Sets the labels on the designer to the creatures power and health
             lblTestP.Text = "Health: " & RadiantCreatures(RadiantCreatures.Count - 1).MaxPower
             lblTestT.Text = "Power: " & RadiantCreatures(RadiantCreatures.Count - 1).MaxHealth
@@ -111,7 +114,7 @@
             lblNumCreatures.Text = RadiantCreatures.Count
         Else
             'Same as above only for the Dire side
-            DireCreatures.Add(New Creature(1, 1, CreatureID))
+            DireCreatures.Add(New Creature(CreaturePower, CreatureHealth, CreatureID))
             lblTestP.Text = "Health: " & DireCreatures(DireCreatures.Count - 1).MaxPower
             lblTestT.Text = "Power: " & DireCreatures(DireCreatures.Count - 1).MaxHealth
             lblNumCreatures.Text = DireCreatures.Count
@@ -138,7 +141,6 @@
             newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height
             newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
             newCard.Left = cardScale * My.Resources.Ardent_Procrastinor.Width * cardsInHand + (Me.Width - handInfo.Count * cardScale * My.Resources.Ardent_Procrastinor.Width) / 2
-            handGroup.ad
 
             Me.Controls.Add(newCard)
             cardsInHand += 1
