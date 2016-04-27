@@ -35,3 +35,10 @@ C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\bin\Debug\Card Game.e
 C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\Card Game.exe
 C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\Card Game.xml
 C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\Card Game.pdb
+C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\bin\Debug\Card Game.exe
+C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\bin\Debug\Card Game.pdb
+C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\bin\Debug\Card Game.xml
+C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\Card Game.vbprojResolveAssemblyReference.cache
+C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\WindowsApplication1.Form1.resources
+C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\WindowsApplication1.Resources.resources
+C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\Card Game.vbproj.GenerateResource.Cache

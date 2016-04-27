@@ -8,6 +8,8 @@
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        Me.WindowState = FormWindowState.Maximized
+
         For I As Integer = 1 To 60
             'adds 60 elements
             deckInfo.Add(1)
@@ -126,7 +128,7 @@
         Dim handGroup As New GroupBox
         handGroup.Name = "grpHand"
 
-        For I As Integer = 1 To handInfo.Count - cardsInHand
+        For I As Integer = 1 To handInfo.Count
 
             grpHand.Dispose()
             Me.Controls.Add(handGroup)
@@ -138,13 +140,19 @@
             newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height
             newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
             newCard.Left = cardScale * My.Resources.Ardent_Procrastinor.Width * cardsInHand + (Me.Width - handInfo.Count * cardScale * My.Resources.Ardent_Procrastinor.Width) / 2
-            handGroup.ad
+            handGroup.Controls.Add(newCard)
+            handGroup.Left = 0
+            handGroup.Top = 400
 
             Me.Controls.Add(newCard)
             cardsInHand += 1
+
         Next
 
     End Sub
 
+    Private Sub formSizeChange() Handles Me.SizeChanged
+        UpdateHand()
+    End Sub
 End Class
 

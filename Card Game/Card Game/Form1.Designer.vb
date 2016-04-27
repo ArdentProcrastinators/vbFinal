@@ -22,19 +22,21 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lblTestP = New System.Windows.Forms.Label()
         Me.lblTestT = New System.Windows.Forms.Label()
         Me.lblNumCreatures = New System.Windows.Forms.Label()
         Me.btnViewHand = New System.Windows.Forms.Button()
         Me.grpHand = New System.Windows.Forms.GroupBox()
+        Me.tmrUpdater = New System.Windows.Forms.Timer(Me.components)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.Ardent_Procrastinor
-        Me.PictureBox1.Location = New System.Drawing.Point(32, 12)
+        Me.PictureBox1.Location = New System.Drawing.Point(27, 34)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(100, 50)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -70,7 +72,7 @@ Partial Class Form1
         '
         'btnViewHand
         '
-        Me.btnViewHand.Location = New System.Drawing.Point(179, 21)
+        Me.btnViewHand.Location = New System.Drawing.Point(211, 21)
         Me.btnViewHand.Name = "btnViewHand"
         Me.btnViewHand.Size = New System.Drawing.Size(75, 23)
         Me.btnViewHand.TabIndex = 4
@@ -86,17 +88,22 @@ Partial Class Form1
         Me.grpHand.TabStop = False
         Me.grpHand.Text = "Hand"
         '
+        'tmrUpdater
+        '
+        Me.tmrUpdater.Enabled = True
+        Me.tmrUpdater.Interval = 10
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1297, 639)
-        Me.Controls.Add(Me.grpHand)
         Me.Controls.Add(Me.btnViewHand)
+        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.grpHand)
         Me.Controls.Add(Me.lblNumCreatures)
         Me.Controls.Add(Me.lblTestT)
         Me.Controls.Add(Me.lblTestP)
-        Me.Controls.Add(Me.PictureBox1)
         Me.Name = "Form1"
         Me.Text = "Form1"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -111,4 +118,5 @@ Partial Class Form1
     Friend WithEvents lblNumCreatures As Label
     Friend WithEvents btnViewHand As Button
     Friend WithEvents grpHand As GroupBox
+    Friend WithEvents tmrUpdater As Timer
 End Class
