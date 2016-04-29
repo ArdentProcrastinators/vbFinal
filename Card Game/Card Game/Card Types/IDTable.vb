@@ -58,7 +58,6 @@
         'Return for this function is not required and is for troubleshooting
         Select Case C.ID
             Case Is = 1
-                '//USED TO SET IMAGE OF CARD WHEN IT IS PLAYED, UNCOMMENT AND ADD IMAGE WHEN CARD IMAGES EXIST//
                 Return My.Resources.NoobMemer
             Case Is = 2
 

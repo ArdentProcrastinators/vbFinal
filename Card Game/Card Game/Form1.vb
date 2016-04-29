@@ -2,9 +2,7 @@
     Dim deckInfo As New List(Of Integer)
     Dim handInfo As New List(Of Integer)
     'List for each player's creatures
-    Public RadiantCreatureInfo As New List(Of Creature)
-    Public RadiantPlayedCreatures As New List(Of Card)
-    Public DireCreatureInfo As New List(Of Creature)
+    Public RadiantCreatures As New List(Of Card)
     Dim cardScale As Decimal = 0.3
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -159,26 +157,18 @@
     Public Sub GenerateCreature(CreatureID As Integer, Radiant As Boolean)
         'If Radiant played it
         If Radiant Then
-            'Adds a new creature to the Radiant's creature list
-            'The I In front represents that the value is an input, and Is only used to set the values in the class correctly
-            'View the Creature.vb class for more info, located in CardTypes Folder
-            RadiantCreatureInfo.Add(New Creature(1, 1, CreatureID))
 
-            RadiantPlayedCreatures.Add(New Card(1))
-            IDTable.IDImage(RadiantPlayedCreatures(RadiantPlayedCreatures.Count - 1))
-            RadiantPlayedCreatures(RadiantPlayedCreatures.Count - 1).Height = My.Resources.Ardent_Procrastinor.Height * cardScale
-            RadiantPlayedCreatures(RadiantPlayedCreatures.Count - 1).Width = My.Resources.Ardent_Procrastinor.Width * cardScale
-            'RadiantPlayedCreatures(RadiantPlayedCreatures.Count - 1).Visible = True
+            RadiantCreatures.Add(New Card(1))
 
-            Me.Controls.Add(RadiantPlayedCreatures(RadiantPlayedCreatures.Count - 1))
+            RadiantCreatures(RadiantCreatures.Count - 1).Image = IDTable.IDImage(RadiantCreatures(RadiantCreatures.Count - 1))
+            RadiantCreatures(RadiantCreatures.Count - 1).Height = My.Resources.Ardent_Procrastinor.Height * cardScale
+            RadiantCreatures(RadiantCreatures.Count - 1).Width = My.Resources.Ardent_Procrastinor.Width * cardScale
 
-            Debug.Print(RadiantPlayedCreatures(RadiantPlayedCreatures.Count - 1).Left)
+            Me.Controls.Add(RadiantCreatures(RadiantCreatures.Count - 1))
+
+            Debug.Print(RadiantCreatures(RadiantCreatures.Count - 1).Left)
         Else
             'Same as above only for the Dire side
-            DireCreatureInfo.Add(New Creature(1, 1, CreatureID))
-            lblTestP.Text = "Health: " & DireCreatureInfo(DireCreatureInfo.Count - 1).MaxPower
-            lblTestT.Text = "Power: " & DireCreatureInfo(DireCreatureInfo.Count - 1).MaxHealth
-            lblNumCreatures.Text = DireCreatureInfo.Count
         End If
 
     End Sub
