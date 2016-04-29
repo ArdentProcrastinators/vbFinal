@@ -41,8 +41,9 @@
         'Returns true if ability needs a target, false if it does not
         Select Case ID
             Case Is = 1
-                Return 1
+                'RETURN ENDS THE SUB! MAKE ALL DECLARATIONS BEFORE IT! - Levent
                 Form1.IDSearchingForTarget = 1
+                Return 1
             Case Is = 2
                 Return 0
             Case Is = 3
@@ -59,7 +60,7 @@
         Select Case ID
             Case 1
                 Form1.Target.Buff(-1, 0)
-            Case Is = 2
+            Case 2
 
             Case Is = 3
 

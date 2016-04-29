@@ -185,7 +185,7 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Debug.Print(RadiantCreatures(RadiantCreatures.Count - 1).BasePower - RadiantCreatures(RadiantCreatures.Count - 1).BuffPower)
+        Debug.Print(RadiantCreatures(RadiantCreatures.Count - 1).BasePower + RadiantCreatures(RadiantCreatures.Count - 1).BuffPower)
     End Sub
 End Class
 
