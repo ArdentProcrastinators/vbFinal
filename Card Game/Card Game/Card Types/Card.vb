@@ -25,7 +25,62 @@
         Me.BackgroundImageLayout = ImageLayout.Zoom
     End Sub
 
+    Public Sub mouseOn() Handles Me.MouseEnter
 
+        Me.Top -= Me.Height
+        Me.Width *= 2
+        Me.Height *= 2
+        Dim right As Boolean
+        Dim rightChanged As Integer
+        Dim cumulativeCardLen As Decimal
+
+        For I As Integer = 1 To Form1.handInfo.Count
+
+            If Form1.Controls("card" & I) IsNot Me And right = True Then
+
+                Form1.Controls("card" & I).Left += Me.Width / 2
+                rightChanged += 1
+
+            ElseIf Form1.Controls("card" & I) Is Me
+                right = True
+            End If
+
+            cumulativeCardLen += Form1.Controls("card" & I).Width
+
+        Next
+
+        'Yo... I don't even know what I made, but it works...
+        Dim leftLevel = (Form1.Controls("card1").Left - ((Form1.Width - Form1.Controls("card1").Left) - cumulativeCardLen)) / Form1.handInfo.Count
+
+        For x As Integer = 1 To Form1.handInfo.Count
+
+            Form1.Controls("card" & x).Left -= leftLevel
+
+        Next
+
+    End Sub
+
+    Public Sub MouseExit() Handles Me.MouseLeave
+
+        Me.Width *= 1 / 2
+        Me.Height *= 1 / 2
+        Me.Top += Me.Height
+        Dim right As Boolean
+
+        For I As Integer = 1 To Form1.handInfo.Count
+
+
+            If Form1.Controls("card" & I) IsNot Me And right = True Then
+
+                Form1.Controls("card" & I).Left -= Me.Width
+
+            ElseIf Form1.Controls("card" & I) Is Me
+                right = True
+            End If
+
+        Next
+
+    End Sub
 
     'The input variables have an I in front to signify they should only be used to set the variables in this form.
     Public Sub DefineCreature(C As Card)
