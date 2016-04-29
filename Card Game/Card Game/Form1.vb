@@ -102,8 +102,8 @@
         For I As Integer = 1 To handInfo.Count
 
             Dim newCard As New Card
-            newCard.Image = My.Resources.Ardent_Procrastinor
-            newCard.SizeMode = PictureBoxSizeMode.Zoom
+            newCard.BackgroundImageLayout = BackgroundImageLayout.Zoom
+            newCard.BackgroundImage = My.Resources.Ardent_Procrastinor
             newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
             newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height 'Sets height accordingly with cardscale
             newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
@@ -152,6 +152,7 @@
     End Sub
 
     Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
+        'Confirms hand and disables mulliganning
         btnMulligan.Dispose()
         btnConfirm.Dispose()
     End Sub
@@ -172,7 +173,7 @@
 
             RadiantPlayedCreatures.Add(New Card)
             IDTable.IDImage(CreatureID, RadiantPlayedCreatures(RadiantPlayedCreatures.Count - 1))
-        Else()
+        Else
             'Same as above only for the Dire side
             DireCreatureInfo.Add(New Creature(1, 1, CreatureID))
             lblTestP.Text = "Health: " & DireCreatureInfo(DireCreatureInfo.Count - 1).MaxPower

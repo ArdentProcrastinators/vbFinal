@@ -1,5 +1,9 @@
 ﻿Public Class Card
 
-    Inherits PictureBox
+    Inherits Button
+
+    Public Sub MeClick() Handles Me.Click
+        MsgBox("")
+    End Sub
 
 End Class
