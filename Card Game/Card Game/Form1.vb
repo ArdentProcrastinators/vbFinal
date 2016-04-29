@@ -1,6 +1,6 @@
 ﻿Public Class Form1
-    Dim deckInfo As New List(Of Integer)
-    Dim handInfo As New List(Of Integer)
+    Public deckInfo As New List(Of Integer)
+    Public handInfo As New List(Of Integer)
     'List for each player's creatures
     Public RadiantCreatures As New List(Of Card)
     Dim cardScale As Decimal = 0.3
@@ -102,6 +102,7 @@
         For I As Integer = 1 To handInfo.Count
 
             Dim newCard As New Card(1)
+            newCard.partOfHand = True
             newCard.BackgroundImageLayout = BackgroundImageLayout.Zoom
             newCard.BackgroundImage = IDTable.IDImage(newCard)
             newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
@@ -169,7 +170,7 @@
             newCreature.Width = My.Resources.Ardent_Procrastinor.Width * cardScale
             newCreature.DefineCreature(newCreature)
             RadiantCreatures.Add(newCreature)
-            Me.Controls.Add(RadiantCreatures(RadiantCreatures.Count - 1))
+            Me.Controls.Add(newCreature)
 
             Debug.Print(RadiantCreatures(RadiantCreatures.Count - 1).Left)
         Else
