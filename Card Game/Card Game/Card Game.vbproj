@@ -75,7 +75,6 @@
     <Compile Include="Card Types\Card.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Card Types\Creature.vb" />
     <Compile Include="Card Types\IDTable.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>

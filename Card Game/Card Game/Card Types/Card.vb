@@ -11,13 +11,20 @@
     Public MaxHealth As Integer
     'The creatures current health
     Public CurrentHealth As Integer
-    'The amount of increases in power and health from buffs (This is added to the base to get the max)
-    Dim BuffPower As Integer
-    Dim BuffHealth As Integer
+    'The amount of increases in power and health from buffs lasting until end of turn
+    Public BuffPower As Integer
+    Public BuffHealth As Integer
 
 
     Public Sub MeClick() Handles Me.Click
-        MsgBox("")
+        If Form1.NeedTarget = True Then
+            Form1.Target = Me
+            Form1.TargetFound(Form1.IDSearchingForTarget)
+        ElseIf IDTable.IDAbilityTargeted(ID) = 1 Then
+            If MsgBox("Would you like to use this card's ability?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                Form1.NeedTarget = True
+            End If
+        End If
     End Sub
 
     Public Sub New(IID As Integer)

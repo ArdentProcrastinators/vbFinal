@@ -30,6 +30,7 @@ Partial Class Form1
         Me.tmrUpdater = New System.Windows.Forms.Timer(Me.components)
         Me.btnMulligan = New System.Windows.Forms.Button()
         Me.btnConfirm = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lblTestP
@@ -91,11 +92,21 @@ Partial Class Form1
         Me.btnConfirm.Text = "Confirm Hand"
         Me.btnConfirm.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(480, 188)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 7
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1297, 639)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnConfirm)
         Me.Controls.Add(Me.btnMulligan)
         Me.Controls.Add(Me.btnViewHand)
@@ -115,4 +126,5 @@ Partial Class Form1
     Friend WithEvents tmrUpdater As Timer
     Friend WithEvents btnMulligan As Button
     Friend WithEvents btnConfirm As Button
+    Friend WithEvents Button1 As Button
 End Class
