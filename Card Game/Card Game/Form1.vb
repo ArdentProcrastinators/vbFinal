@@ -7,8 +7,6 @@
     Public DireCreatureInfo As New List(Of Creature)
     Dim cardScale As Decimal = 0.3
 
-    Dim cardScale As Decimal = 0.3
-
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Me.WindowState = FormWindowState.Maximized
@@ -97,17 +95,13 @@
 
         'Resets cards in hand since all cards have been deleted
         cardsInHand = 0
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 
         'Adds new cards
         For I As Integer = 1 To handInfo.Count
 
-            Dim newCard As New Card
+            Dim newCard As New Card(1)
             newCard.BackgroundImageLayout = BackgroundImageLayout.Zoom
-            newCard.BackgroundImage = My.Resources.Ardent_Procrastinor
+            newCard.BackgroundImage = IDTable.IDImage(newCard)
             newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
             newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height 'Sets height accordingly with cardscale
             newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
@@ -170,10 +164,8 @@
             'View the Creature.vb class for more info, located in CardTypes Folder
             RadiantCreatureInfo.Add(New Creature(1, 1, CreatureID))
 
-            RadiantPlayedCreatures.Add(New Card)
-            IDTable.IDImage(CreatureID, RadiantPlayedCreatures(RadiantPlayedCreatures.Count - 1))
-<<<<<<< HEAD
-=======
+            RadiantPlayedCreatures.Add(New Card(1))
+            IDTable.IDImage(RadiantPlayedCreatures(RadiantPlayedCreatures.Count - 1))
             RadiantPlayedCreatures(RadiantPlayedCreatures.Count - 1).Height = My.Resources.Ardent_Procrastinor.Height * cardScale
             RadiantPlayedCreatures(RadiantPlayedCreatures.Count - 1).Width = My.Resources.Ardent_Procrastinor.Width * cardScale
             'RadiantPlayedCreatures(RadiantPlayedCreatures.Count - 1).Visible = True
@@ -181,7 +173,6 @@
             Me.Controls.Add(RadiantPlayedCreatures(RadiantPlayedCreatures.Count - 1))
 
             Debug.Print(RadiantPlayedCreatures(RadiantPlayedCreatures.Count - 1).Left)
->>>>>>> origin/master
         Else
             'Same as above only for the Dire side
             DireCreatureInfo.Add(New Creature(1, 1, CreatureID))
