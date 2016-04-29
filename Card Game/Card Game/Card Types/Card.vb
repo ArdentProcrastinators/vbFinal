@@ -42,7 +42,7 @@
         Dim rightChanged As Integer
         Dim cumulativeCardLen As Decimal
 
-        If partOfHand = True Then
+        If partOfHand = True And Form1.handInfo.Count <> 1 Then
             For I As Integer = 1 To Form1.handInfo.Count
 
                 If Form1.Controls("card" & I) IsNot Me And right = True Then
@@ -58,7 +58,7 @@
 
             Next
             'Yo... I don't even know what I made, but it works...
-            Dim leftLevel = (Form1.Controls("card1").Left - ((Form1.Width - Form1.Controls("card1").Left) - cumulativeCardLen)) / Form1.handInfo.Count
+            Dim leftLevel = (Form1.Controls("card1").Left - ((Form1.Width - Form1.Controls("card1").Left) - cumulativeCardLen)) / (Form1.handInfo.Count * 2)
 
             For x As Integer = 1 To Form1.handInfo.Count
 
@@ -75,7 +75,7 @@
         Me.Top += Me.Height
         Dim right As Boolean
 
-        If partOfHand = True Then
+        If partOfHand = True And Form1.handInfo.Count <> 1 Then
             For I As Integer = 1 To Form1.handInfo.Count
 
                 If Form1.Controls("card" & I) IsNot Me And right = True Then

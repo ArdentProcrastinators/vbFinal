@@ -24,7 +24,7 @@
             Case Is = 1
                 Return 2
             Case Is = 2
-                Return 3
+                Return 2
             Case Is = 3
                 Return 4
             Case Is = 4
@@ -79,7 +79,7 @@
             Case Is = 1
                 Return My.Resources.NoobMemer
             Case Is = 2
-
+                Return My.Resources.Ardent_Procrastinor
             Case Is = 3
 
             Case Is = 4

@@ -1,6 +1,7 @@
 ﻿Public Class Form1
     Public deckInfo As New List(Of Integer)
     Public handInfo As New List(Of Integer)
+    Public cardInfo As New List(Of Integer)
     'List for each player's creatures
     Public RadiantCreatures As New List(Of Card)
     Dim cardScale As Decimal = 0.3
@@ -14,7 +15,10 @@
         Me.WindowState = FormWindowState.Maximized
 
         For I As Integer = 1 To 60
+
             'adds 60 elements
+            Randomize()
+            cardInfo.Add(Int(2 * Rnd() + 1))
             deckInfo.Add(1)
         Next
 
@@ -101,7 +105,7 @@
         'Adds new cards
         For I As Integer = 1 To handInfo.Count
 
-            Dim newCard As New Card(1)
+            Dim newCard As New Card(cardInfo(handInfo(I - 1) - 1))
             newCard.partOfHand = True
             newCard.BackgroundImageLayout = BackgroundImageLayout.Zoom
             newCard.BackgroundImage = IDTable.IDImage(newCard)
