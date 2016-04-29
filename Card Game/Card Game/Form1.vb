@@ -6,6 +6,8 @@
     Public RadiantCreatures As New List(Of Creature)
     Public DireCreatures As New List(Of Creature)
 
+    Dim cardScale As Decimal = 0.3
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Me.WindowState = FormWindowState.Maximized
@@ -102,26 +104,30 @@
 
     Public Sub UpdateHand()
 
+        'Cardcount is updated after new cards are made so that indexes will not be outside the bound of the array
         Static cardsInHand As Integer
+        Static cardCount As Integer = 7
 
+        'Disposes old cards
         If cardsInHand <> 0 Then
-            For I As Integer = 1 To handInfo.Count
+            For I As Integer = 1 To cardCount
 
                 Me.Controls("card" & I).Dispose()
 
             Next
         End If
 
+        'Resets cards in hand since all cards have been deleted
         cardsInHand = 0
-        Dim cardScale As Decimal = 0.3
 
+        'Adds new cards
         For I As Integer = 1 To handInfo.Count
 
             Dim newCard As New Card
             newCard.Image = My.Resources.Ardent_Procrastinor
             newCard.SizeMode = PictureBoxSizeMode.Zoom
-            newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width
-            newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height
+            newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
+            newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height 'Sets height accordingly with cardscale
             newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
             newCard.Left = cardScale * My.Resources.Ardent_Procrastinor.Width * cardsInHand + (Me.Width - handInfo.Count * cardScale * My.Resources.Ardent_Procrastinor.Width) / 2
             newCard.Visible = True
@@ -132,11 +138,44 @@
 
         Next
 
+        cardCount = handInfo.Count
 
     End Sub
 
     Private Sub formSizeChange() Handles Me.SizeChanged
+
         UpdateHand()
+
+    End Sub
+
+    Private Sub btnMulligan_Click(sender As Object, e As EventArgs) Handles btnMulligan.Click
+
+        'Keeps mulligan count to draw the correct amount of cards
+        Static mulliganCount As Integer = 1
+        If handInfo.Count > 1 Then
+
+            deckInfo.Clear()
+            handInfo.Clear()
+
+            For I As Integer = 1 To 60
+                'adds 60 elements
+                deckInfo.Add(1)
+            Next
+
+            ShuffleCards(deckInfo)
+            DrawCards(7 - mulliganCount, deckInfo, handInfo)
+
+            mulliganCount += 1
+
+        Else
+            btnMulligan.Enabled = False
+        End If
+
+    End Sub
+
+    Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
+        btnMulligan.Dispose()
+        btnConfirm.Dispose()
     End Sub
 End Class
 

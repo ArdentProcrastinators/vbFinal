@@ -2,5 +2,4 @@
 
     Inherits PictureBox
 
-
 End Class

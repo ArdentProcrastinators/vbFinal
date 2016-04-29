@@ -29,6 +29,8 @@ Partial Class Form1
         Me.lblNumCreatures = New System.Windows.Forms.Label()
         Me.btnViewHand = New System.Windows.Forms.Button()
         Me.tmrUpdater = New System.Windows.Forms.Timer(Me.components)
+        Me.btnMulligan = New System.Windows.Forms.Button()
+        Me.btnConfirm = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -83,11 +85,31 @@ Partial Class Form1
         Me.tmrUpdater.Enabled = True
         Me.tmrUpdater.Interval = 10
         '
+        'btnMulligan
+        '
+        Me.btnMulligan.Location = New System.Drawing.Point(567, 21)
+        Me.btnMulligan.Name = "btnMulligan"
+        Me.btnMulligan.Size = New System.Drawing.Size(75, 23)
+        Me.btnMulligan.TabIndex = 5
+        Me.btnMulligan.Text = "Mulligan"
+        Me.btnMulligan.UseVisualStyleBackColor = True
+        '
+        'btnConfirm
+        '
+        Me.btnConfirm.Location = New System.Drawing.Point(679, 20)
+        Me.btnConfirm.Name = "btnConfirm"
+        Me.btnConfirm.Size = New System.Drawing.Size(75, 23)
+        Me.btnConfirm.TabIndex = 6
+        Me.btnConfirm.Text = "Confirm Hand"
+        Me.btnConfirm.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1297, 639)
+        Me.Controls.Add(Me.btnConfirm)
+        Me.Controls.Add(Me.btnMulligan)
         Me.Controls.Add(Me.btnViewHand)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.lblNumCreatures)
@@ -107,4 +129,6 @@ Partial Class Form1
     Friend WithEvents lblNumCreatures As Label
     Friend WithEvents btnViewHand As Button
     Friend WithEvents tmrUpdater As Timer
+    Friend WithEvents btnMulligan As Button
+    Friend WithEvents btnConfirm As Button
 End Class
