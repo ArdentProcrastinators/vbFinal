@@ -3,7 +3,7 @@
         'Retuns power of creature from ID
         Select Case ID
             Case Is = 1
-                Return 1
+                Return 2
             Case Is = 2
                 Return 2
             Case Is = 3
@@ -59,7 +59,7 @@
         Select Case ID
             Case Is = 1
                 '//USED TO SET IMAGE OF CARD WHEN IT IS PLAYED, UNCOMMENT AND ADD IMAGE WHEN CARD IMAGES EXIST//
-                'C.Image =
+                C.Image = My.Resources.NoobMemer
             Case Is = 2
                 Return 3
             Case Is = 3

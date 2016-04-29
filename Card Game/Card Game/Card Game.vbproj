@@ -76,6 +76,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Card Types\Creature.vb" />
+    <Compile Include="Card Types\IDTable.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +125,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Ardent Procrastinor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NoobMemer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Card Images\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
