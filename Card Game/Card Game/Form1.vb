@@ -158,12 +158,13 @@
         'If Radiant played it
         If Radiant Then
 
-            RadiantCreatures.Add(New Card(1))
+            Dim newCreature As New Card(1)
+            newCreature.BackgroundImageLayout = ImageLayout.Zoom
+            newCreature.BackgroundImage = IDTable.IDImage(newCreature)
+            newCreature.Height = My.Resources.Ardent_Procrastinor.Height * cardScale
+            newCreature.Width = My.Resources.Ardent_Procrastinor.Width * cardScale
 
-            RadiantCreatures(RadiantCreatures.Count - 1).Image = IDTable.IDImage(RadiantCreatures(RadiantCreatures.Count - 1))
-            RadiantCreatures(RadiantCreatures.Count - 1).Height = My.Resources.Ardent_Procrastinor.Height * cardScale
-            RadiantCreatures(RadiantCreatures.Count - 1).Width = My.Resources.Ardent_Procrastinor.Width * cardScale
-
+            RadiantCreatures.Add(newCreature)
             Me.Controls.Add(RadiantCreatures(RadiantCreatures.Count - 1))
 
             Debug.Print(RadiantCreatures(RadiantCreatures.Count - 1).Left)
