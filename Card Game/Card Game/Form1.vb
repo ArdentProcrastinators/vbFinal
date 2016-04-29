@@ -4,6 +4,10 @@
     'List for each player's creatures
     Public RadiantCreatures As New List(Of Card)
     Dim cardScale As Decimal = 0.3
+    'Public Target As Card
+    Public Target As Card
+    Public NeedTarget As Boolean
+    Public IDSearchingForTarget As Integer
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -164,7 +168,7 @@
             newCreature.BackgroundImage = IDTable.IDImage(newCreature)
             newCreature.Height = My.Resources.Ardent_Procrastinor.Height * cardScale
             newCreature.Width = My.Resources.Ardent_Procrastinor.Width * cardScale
-
+            newCreature.DefineCreature(newCreature)
             RadiantCreatures.Add(newCreature)
             Me.Controls.Add(newCreature)
 
@@ -175,5 +179,13 @@
 
     End Sub
 
+    Public Sub TargetFound(ID As Integer)
+        NeedTarget = False
+        IDTable.IDUseAbility(ID)
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Debug.Print(RadiantCreatures(RadiantCreatures.Count - 1).BasePower - RadiantCreatures(RadiantCreatures.Count - 1).BuffPower)
+    End Sub
 End Class
 
