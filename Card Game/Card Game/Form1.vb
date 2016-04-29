@@ -3,8 +3,9 @@
     Dim deckInfo As New List(Of Integer)
     Dim handInfo As New List(Of Integer)
     'List for each player's creatures
-    Public RadiantCreatures As New List(Of Creature)
-    Public DireCreatures As New List(Of Creature)
+    Public RadiantCreatureInfo As New List(Of Creature)
+    Public RadiantPlayedCreatures As New List(Of Card)
+    Public DireCreatureInfo As New List(Of Creature)
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -76,29 +77,6 @@
 
         Next
     End Sub
-    'Sub is called when a creature is played
-    Public Sub GenerateCreature(CreatureID As Integer, Radiant As Boolean)
-        'If Radiant played it
-        If Radiant Then
-            'Adds a new creature to the Radiant's creature list
-            'Hover over the word Creature to see what the values represent
-            'The I In front represents that the value is an input, and Is only used to set the values in the class correctly
-            'View the Creature.vb class for more info, located in CardTypes Folder
-            RadiantCreatures.Add(New Creature(1, 1, CreatureID))
-            '//TESTING// Sets the labels on the designer to the creatures power and health
-            lblTestP.Text = "Health: " & RadiantCreatures(RadiantCreatures.Count - 1).MaxPower
-            lblTestT.Text = "Power: " & RadiantCreatures(RadiantCreatures.Count - 1).MaxHealth
-            '//TESTING// Shows the number of creatures Radiant has in the bottom label
-            lblNumCreatures.Text = RadiantCreatures.Count
-        Else
-            'Same as above only for the Dire side
-            DireCreatures.Add(New Creature(1, 1, CreatureID))
-            lblTestP.Text = "Health: " & DireCreatures(DireCreatures.Count - 1).MaxPower
-            lblTestT.Text = "Power: " & DireCreatures(DireCreatures.Count - 1).MaxHealth
-            lblNumCreatures.Text = DireCreatures.Count
-        End If
-
-    End Sub
 
     Public Sub UpdateHand()
 
@@ -138,5 +116,32 @@
     Private Sub formSizeChange() Handles Me.SizeChanged
         UpdateHand()
     End Sub
+
+    'Sub is called when a creature is played
+    Public Sub GenerateCreature(CreatureID As Integer, Radiant As Boolean)
+        'If Radiant played it
+        If Radiant Then
+            'Adds a new creature to the Radiant's creature list
+            'The I In front represents that the value is an input, and Is only used to set the values in the class correctly
+            'View the Creature.vb class for more info, located in CardTypes Folder
+            RadiantCreatureInfo.Add(New Creature(1, 1, CreatureID))
+            '//TESTING// Sets the labels on the designer to the creatures power and health
+            lblTestP.Text = "Health: " & RadiantCreatureInfo(RadiantCreatureInfo.Count - 1).MaxPower
+            lblTestT.Text = "Power: " & RadiantCreatureInfo(RadiantCreatureInfo.Count - 1).MaxHealth
+            '//TESTING// Shows the number of creatures Radiant has in the bottom label
+            lblNumCreatures.Text = RadiantCreatureInfo.Count
+
+            RadiantPlayedCreatures.Add(New Card)
+            IDTable.IDImage(CreatureID, RadiantPlayedCreatures(RadiantPlayedCreatures.Count - 1))
+        Else()
+            'Same as above only for the Dire side
+            DireCreatureInfo.Add(New Creature(1, 1, CreatureID))
+            lblTestP.Text = "Health: " & DireCreatureInfo(DireCreatureInfo.Count - 1).MaxPower
+            lblTestT.Text = "Power: " & DireCreatureInfo(DireCreatureInfo.Count - 1).MaxHealth
+            lblNumCreatures.Text = DireCreatureInfo.Count
+        End If
+
+    End Sub
+
 End Class
 
