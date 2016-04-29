@@ -98,6 +98,7 @@
         For I As Integer = 1 To handInfo.Count
 
             Dim newCard As New Card(1)
+            newCard.partOfHand = True
             newCard.BackgroundImageLayout = BackgroundImageLayout.Zoom
             newCard.BackgroundImage = IDTable.IDImage(newCard)
             newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
