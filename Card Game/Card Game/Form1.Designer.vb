@@ -23,26 +23,19 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lblTestP = New System.Windows.Forms.Label()
         Me.lblTestT = New System.Windows.Forms.Label()
         Me.lblNumCreatures = New System.Windows.Forms.Label()
         Me.btnViewHand = New System.Windows.Forms.Button()
         Me.tmrUpdater = New System.Windows.Forms.Timer(Me.components)
+<<<<<<< HEAD
         Me.btnMulligan = New System.Windows.Forms.Button()
         Me.btnConfirm = New System.Windows.Forms.Button()
+=======
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+>>>>>>> origin/master
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.Ardent_Procrastinor
-        Me.PictureBox1.Location = New System.Drawing.Point(27, 34)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(100, 50)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
         '
         'lblTestP
         '
@@ -85,6 +78,7 @@ Partial Class Form1
         Me.tmrUpdater.Enabled = True
         Me.tmrUpdater.Interval = 10
         '
+<<<<<<< HEAD
         'btnMulligan
         '
         Me.btnMulligan.Location = New System.Drawing.Point(567, 21)
@@ -102,6 +96,16 @@ Partial Class Form1
         Me.btnConfirm.TabIndex = 6
         Me.btnConfirm.Text = "Confirm Hand"
         Me.btnConfirm.UseVisualStyleBackColor = True
+=======
+        'PictureBox1
+        '
+        Me.PictureBox1.Location = New System.Drawing.Point(27, 34)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(100, 50)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
+>>>>>>> origin/master
         '
         'Form1
         '
