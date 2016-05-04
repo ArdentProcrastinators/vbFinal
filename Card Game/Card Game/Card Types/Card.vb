@@ -15,9 +15,12 @@
     Public BuffPower As Integer
     Public BuffHealth As Integer
 
+    Public tapped As Boolean
+
     Public partOfHand As Boolean = False
 
     Public Sub MeClick() Handles Me.Click
+
         If Form1.NeedTarget = True Then
             Form1.Target = Me
             Form1.TargetFound(Form1.IDSearchingForTarget)
@@ -26,6 +29,7 @@
                 Form1.NeedTarget = True
             End If
         End If
+
     End Sub
 
     Public Sub New(IID As Integer)

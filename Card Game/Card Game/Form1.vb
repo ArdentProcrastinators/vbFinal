@@ -2,6 +2,7 @@
     Public deckInfo As New List(Of Integer)
     Public handInfo As New List(Of Integer)
     Public cardInfo As New List(Of Integer)
+    Public manaPool As New List(Of String)
     'List for each player's creatures
     Public RadiantCreatures As New List(Of Card)
     Dim cardScale As Decimal = 0.3
@@ -190,6 +191,12 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Debug.Print(RadiantCreatures(RadiantCreatures.Count - 1).BasePower + RadiantCreatures(RadiantCreatures.Count - 1).BuffPower)
+    End Sub
+
+    Public Sub AddMana(M As String)
+
+        manaPool.Add(M)
+
     End Sub
 End Class
 
