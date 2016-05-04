@@ -15,6 +15,8 @@
     Public BuffPower As Integer
     Public BuffHealth As Integer
 
+    Public manaCost As New List(Of String)
+
     Public tapped As Boolean
 
     Public partOfHand As Boolean = False
@@ -22,19 +24,17 @@
     Public Sub MeClick() Handles Me.Click
         Form1.Target = Me
         If partOfHand = False Then
-            If Form1.NeedTarget = True Then
-                IDTable.IDAbility(Form1.IDSearchingForTarget)
-            ElseIf Form1.NeedTarget = False
-                IDTable.IDAbility(Me.ID)
-            End If
+            IDTable.IDAbility(Me)
         ElseIf partOfHand = True
-            'Playing card code here
+            IDTable.PlayCard(Me)
         End If
 
     End Sub
 
     Public Sub New(IID As Integer)
         ID = IID
+        IDTable.SetMana(Me)
+        Me.BackgroundImage = IDTable.IDImage(Me)
         Me.BackgroundImageLayout = ImageLayout.Zoom
     End Sub
 
@@ -62,15 +62,17 @@
                 cumulativeCardLen += Form1.Controls("card" & I).Width
 
             Next
+            Dim leftLevel As Integer
             'Yo... I don't even know what I made, but it works...
-            Dim leftLevel = (Form1.Controls("card1").Left - ((Form1.Width - Form1.Controls("card1").Left) - cumulativeCardLen)) / (Form1.handInfo.Count * 2)
+            If Form1.handInfo.Count <> 0 Then leftLevel = (Form1.Controls("card1").Left - ((Form1.Width - Form1.Controls("card1").Left) - cumulativeCardLen)) / (Form1.handInfo.Count * 2)
+
 
             For x As Integer = 1 To Form1.handInfo.Count
 
-                Form1.Controls("card" & x).Left -= leftLevel
+                    Form1.Controls("card" & x).Left -= leftLevel
 
-            Next
-        End If
+                Next
+            End If
     End Sub
 
     Public Sub MouseExit() Handles Me.MouseLeave

@@ -1,8 +1,9 @@
 ﻿Public Class Form1
     Public deckInfo As New List(Of Integer)
-    Public handInfo As New List(Of Integer)
+    Public handInfo As New List(Of Card)
     Public cardInfo As New List(Of Integer)
     Public manaPool As New List(Of String)
+    Public landInfo As New List(Of Card)
     'List for each player's creatures
     Public RadiantCreatures As New List(Of Card)
     Public DireCreatures As New List(Of Card)
@@ -22,7 +23,7 @@
 
             'adds 60 elements
             Randomize()
-            cardInfo.Add(Int(2 * Rnd() + 1))
+            cardInfo.Add(Int(3 * Rnd() + 1))
             deckInfo.Add(1)
         Next
 
@@ -66,10 +67,10 @@
     End Sub
 
 
-    Public Sub DrawCards(n As Integer, desDeck As List(Of Integer), desHand As List(Of Integer))
+    Public Sub DrawCards(n As Integer, desDeck As List(Of Integer), desHand As List(Of Card))
 
         For I As Integer = 1 To n
-            desHand.Add(desDeck(0))
+            desHand.Add(New Card(desDeck(0)))
             desDeck.Remove(desDeck(0))
         Next
 
@@ -77,28 +78,16 @@
 
     End Sub
 
-    Private Sub hand_Click(sender As Object, e As EventArgs) Handles btnViewHand.Click
-
-        Debug.Print("Hand:")
-
-        For I As Integer = 0 To handInfo.Count - 1
-
-            Debug.Print("Card " & I + 1 & ": " & handInfo(I))
-
-        Next
-    End Sub
-
     Public Sub UpdateHand()
 
         'Cardcount is updated after new cards are made so that indexes will not be outside the bound of the array
         Static cardsInHand As Integer
-        Static cardCount As Integer = 7
 
         'Disposes old cards
         If cardsInHand <> 0 Then
-            For I As Integer = 1 To cardCount
+            For I As Integer = 1 To handInfo.Count
 
-                Me.Controls("card" & I).Dispose()
+                Me.Controls(handInfo(I - 1).Name).Dispose()
 
             Next
         End If
@@ -109,23 +98,20 @@
         'Adds new cards
         For I As Integer = 1 To handInfo.Count
 
-            Dim newCard As New Card(cardInfo(handInfo(I - 1) - 1))
+            Dim newCard As New Card(cardInfo(handInfo(I - 1).ID - 1))
             newCard.partOfHand = True
-            newCard.BackgroundImageLayout = BackgroundImageLayout.Zoom
-            newCard.BackgroundImage = IDTable.IDImage(newCard)
             newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
             newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height 'Sets height accordingly with cardscale
             newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
             newCard.Left = cardScale * My.Resources.Ardent_Procrastinor.Width * cardsInHand + (Me.Width - handInfo.Count * cardScale * My.Resources.Ardent_Procrastinor.Width) / 2
             newCard.Visible = True
             newCard.Name = "card" & I
+            handInfo.Item(I - 1).Name = newCard.Name
             Me.Controls.Add(newCard)
 
             cardsInHand += 1
 
         Next
-
-        cardCount = handInfo.Count
 
     End Sub
 
@@ -200,5 +186,6 @@
         manaPool.Add(M)
 
     End Sub
+
 End Class
 
