@@ -124,10 +124,12 @@
 
             Case 3
                 Dim index As Integer
-                For I As Integer = 0 To Form1.handInfo.Count - 1
-                    If Form1.handInfo(I) Is c Then index = I
-                Next
-                Form1.handInfo.RemoveAt(index)
+                'For I As Integer = 0 To Form1.handInfo.Count - 1
+                ' If Form1.handInfo(I) Is c Then
+                '      index = I
+                '   End If
+                'Next
+                'Form1.handInfo.RemoveAt(index)
                 Form1.landInfo.Add(c)
                 Form1.UpdateHand()
                 c.Name = "land" & Form1.landInfo.Count
@@ -135,6 +137,17 @@
                 Form1.Controls(c.Name).Top = 50 * Form1.landInfo.Count + Form1.Height / 2
                 Form1.Controls(c.Name).Left = 100
                 c.partOfHand = False
+                'Tried testing for out of hand cards, said all cards were out of hand
+                For I As Integer = 0 To Form1.handInfo.Count - 1
+                    If Form1.handInfo(I).partOfHand = False Then
+                        index = I
+                    End If
+                Next
+                Form1.handInfo.RemoveAt(index)
+                'Displays all cards ID in debug, cards have weird IDs.
+                For x = 0 To Form1.handInfo.Count - 1
+                    Debug.Print(Form1.handInfo(x).ID)
+                Next
         End Select
 
     End Sub
