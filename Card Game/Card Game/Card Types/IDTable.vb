@@ -125,7 +125,7 @@
             Case 3
                 Dim index As Integer
                 For I As Integer = 0 To Form1.handInfo.Count - 1
-                    If Form1.handInfo(I) Is c Then index = I
+                    If Form1.handInfo(I).BackgroundImage Is c.BackgroundImage Then index = I
                 Next
                 Form1.handInfo.RemoveAt(index)
                 Form1.landInfo.Add(c)
