@@ -2,7 +2,6 @@
     Public deckInfo As New List(Of Integer)
     Public handInfo As New List(Of Integer)
     Public cardInfo As New List(Of Integer)
-    Public manaPool As New List(Of String)
     'List for each player's creatures
     Public RadiantCreatures As New List(Of Card)
     Public DireCreatures As New List(Of Card)
@@ -171,7 +170,7 @@
         'If Radiant played it
         If Radiant Then
 
-            Dim newCreature As New Card(1)
+            Dim newCreature As New Card(CreatureID)
             newCreature.BackgroundImageLayout = ImageLayout.Zoom
             newCreature.BackgroundImage = IDTable.IDImage(newCreature)
             newCreature.Height = My.Resources.Ardent_Procrastinor.Height * cardScale
@@ -180,7 +179,6 @@
             RadiantCreatures.Add(newCreature)
             Me.Controls.Add(newCreature)
 
-            Debug.Print(RadiantCreatures(RadiantCreatures.Count - 1).Left)
         Else
             'Same as above only for the Dire side
             Dim newCreature As New Card(CreatureID)
@@ -195,14 +193,13 @@
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Debug.Print(RadiantCreatures(RadiantCreatures.Count - 1).BasePower + RadiantCreatures(RadiantCreatures.Count - 1).BuffPower)
+    Public Sub TargetFound(ID As Integer)
+        NeedTarget = False
+        IDTable.IDUseAbility(ID)
     End Sub
 
-    Public Sub AddMana(M As String)
-
-        manaPool.Add(M)
-
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Debug.Print(RadiantCreatures(RadiantCreatures.Count - 1).BasePower + RadiantCreatures(RadiantCreatures.Count - 1).BuffPower)
     End Sub
 End Class
 
