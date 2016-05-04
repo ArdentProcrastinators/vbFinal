@@ -20,12 +20,16 @@
     Public partOfHand As Boolean = False
 
     Public Sub MeClick() Handles Me.Click
-
+        Form1.Target = Me
         If partOfHand = False Then
+            If Form1.NeedTarget = True Then
                 IDTable.IDAbility(Form1.IDSearchingForTarget)
-            ElseIf partOfHand = True
-                'Playing card code here
+            ElseIf Form1.NeedTarget = False
+                IDTable.IDAbility(Me.ID)
             End If
+        ElseIf partOfHand = True
+            'Playing card code here
+        End If
 
     End Sub
 

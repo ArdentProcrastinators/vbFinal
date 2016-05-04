@@ -38,10 +38,8 @@
     End Function
 
     Public Shared Function IDAbility(ID As Integer) As Integer
-        '//NOTE: PROBABLY DOES NOT NEED TO BE A FUNCTION, LEFT AS FUNCTION IN CASE RETURNS ARE REQUIRED FOR ABILITIES//
         Select Case ID
             Case Is = 1
-                'If a target is being searched for
                 If Form1.NeedTarget = True Then
                     'Confirms this is target of ability
                     If MsgBox("Would you like to give this creature -1/-0?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
