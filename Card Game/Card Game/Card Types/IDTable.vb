@@ -41,14 +41,6 @@
         '//NOTE: PROBABLY DOES NOT NEED TO BE A FUNCTION, LEFT AS FUNCTION IN CASE RETURNS ARE REQUIRED FOR ABILITIES//
         Select Case ID
             Case Is = 1
-<<<<<<< HEAD
-                'RETURN ENDS THE SUB! MAKE ALL DECLARATIONS BEFORE IT! - Levent
-                Form1.IDSearchingForTarget = 1
-                Return 1
-            Case 2
-                Return 0
-            Case 3
-=======
                 'If a target is being searched for
                 If Form1.NeedTarget = True Then
                     'Confirms this is target of ability
@@ -62,6 +54,7 @@
                     Form1.NeedTarget = True
                     Form1.IDSearchingForTarget = ID
                 End If
+                Return 1
             Case Is = 2
                 '//ABILITY TEMPLATE//
                 'If a target is being searched for
@@ -79,7 +72,6 @@
                     Form1.IDSearchingForTarget = ID
                 End If
             Case Is = 3
->>>>>>> origin/master
                 Return 0
             Case 4
                 Return 0
@@ -89,7 +81,6 @@
         Return 0
     End Function
 
-<<<<<<< HEAD
     Public Shared Sub IDUseAbility(ID As Integer)
         Select Case ID
             Case 1
@@ -105,8 +96,6 @@
         End Select
 
     End Sub
-=======
->>>>>>> origin/master
 
     Public Shared Function IDImage(C As Card) As Image
         'Sets the new Card's Image to the card played

@@ -20,23 +20,12 @@
     Public partOfHand As Boolean = False
 
     Public Sub MeClick() Handles Me.Click
-<<<<<<< HEAD
 
-        If Form1.NeedTarget = True Then
-            Form1.Target = Me
-            Form1.TargetFound(Form1.IDSearchingForTarget)
-        ElseIf IDTable.IDAbilityTargeted(ID) = 1 Then
-            If MsgBox("Would you like to use this card's ability?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-                Form1.NeedTarget = True
-            End If
-=======
-        Form1.Target = Me
         If partOfHand = False Then
-            IDTable.IDAbility(Form1.IDSearchingForTarget)
-        ElseIf partOfHand = True
-            'Playing card code here
->>>>>>> origin/master
-        End If
+                IDTable.IDAbility(Form1.IDSearchingForTarget)
+            ElseIf partOfHand = True
+                'Playing card code here
+            End If
 
     End Sub
 
