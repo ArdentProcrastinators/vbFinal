@@ -4,7 +4,10 @@
     Public cardInfo As New List(Of Integer)
     'List for each player's creatures
     Public RadiantCreatures As New List(Of Card)
+    Public DireCreatures As New List(Of Card)
     Dim cardScale As Decimal = 0.3
+    Public RadinatHealth As Integer
+    Public DireHealth As Integer
     'Public Target As Card
     Public Target As Card
     Public NeedTarget As Boolean
@@ -179,6 +182,14 @@
             Debug.Print(RadiantCreatures(RadiantCreatures.Count - 1).Left)
         Else
             'Same as above only for the Dire side
+            Dim newCreature As New Card(CreatureID)
+            newCreature.BackgroundImageLayout = ImageLayout.Zoom
+            newCreature.BackgroundImage = IDTable.IDImage(newCreature)
+            newCreature.Height = My.Resources.Ardent_Procrastinor.Height * cardScale
+            newCreature.Width = My.Resources.Ardent_Procrastinor.Width * cardScale
+            newCreature.DefineCreature(newCreature)
+            DireCreatures.Add(newCreature)
+            Me.Controls.Add(newCreature)
         End If
 
     End Sub
