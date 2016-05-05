@@ -195,10 +195,62 @@
         lblMana.Text = "Mana:" & vbNewLine
 
         For Each m As String In manaPool
-            lblMana.Text += m & vbNewLine
+            lblMana.Text &= m & vbNewLine
         Next
 
     End Sub
 
+    Public Sub AddMana(m As String)
+
+        manaPool.Add(m)
+        ManaLabel()
+
+    End Sub
+
+    Public Sub RemMana(m As String)
+
+        manaPool.Remove(m)
+        ManaLabel()
+
+    End Sub
+
+    Public Sub TMC(c As Card)
+        For x As Integer = 1 To c.manaCost.Count
+            If c.manaCost(x - 1) <> "any" Then
+                For I As Integer = 1 To landInfo.Count
+                    If landInfo(x - 1).manaCost(0) = c.manaCost(x - 1) And landInfo(x - 1).used = True And landInfo(x - 1).tapped = False Then
+                        landInfo(x - 1).tapped = True
+                        landInfo(x - 1).BackgroundImage = IDTable.IDImage(landInfo(x - 1))
+                    End If
+                Next
+                manaPool.Remove(c.manaCost(x - 1))
+            Else
+                For I As Integer = 1 To landInfo.Count
+                    If landInfo(x - 1).used = True And landInfo(x - 1).tapped = False Then
+                        landInfo(x - 1).tapped = True
+                        landInfo(x - 1).BackgroundImage = IDTable.IDImage(landInfo(x - 1))
+                    End If
+                Next
+                manaPool.RemoveAt(0)
+            End If
+        Next
+    End Sub
+
+    Public Sub TurnStart()
+
+        manaPool.Clear()
+        ManaLabel()
+
+        For Each c As Card In landInfo
+            c.tapped = False
+            c.used = False
+            c.BackgroundImage = IDTable.IDImage(c)
+        Next
+
+    End Sub
+
+    Private Sub btnTS_Click(sender As Object, e As EventArgs) Handles btnTS.Click
+        TurnStart()
+    End Sub
 End Class
 

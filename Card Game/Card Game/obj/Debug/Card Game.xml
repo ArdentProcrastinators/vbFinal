@@ -37,6 +37,11 @@ Card Game
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:WindowsApplication1.My.Resources.Resources.islandtu">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:WindowsApplication1.My.Resources.Resources.NoobMemer">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.

@@ -44,12 +44,6 @@
 
     Public Sub mouseOn() Handles Me.MouseEnter
 
-        If IDTable.PayMana(Me) = False Then
-            Form1.lblManaStatus.Text = "Insufficient Mana"
-        Else
-            Form1.lblManaStatus.Text = "Sufficient Mana"
-        End If
-
         Me.Top -= Me.Height
         Me.Width *= 2
         Me.Height *= 2
@@ -79,10 +73,10 @@
 
             For x As Integer = 1 To Form1.handInfo.Count
 
-                    Form1.Controls("card" & x).Left -= leftLevel
+                Form1.Controls("card" & x).Left -= leftLevel
 
-                Next
-            End If
+            Next
+        End If
     End Sub
 
     Public Sub MouseExit() Handles Me.MouseLeave

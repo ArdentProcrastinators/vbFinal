@@ -73,16 +73,20 @@
                 '//LAND TEMPLATE//
                 'Ez
                 If c.used = False Then
-                    c.used = True
-                    Form1.manaPool.Add("blue")
-                    c.BackgroundImage = My.Resources.islandt
+                    If c.tapped = False Then
+                        c.used = True
+                        Form1.AddMana("blue")
+                        c.BackgroundImage = My.Resources.islandt
+                    End If
                 Else
-                    c.used = False
-                    Form1.manaPool.Remove("blue")
-                    c.BackgroundImage = My.Resources.island
+                    If c.tapped = False Then
+                        c.used = False
+                        Form1.RemMana("blue")
+                        c.BackgroundImage = My.Resources.island
+                    End If
                 End If
-                Form1.ManaLabel()
-            Case 4
+
+                    Case 4
                 Return 0
             Case 5
                 Return 0
@@ -114,7 +118,11 @@
             Case 2
                 Return My.Resources.Ardent_Procrastinor
             Case 3
-                Return My.Resources.island
+                If C.tapped = False Then
+                    Return My.Resources.island
+                Else
+                    Return My.Resources.islandtu
+                End If
             Case 4
 
             Case 5
@@ -139,7 +147,7 @@
                 Form1.landInfo.Add(c)
                 c.partOfHand = False
                 Form1.UpdateHand()
-                c.Name = "land" & Form1.landInfo.Count
+                c.Name = "blue" & Form1.landInfo.Count
                 Form1.Controls(c.Name).Top = -50 * Form1.landInfo.Count + Form1.Height / 4
                 Form1.Controls(c.Name).Left = 100
 
@@ -167,27 +175,25 @@
 
                 Do Until result <> 0
 
+                    If testList.Count = 0 Then Return False
+
                     If iC.manaCost(I) = testList(counter) Or iC.manaCost(I) = "any" Then
 
                         testList.Remove(testList(counter))
                         result = 1
 
                     ElseIf counter = testList.Count - 1
-                        result = 2
+                        Return False
                     End If
 
                     counter += 1
 
                 Loop
 
-                If result = 2 Then Return False
-
             Next
 
-            For x As Integer = 1 To Form1.manaPool.Count
-                Form1.manaPool.Remove(testList(x - 1))
-            Next
-
+            Form1.TMC(iC)
+            Form1.ManaLabel()
             Return True
 
         End If
@@ -198,9 +204,14 @@
 
         Select Case c.ID
             Case 1
-                c.manaCost.Add("green")
+                'Add anys last
+                c.manaCost.Add("blue")
                 c.manaCost.Add("any")
             Case 2
+
+            Case 3
+                'Cost on lands is what they give
+                c.manaCost.Add("blue")
 
         End Select
 
