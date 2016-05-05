@@ -18,15 +18,19 @@
     Public manaCost As New List(Of String)
 
     Public tapped As Boolean
+    Public used As Boolean 'Just for land
 
     Public partOfHand As Boolean = False
 
     Public Sub MeClick() Handles Me.Click
-        Form1.Target = Me
-        If partOfHand = False Then
-            IDTable.IDAbility(Me)
-        ElseIf partOfHand = True
-            IDTable.PlayCard(Me)
+
+        If Form1.started = True Then
+            Form1.Target = Me
+            If partOfHand = False Then
+                IDTable.IDAbility(Me)
+            ElseIf partOfHand = True
+                IDTable.PlayCard(Me)
+            End If
         End If
 
     End Sub
@@ -39,6 +43,12 @@
     End Sub
 
     Public Sub mouseOn() Handles Me.MouseEnter
+
+        If IDTable.PayMana(Me) = False Then
+            Form1.lblManaStatus.Text = "Insufficient Mana"
+        Else
+            Form1.lblManaStatus.Text = "Sufficient Mana"
+        End If
 
         Me.Top -= Me.Height
         Me.Width *= 2
@@ -95,6 +105,8 @@
 
             Next
         End If
+
+        Form1.lblManaStatus.Text = ""
     End Sub
 
 

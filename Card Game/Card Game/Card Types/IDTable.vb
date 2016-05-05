@@ -70,7 +70,18 @@
                     Form1.IDSearchingForTarget = c.ID
                 End If
             Case Is = 3
-
+                '//LAND TEMPLATE//
+                'Ez
+                If c.used = False Then
+                    c.used = True
+                    Form1.manaPool.Add("blue")
+                    c.BackgroundImage = My.Resources.islandt
+                Else
+                    c.used = False
+                    Form1.manaPool.Remove("blue")
+                    c.BackgroundImage = My.Resources.island
+                End If
+                Form1.ManaLabel()
             Case 4
                 Return 0
             Case 5
@@ -109,7 +120,7 @@
             Case 5
 
             Case 31
-                Return My.Resources.island
+
         End Select
     End Function
 
@@ -123,24 +134,22 @@
             Case 2
 
             Case 3
-                Dim index As Integer
-                For I As Integer = 0 To Form1.handInfo.Count - 1
-                    If Form1.handInfo(I).BackgroundImage Is c.BackgroundImage Then index = I
-                Next
-                Form1.handInfo.RemoveAt(index)
+
+                Form1.handInfo.RemoveAt(Form1.handInfo.IndexOf(c))
                 Form1.landInfo.Add(c)
+                c.partOfHand = False
                 Form1.UpdateHand()
                 c.Name = "land" & Form1.landInfo.Count
-                Form1.Controls.Add(c)
-                Form1.Controls(c.Name).Top = 50 * Form1.landInfo.Count + Form1.Height / 2
+                Form1.Controls(c.Name).Top = -50 * Form1.landInfo.Count + Form1.Height / 4
                 Form1.Controls(c.Name).Left = 100
-                c.partOfHand = False
+
         End Select
 
     End Sub
 
     Public Shared Function PayMana(iC As Card) As Boolean
 
+        'Ill comment this eventually
         If Form1.manaPool.Count <> 0 Then
 
             Dim testList As New List(Of String)
@@ -175,11 +184,14 @@
 
             Next
 
+            For x As Integer = 1 To Form1.manaPool.Count
+                Form1.manaPool.Remove(testList(x - 1))
+            Next
+
             Return True
 
         End If
 
-        MsgBox("You have no mana.")
     End Function
 
     Public Shared Sub SetMana(c As Card)

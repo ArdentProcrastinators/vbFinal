@@ -15,6 +15,9 @@
     Public NeedTarget As Boolean
     Public IDSearchingForTarget As Integer
 
+    Public cardsInHand
+    Public started As Boolean
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Me.WindowState = FormWindowState.Maximized
@@ -70,7 +73,9 @@
     Public Sub DrawCards(n As Integer, desDeck As List(Of Integer), desHand As List(Of Card))
 
         For I As Integer = 1 To n
-            desHand.Add(New Card(desDeck(0)))
+            Dim nC As New Card(cardInfo(desDeck(0) - 1))
+            nC.Name = "card" & I
+            desHand.Add(nC)
             desDeck.Remove(desDeck(0))
         Next
 
@@ -80,17 +85,17 @@
 
     Public Sub UpdateHand()
 
-        'Cardcount is updated after new cards are made so that indexes will not be outside the bound of the array
-        Static cardsInHand As Integer
-
         'Disposes old cards
         If cardsInHand <> 0 Then
-            For I As Integer = 1 To handInfo.Count
+            For Each c As Card In handInfo
 
-                Me.Controls(handInfo(I - 1).Name).Dispose()
+                Me.Controls(c.Name).Dispose()
 
             Next
         End If
+
+        GC.Collect()
+        GC.WaitForPendingFinalizers()
 
         'Resets cards in hand since all cards have been deleted
         cardsInHand = 0
@@ -98,7 +103,7 @@
         'Adds new cards
         For I As Integer = 1 To handInfo.Count
 
-            Dim newCard As New Card(cardInfo(handInfo(I - 1).ID - 1))
+            Dim newCard As New Card(handInfo(I - 1).ID)
             newCard.partOfHand = True
             newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
             newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height 'Sets height accordingly with cardscale
@@ -106,12 +111,14 @@
             newCard.Left = cardScale * My.Resources.Ardent_Procrastinor.Width * cardsInHand + (Me.Width - handInfo.Count * cardScale * My.Resources.Ardent_Procrastinor.Width) / 2
             newCard.Visible = True
             newCard.Name = "card" & I
-            handInfo.Item(I - 1).Name = newCard.Name
-            Me.Controls.Add(newCard)
+            handInfo.Item(I - 1) = newCard
+            Me.Controls.Add(handInfo(I - 1))
 
             cardsInHand += 1
 
         Next
+
+        cardsInHand = handInfo.Count
 
     End Sub
 
@@ -136,6 +143,7 @@
             Next
 
             ShuffleCards(deckInfo)
+            Me.Controls("card" & 8 - mulliganCount).Dispose()
             DrawCards(7 - mulliganCount, deckInfo, handInfo)
 
             mulliganCount += 1
@@ -150,6 +158,7 @@
         'Confirms hand and disables mulliganning
         btnMulligan.Dispose()
         btnConfirm.Dispose()
+        started = True
     End Sub
 
     'Sub is called when a creature is played
@@ -181,9 +190,13 @@
 
     End Sub
 
-    Public Sub AddMana(M As String)
+    Public Sub ManaLabel()
 
-        manaPool.Add(M)
+        lblMana.Text = "Mana:" & vbNewLine
+
+        For Each m As String In manaPool
+            lblMana.Text += m & vbNewLine
+        Next
 
     End Sub
 
