@@ -30,7 +30,10 @@ Partial Class Form1
         Me.tmrUpdater = New System.Windows.Forms.Timer(Me.components)
         Me.btnMulligan = New System.Windows.Forms.Button()
         Me.btnConfirm = New System.Windows.Forms.Button()
+        Me.lblMana = New System.Windows.Forms.Label()
+        Me.lblManaStatus = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.btnTS = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -93,20 +96,49 @@ Partial Class Form1
         Me.btnConfirm.Text = "Confirm Hand"
         Me.btnConfirm.UseVisualStyleBackColor = True
         '
+        'lblMana
+        '
+        Me.lblMana.AutoSize = True
+        Me.lblMana.Location = New System.Drawing.Point(1133, 42)
+        Me.lblMana.Name = "lblMana"
+        Me.lblMana.Size = New System.Drawing.Size(37, 13)
+        Me.lblMana.TabIndex = 9
+        Me.lblMana.Text = "Mana:"
+        '
+        'lblManaStatus
+        '
+        Me.lblManaStatus.AutoSize = True
+        Me.lblManaStatus.Location = New System.Drawing.Point(524, 108)
+        Me.lblManaStatus.Name = "lblManaStatus"
+        Me.lblManaStatus.Size = New System.Drawing.Size(0, 13)
+        Me.lblManaStatus.TabIndex = 10
+        '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.island
-        Me.PictureBox1.Location = New System.Drawing.Point(1060, 9)
+        Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.islandtu
+        Me.PictureBox1.Location = New System.Drawing.Point(796, 12)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(225, 312)
         Me.PictureBox1.TabIndex = 8
         Me.PictureBox1.TabStop = False
+        '
+        'btnTS
+        '
+        Me.btnTS.Location = New System.Drawing.Point(557, 98)
+        Me.btnTS.Name = "btnTS"
+        Me.btnTS.Size = New System.Drawing.Size(75, 23)
+        Me.btnTS.TabIndex = 11
+        Me.btnTS.Text = "turn start"
+        Me.btnTS.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1297, 639)
+        Me.Controls.Add(Me.btnTS)
+        Me.Controls.Add(Me.lblManaStatus)
+        Me.Controls.Add(Me.lblMana)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btnConfirm)
         Me.Controls.Add(Me.btnMulligan)
@@ -129,4 +161,7 @@ Partial Class Form1
     Friend WithEvents btnMulligan As Button
     Friend WithEvents btnConfirm As Button
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents lblMana As Label
+    Friend WithEvents lblManaStatus As Label
+    Friend WithEvents btnTS As Button
 End Class
