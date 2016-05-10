@@ -8,7 +8,7 @@
     Public RadiantCreatures As New List(Of Card)
     Public DireCreatures As New List(Of Card)
     Dim cardScale As Decimal = 0.3
-    Public RadiantHealth As Integer
+    Public RadinatHealth As Integer
     Public DireHealth As Integer
     'Public Target As Card
     Public Target As Card
@@ -17,6 +17,8 @@
 
     Public cardsInHand
     Public started As Boolean
+    Public landPlayed As Integer
+    Public landMax As Integer = 1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -89,7 +91,7 @@
         If cardsInHand <> 0 Then
             For Each c As Card In handInfo
 
-                Me.Controls(c.Name).Dispose()
+                If Me.Controls(c.Name) IsNot Nothing Then Me.Controls(c.Name).Dispose()
 
             Next
         End If
@@ -171,9 +173,11 @@
             newCreature.BackgroundImage = IDTable.IDImage(newCreature)
             newCreature.Height = My.Resources.Ardent_Procrastinor.Height * cardScale
             newCreature.Width = My.Resources.Ardent_Procrastinor.Width * cardScale
+            newCreature.DefineCreature(newCreature)
             RadiantCreatures.Add(newCreature)
             Me.Controls.Add(newCreature)
 
+            Debug.Print(RadiantCreatures(RadiantCreatures.Count - 1).Left)
         Else
             'Same as above only for the Dire side
             Dim newCreature As New Card(CreatureID)
@@ -181,6 +185,7 @@
             newCreature.BackgroundImage = IDTable.IDImage(newCreature)
             newCreature.Height = My.Resources.Ardent_Procrastinor.Height * cardScale
             newCreature.Width = My.Resources.Ardent_Procrastinor.Width * cardScale
+            newCreature.DefineCreature(newCreature)
             DireCreatures.Add(newCreature)
             Me.Controls.Add(newCreature)
         End If
@@ -243,6 +248,11 @@
             c.used = False
             c.BackgroundImage = IDTable.IDImage(c)
         Next
+
+        landPlayed = 0
+        landMax = 1
+
+        DrawCards(1, deckInfo, handInfo)
 
     End Sub
 

@@ -70,8 +70,23 @@
                     Form1.IDSearchingForTarget = c.ID
                 End If
             Case Is = 3
+                '//LAND TEMPLATE//
+                'Ez
+                If c.used = False Then
+                    If c.tapped = False Then
+                        c.used = True
+                        Form1.AddMana("blue")
+                        c.BackgroundImage = My.Resources.islandt
+                    End If
+                Else
+                    If c.tapped = False Then
+                            c.used = False
+                            Form1.RemMana("blue")
+                            c.BackgroundImage = My.Resources.island
+                        End If
+                    End If
 
-            Case 4
+                    Case 4
                 Return 0
             Case 5
                 Return 0
@@ -103,13 +118,17 @@
             Case 2
                 Return My.Resources.Ardent_Procrastinor
             Case 3
-                Return My.Resources.island
+                If C.tapped = False Then
+                    Return My.Resources.island
+                Else
+                    Return My.Resources.islandtu
+                End If
             Case 4
 
             Case 5
 
             Case 31
-                Return My.Resources.island
+
         End Select
     End Function
 
@@ -123,37 +142,26 @@
             Case 2
 
             Case 3
-                Dim index As Integer
-                'For I As Integer = 0 To Form1.handInfo.Count - 1
-                ' If Form1.handInfo(I) Is c Then
-                '      index = I
-                '   End If
-                'Next
-                'Form1.handInfo.RemoveAt(index)
-                Form1.landInfo.Add(c)
-                Form1.UpdateHand()
-                c.Name = "land" & Form1.landInfo.Count
-                Form1.Controls.Add(c)
-                Form1.Controls(c.Name).Top = 50 * Form1.landInfo.Count + Form1.Height / 2
-                Form1.Controls(c.Name).Left = 100
-                c.partOfHand = False
-                'Tried testing for out of hand cards, said all cards were out of hand
-                For I As Integer = 0 To Form1.handInfo.Count - 1
-                    If Form1.handInfo(I).partOfHand = False Then
-                        index = I
-                    End If
-                Next
-                Form1.handInfo.RemoveAt(index)
-                'Displays all cards ID in debug, cards have weird IDs.
-                For x = 0 To Form1.handInfo.Count - 1
-                    Debug.Print(Form1.handInfo(x).ID)
-                Next
+                If Form1.landPlayed <= Form1.landMax Then
+
+                    Form1.handInfo.RemoveAt(Form1.handInfo.IndexOf(c))
+                    Form1.landInfo.Add(c)
+                    c.partOfHand = False
+                    Form1.UpdateHand()
+                    c.Name = "blue" & Form1.landInfo.Count
+                    Form1.Controls(c.Name).Top = -50 * Form1.landInfo.Count + Form1.Height / 4
+                    Form1.Controls(c.Name).Left = 100
+                    Form1.landPlayed += 1
+
+                End If
+
         End Select
 
     End Sub
 
     Public Shared Function PayMana(iC As Card) As Boolean
 
+        'Ill comment this eventually
         If Form1.manaPool.Count <> 0 Then
 
             Dim testList As New List(Of String)
@@ -171,37 +179,43 @@
 
                 Do Until result <> 0
 
+                    If testList.Count = 0 Then Return False
+
                     If iC.manaCost(I) = testList(counter) Or iC.manaCost(I) = "any" Then
 
                         testList.Remove(testList(counter))
                         result = 1
 
                     ElseIf counter = testList.Count - 1
-                        result = 2
+                        Return False
                     End If
 
                     counter += 1
 
                 Loop
 
-                If result = 2 Then Return False
-
             Next
 
+            Form1.TMC(iC)
+            Form1.ManaLabel()
             Return True
 
         End If
 
-        MsgBox("You have no mana.")
     End Function
 
     Public Shared Sub SetMana(c As Card)
 
         Select Case c.ID
             Case 1
-                c.manaCost.Add("green")
+                'Add anys last
+                c.manaCost.Add("blue")
                 c.manaCost.Add("any")
             Case 2
+
+            Case 3
+                'Cost on lands is what they give
+                c.manaCost.Add("blue")
 
         End Select
 

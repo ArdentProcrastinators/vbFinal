@@ -18,18 +18,21 @@
     Public manaCost As New List(Of String)
 
     Public tapped As Boolean
+    Public used As Boolean 'Just for land
 
     Public partOfHand As Boolean = False
 
     Public Sub MeClick() Handles Me.Click
-        Form1.Target = Me
-        If partOfHand = False Then
-            IDTable.IDAbility(Me)
-        ElseIf partOfHand = True
-            If MsgBox(partOfHand & ID, MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+
+        If Form1.started = True Then
+            Form1.Target = Me
+            If partOfHand = False Then
+                IDTable.IDAbility(Me)
+            ElseIf partOfHand = True
                 IDTable.PlayCard(Me)
             End If
         End If
+
     End Sub
 
     Public Sub New(IID As Integer)
@@ -37,14 +40,6 @@
         IDTable.SetMana(Me)
         Me.BackgroundImage = IDTable.IDImage(Me)
         Me.BackgroundImageLayout = ImageLayout.Zoom
-        'Sets BasePower, BaseHealth, and CreatureID. After this point the I variables should not be used again.
-        BasePower = IDTable.IDPower(Me.ID)
-        BaseHealth = IDTable.IDHealth(Me.ID)
-        'The MaxPower and MaxHealth are set, this is done now incase the creature enters with any buffs, but could still be done again later.
-        MaxPower = BasePower + BuffPower
-        MaxHealth = BaseHealth + BuffHealth
-        'Sets current health incase creature blocks immediately.
-        CurrentHealth = MaxHealth
     End Sub
 
     Public Sub mouseOn() Handles Me.MouseEnter
@@ -78,10 +73,10 @@
 
             For x As Integer = 1 To Form1.handInfo.Count
 
-                    Form1.Controls("card" & x).Left -= leftLevel
+                Form1.Controls("card" & x).Left -= leftLevel
 
-                Next
-            End If
+            Next
+        End If
     End Sub
 
     Public Sub MouseExit() Handles Me.MouseLeave
@@ -104,8 +99,22 @@
 
             Next
         End If
+
+        Form1.lblManaStatus.Text = ""
     End Sub
 
+
+    'The input variables have an I in front to signify they should only be used to set the variables in this form.
+    Public Sub DefineCreature(C As Card)
+        'Sets BasePower, BaseHealth, and CreatureID. After this point the I variables should not be used again.
+        BasePower = IDTable.IDPower(C.ID)
+        BaseHealth = IDTable.IDHealth(C.ID)
+        'The MaxPower and MaxHealth are set, this is done now incase the creature enters with any buffs, but could still be done again later.
+        MaxPower = BasePower + BuffPower
+        MaxHealth = BaseHealth + BuffHealth
+        'Sets current health incase creature blocks immediately.
+        CurrentHealth = MaxHealth
+    End Sub
 
     Public Sub Buff(ByVal IBuffPower As Integer, ByVal IBuffHealth As Integer)
         BuffPower += IBuffPower
