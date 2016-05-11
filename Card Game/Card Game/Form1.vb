@@ -7,7 +7,7 @@
     'List for each player's creatures
     Public RadiantCreatures As New List(Of Card)
     Public DireCreatures As New List(Of Card)
-    Dim cardScale As Decimal = 0.3
+    Dim cardScale As Decimal = Me.Height / 1024
     Public RadinatHealth As Integer
     Public DireHealth As Integer
     'Public Target As Card
@@ -127,7 +127,7 @@
     Private Sub formSizeChange() Handles Me.SizeChanged
 
         UpdateHand()
-
+        Me.WindowState = FormWindowState.Maximized
     End Sub
 
     Private Sub btnMulligan_Click(sender As Object, e As EventArgs) Handles btnMulligan.Click
@@ -167,8 +167,11 @@
     Public Sub GenerateCreature(CreatureID As Integer, Radiant As Boolean)
         'If Radiant played it
         If Radiant Then
-
-            Dim newCreature As New Card(1)
+            'Moves current creatures over
+            For x = 0 To RadiantCreatures.Count - 1
+                RadiantCreatures(x).Left -= Me.Width / 32
+            Next
+            Dim newCreature As New Card(CreatureID)
             newCreature.BackgroundImageLayout = ImageLayout.Zoom
             newCreature.BackgroundImage = IDTable.IDImage(newCreature)
             newCreature.Height = My.Resources.Ardent_Procrastinor.Height * cardScale
@@ -176,8 +179,9 @@
             newCreature.DefineCreature(newCreature)
             RadiantCreatures.Add(newCreature)
             Me.Controls.Add(newCreature)
-
-            Debug.Print(RadiantCreatures(RadiantCreatures.Count - 1).Left)
+            Debug.Print(RadiantCreatures.Count)
+            newCreature.Top = Me.Height / 2
+            newCreature.Left = Me.Width / 2 + (Me.Width / 32 * (RadiantCreatures.Count - 2))
         Else
             'Same as above only for the Dire side
             Dim newCreature As New Card(CreatureID)
@@ -258,6 +262,11 @@
 
     Private Sub btnTS_Click(sender As Object, e As EventArgs) Handles btnTS.Click
         TurnStart()
+
+    End Sub
+
+    Private Sub btnSpawn_Click(sender As Object, e As EventArgs) Handles btnSpawn.Click
+        GenerateCreature(1, True)
     End Sub
 End Class
 

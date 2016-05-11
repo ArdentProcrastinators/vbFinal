@@ -137,7 +137,8 @@
         Select Case c.ID
             Case 1
                 If PayMana(c) Then
-
+                    Form1.GenerateCreature(c.ID, True)
+                    c.Dispose()
                 End If
             Case 2
 
