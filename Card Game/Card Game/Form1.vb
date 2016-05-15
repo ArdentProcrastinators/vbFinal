@@ -28,7 +28,7 @@
 
             'adds 60 elements
             Randomize()
-            cardInfo.Add(Int(7 * Rnd() + 1))
+            cardInfo.Add(Int(8 * Rnd() + 1))
             deckInfo.Add(1)
         Next
 
@@ -232,13 +232,14 @@
 
             If c.manaCost(x - 1) <> "any" Then
                 Do Until payed = True
-                    If m > landInfo.Count - 1 Then MsgBox("error")
-                    If landInfo(m).manaCost(0) = c.manaCost(0) And landInfo(m).used = True And landInfo(m).tapped = False Then
-                        landInfo(m).tapped = True
-                        landInfo(m).BackgroundImage = IDTable.IDImage(landInfo(m))
-                        payed = True
-                    End If
-                    m += 1
+
+                    If landInfo(m).manaCost(0) = c.manaCost(x - 1) And landInfo(m).used = True And landInfo(m).tapped = False Then
+                            landInfo(m).tapped = True
+                            landInfo(m).BackgroundImage = IDTable.IDImage(landInfo(m))
+                            payed = True
+                        End If
+                        m += 1
+
                 Loop
                 manaPool.Remove(c.manaCost(x - 1))
             Else

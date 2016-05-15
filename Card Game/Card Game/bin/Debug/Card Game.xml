@@ -57,6 +57,11 @@ Card Game
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:WindowsApplication1.My.Resources.Resources.Levent_s_Bearded_Dragon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:WindowsApplication1.My.Resources.Resources.mountain">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
