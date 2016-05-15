@@ -179,6 +179,8 @@
                 Else
                     Return My.Resources.plainstu
                 End If
+            Case 8
+                Return My.Resources.Levent_s_Bearded_Dragon
             Case 31
 
         End Select
@@ -201,6 +203,13 @@
                 playLand(c)
             Case 7
                 playLand(c)
+            Case 8
+                If PayMana(c) Then
+                    Form1.GenerateCreature(c.ID, True)
+                    Form1.handInfo.Remove(c)
+                    c.Dispose()
+                    Form1.UpdateHand()
+                End If
 
         End Select
 
@@ -300,7 +309,10 @@
                 c.manaCost.Add("red")
             Case 7
                 c.manaCost.Add("plains")
-
+            Case 8
+                c.manaCost.Add("red")
+                c.manaCost.Add("green")
+                c.manaCost.Add("any")
 
         End Select
 
