@@ -142,7 +142,7 @@
             Case 2
 
             Case 3
-                If Form1.landPlayed <= Form1.landMax Then
+                If Form1.landPlayed < Form1.landMax Then
 
                     Form1.handInfo.RemoveAt(Form1.handInfo.IndexOf(c))
                     Form1.landInfo.Add(c)

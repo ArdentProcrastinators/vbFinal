@@ -217,22 +217,36 @@
     End Sub
 
     Public Sub TMC(c As Card)
+
+        Dim payed As Boolean
+
         For x As Integer = 1 To c.manaCost.Count
+
+            Dim v As Integer
+            Dim m As Integer = 0
+            payed = False
+
             If c.manaCost(x - 1) <> "any" Then
-                For I As Integer = 1 To landInfo.Count
-                    If landInfo(x - 1).manaCost(0) = c.manaCost(x - 1) And landInfo(x - 1).used = True And landInfo(x - 1).tapped = False Then
-                        landInfo(x - 1).tapped = True
-                        landInfo(x - 1).BackgroundImage = IDTable.IDImage(landInfo(x - 1))
+                Do Until payed = True
+                    If m > landInfo.Count - 1 Then MsgBox("error")
+                    If landInfo(m).manaCost(0) = c.manaCost(0) And landInfo(m).used = True And landInfo(m).tapped = False Then
+                        landInfo(m).tapped = True
+                        landInfo(m).BackgroundImage = IDTable.IDImage(landInfo(m))
+                        payed = True
                     End If
-                Next
+                    m += 1
+                Loop
                 manaPool.Remove(c.manaCost(x - 1))
             Else
-                For I As Integer = 1 To landInfo.Count
-                    If landInfo(x - 1).used = True And landInfo(x - 1).tapped = False Then
-                        landInfo(x - 1).tapped = True
-                        landInfo(x - 1).BackgroundImage = IDTable.IDImage(landInfo(x - 1))
+                Do Until payed = True
+                    If m > landInfo.Count - 1 Then MsgBox("error")
+                    If landInfo(m).used = True And landInfo(m).tapped = False Then
+                        landInfo(m).tapped = True
+                        landInfo(m).BackgroundImage = IDTable.IDImage(landInfo(m))
+                        payed = True
                     End If
-                Next
+                    m += 1
+                Loop
                 manaPool.RemoveAt(0)
             End If
         Next
