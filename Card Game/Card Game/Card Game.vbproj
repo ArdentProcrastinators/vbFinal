@@ -193,12 +193,8 @@
     <None Include="Resources\forestu.jpg" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Content Include="amCool.ico" />
-    <Content Include="favicon.ico" />
-=======
+    <Content Include="Resources\amCool.ico" />
     <None Include="Resources\Levent%27s Bearded Dragon.png" />
->>>>>>> origin/master
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
