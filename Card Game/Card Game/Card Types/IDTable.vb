@@ -188,19 +188,9 @@
 
         Select Case c.ID
             Case 1
-                If PayMana(c) Then
-                    Form1.GenerateCreature(c.ID, True)
-                    Form1.handInfo.Remove(c)
-                    c.Dispose()
-                    Form1.UpdateHand()
-                End If
+                PlayCreature(c)
             Case 2
-                If PayMana(c) Then
-                    Form1.GenerateCreature(c.ID, True)
-                    Form1.handInfo.Remove(c)
-                    c.Dispose()
-                    Form1.UpdateHand()
-                End If
+                PlayCreature(c)
             Case 3
                 playLand(c)
             Case 4
@@ -215,6 +205,16 @@
         End Select
 
     End Sub
+
+    Public Shared Sub PlayCreature(c As Card)
+        If PayMana(c) Then
+            Form1.GenerateCreature(c.ID, True)
+            Form1.handInfo.Remove(c)
+            c.Dispose()
+            Form1.UpdateHand()
+        End If
+    End Sub
+
 
     Public Shared Sub playLand(c As Card)
         If Form1.landPlayed < Form1.landMax Then
