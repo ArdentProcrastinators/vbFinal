@@ -226,7 +226,7 @@
 
         For x As Integer = 1 To c.manaCost.Count
 
-            Dim v As Integer
+
             Dim m As Integer = 0
             payed = False
 
@@ -252,7 +252,7 @@
                     End If
                     m += 1
                 Loop
-                manaPool.RemoveAt(0)
+                manaPool.Remove(landInfo(m - 1).manaCost(0))
             End If
         Next
     End Sub

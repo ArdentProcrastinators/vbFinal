@@ -54,3 +54,4 @@ C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj
 C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj\Debug\WindowsApplication1.Resources.resources
 C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj\Debug\Card Game.vbproj.GenerateResource.Cache
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.Menu.resources
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.Menu.resources
