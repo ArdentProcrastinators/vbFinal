@@ -23,11 +23,6 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Me.lblTestP = New System.Windows.Forms.Label()
-        Me.lblTestT = New System.Windows.Forms.Label()
-        Me.lblNumCreatures = New System.Windows.Forms.Label()
-        Me.btnViewHand = New System.Windows.Forms.Button()
         Me.tmrUpdater = New System.Windows.Forms.Timer(Me.components)
         Me.btnMulligan = New System.Windows.Forms.Button()
         Me.btnConfirm = New System.Windows.Forms.Button()
@@ -36,43 +31,6 @@ Partial Class Form1
         Me.btnTS = New System.Windows.Forms.Button()
         Me.btnSpawn = New System.Windows.Forms.Button()
         Me.SuspendLayout()
-        '
-        'lblTestP
-        '
-        Me.lblTestP.AutoSize = True
-        Me.lblTestP.Location = New System.Drawing.Point(353, 26)
-        Me.lblTestP.Name = "lblTestP"
-        Me.lblTestP.Size = New System.Drawing.Size(39, 13)
-        Me.lblTestP.TabIndex = 1
-        Me.lblTestP.Text = "Label1"
-        '
-        'lblTestT
-        '
-        Me.lblTestT.AutoSize = True
-        Me.lblTestT.Location = New System.Drawing.Point(438, 21)
-        Me.lblTestT.Name = "lblTestT"
-        Me.lblTestT.Size = New System.Drawing.Size(39, 13)
-        Me.lblTestT.TabIndex = 2
-        Me.lblTestT.Text = "Label2"
-        '
-        'lblNumCreatures
-        '
-        Me.lblNumCreatures.AutoSize = True
-        Me.lblNumCreatures.Image = CType(resources.GetObject("lblNumCreatures.Image"), System.Drawing.Image)
-        Me.lblNumCreatures.Location = New System.Drawing.Point(399, 61)
-        Me.lblNumCreatures.Name = "lblNumCreatures"
-        Me.lblNumCreatures.Size = New System.Drawing.Size(39, 13)
-        Me.lblNumCreatures.TabIndex = 3
-        Me.lblNumCreatures.Text = "Label1"
-        '
-        'btnViewHand
-        '
-        Me.btnViewHand.Location = New System.Drawing.Point(211, 21)
-        Me.btnViewHand.Name = "btnViewHand"
-        Me.btnViewHand.Size = New System.Drawing.Size(75, 23)
-        Me.btnViewHand.TabIndex = 4
-        Me.btnViewHand.Text = "View hand"
-        Me.btnViewHand.UseVisualStyleBackColor = True
         '
         'tmrUpdater
         '
@@ -116,7 +74,7 @@ Partial Class Form1
         '
         'btnTS
         '
-        Me.btnTS.Location = New System.Drawing.Point(557, 98)
+        Me.btnTS.Location = New System.Drawing.Point(486, 20)
         Me.btnTS.Name = "btnTS"
         Me.btnTS.Size = New System.Drawing.Size(75, 23)
         Me.btnTS.TabIndex = 11
@@ -125,7 +83,7 @@ Partial Class Form1
         '
         'btnSpawn
         '
-        Me.btnSpawn.Location = New System.Drawing.Point(711, 103)
+        Me.btnSpawn.Location = New System.Drawing.Point(405, 21)
         Me.btnSpawn.Name = "btnSpawn"
         Me.btnSpawn.Size = New System.Drawing.Size(75, 23)
         Me.btnSpawn.TabIndex = 12
@@ -145,10 +103,6 @@ Partial Class Form1
         Me.Controls.Add(Me.lblMana)
         Me.Controls.Add(Me.btnConfirm)
         Me.Controls.Add(Me.btnMulligan)
-        Me.Controls.Add(Me.btnViewHand)
-        Me.Controls.Add(Me.lblNumCreatures)
-        Me.Controls.Add(Me.lblTestT)
-        Me.Controls.Add(Me.lblTestP)
         Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Name = "Form1"
@@ -157,10 +111,6 @@ Partial Class Form1
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents lblTestP As Label
-    Friend WithEvents lblTestT As Label
-    Friend WithEvents lblNumCreatures As Label
-    Friend WithEvents btnViewHand As Button
     Friend WithEvents tmrUpdater As Timer
     Friend WithEvents btnMulligan As Button
     Friend WithEvents btnConfirm As Button

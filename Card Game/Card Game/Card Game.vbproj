@@ -144,6 +144,42 @@
   <ItemGroup>
     <None Include="Resources\Untitled drawing.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forest.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mountain.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plains.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\swamp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plainstu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plainsu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mountaintu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mountainu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\swamptu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\swampu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\foresttu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forestu.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

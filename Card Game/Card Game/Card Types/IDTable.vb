@@ -72,27 +72,34 @@
             Case Is = 3
                 '//LAND TEMPLATE//
                 'Ez
-                If c.used = False Then
-                    If c.tapped = False Then
-                        c.used = True
-                        Form1.AddMana("blue")
-                        c.BackgroundImage = My.Resources.islandt
-                    End If
-                Else
-                    If c.tapped = False Then
-                            c.used = False
-                            Form1.RemMana("blue")
-                            c.BackgroundImage = My.Resources.island
-                        End If
-                    End If
-
-                    Case 4
-                Return 0
+                landUse(c)
+            Case 4
+                landUse(c)
             Case 5
-                Return 0
+                landUse(c)
+            Case 6
+                landUse(c)
+            Case 7
+                landUse(c)
         End Select
         Return 0
     End Function
+
+    Public Shared Sub landUse(c As Card)
+        If c.used = False Then
+            If c.tapped = False Then
+                c.used = True
+                Form1.AddMana(c.manaCost(0))
+                c.BackgroundImage = TapImage(c)
+            End If
+        Else
+            If c.tapped = False Then
+                c.used = False
+                Form1.RemMana(c.manaCost(0))
+                c.BackgroundImage = IDImage(c)
+            End If
+        End If
+    End Sub
 
     Public Shared Sub IDUseAbility(ID As Integer)
         Select Case ID
@@ -110,6 +117,24 @@
 
     End Sub
 
+    Public Shared Function TapImage(c As Card)
+
+        Select Case c.ID
+            Case 3
+                Return My.Resources.islandt
+            Case 4
+                Return My.Resources.swampu
+            Case 5
+                Return My.Resources.forestu
+            Case 6
+                Return My.Resources.mountainu
+            Case 7
+                Return My.Resources.plainsu
+        End Select
+
+
+    End Function
+
     Public Shared Function IDImage(C As Card) As Image
         'Sets the new Card's Image to the card played
         Select Case C.ID
@@ -118,15 +143,42 @@
             Case 2
                 Return My.Resources.Ardent_Procrastinor
             Case 3
+                'Island
                 If C.tapped = False Then
                     Return My.Resources.island
                 Else
                     Return My.Resources.islandtu
                 End If
+
             Case 4
+                'Swamp
+                If C.tapped = False Then
+                    Return My.Resources.swamp
+                Else
+                    Return My.Resources.swamptu
+                End If
 
             Case 5
-
+                'Forest
+                If C.tapped = False Then
+                    Return My.Resources.forest
+                Else
+                    Return My.Resources.foresttu
+                End If
+            Case 6
+                'Mountain
+                If C.tapped = False Then
+                    Return My.Resources.mountain
+                Else
+                    Return My.Resources.mountaintu
+                End If
+            Case 7
+                'Plains
+                If C.tapped = False Then
+                    Return My.Resources.plains
+                Else
+                    Return My.Resources.plainstu
+                End If
             Case 31
 
         End Select
@@ -138,26 +190,45 @@
             Case 1
                 If PayMana(c) Then
                     Form1.GenerateCreature(c.ID, True)
+                    Form1.handInfo.Remove(c)
                     c.Dispose()
+                    Form1.UpdateHand()
                 End If
             Case 2
-
-            Case 3
-                If Form1.landPlayed < Form1.landMax Then
-
-                    Form1.handInfo.RemoveAt(Form1.handInfo.IndexOf(c))
-                    Form1.landInfo.Add(c)
-                    c.partOfHand = False
+                If PayMana(c) Then
+                    Form1.GenerateCreature(c.ID, True)
+                    Form1.handInfo.Remove(c)
+                    c.Dispose()
                     Form1.UpdateHand()
-                    c.Name = "blue" & Form1.landInfo.Count
-                    Form1.Controls(c.Name).Top = -50 * Form1.landInfo.Count + Form1.Height / 4
-                    Form1.Controls(c.Name).Left = 100
-                    Form1.landPlayed += 1
-
                 End If
+            Case 3
+                playLand(c)
+            Case 4
+                playLand(c)
+            Case 5
+                playLand(c)
+            Case 6
+                playLand(c)
+            Case 7
+                playLand(c)
 
         End Select
 
+    End Sub
+
+    Public Shared Sub playLand(c As Card)
+        If Form1.landPlayed < Form1.landMax Then
+
+            Form1.handInfo.RemoveAt(Form1.handInfo.IndexOf(c))
+            Form1.landInfo.Add(c)
+            c.partOfHand = False
+            Form1.UpdateHand()
+            c.Name = "land" & Form1.landInfo.Count
+            Form1.Controls(c.Name).Top = -50 * Form1.landInfo.Count + Form1.Height * 3 / 4
+            Form1.Controls(c.Name).Left = 100
+            Form1.landPlayed += 1
+
+        End If
     End Sub
 
     Public Shared Function PayMana(iC As Card) As Boolean
@@ -210,13 +281,26 @@
         Select Case c.ID
             Case 1
                 'Add anys last
-                c.manaCost.Add("blue")
+                c.manaCost.Add("green")
                 c.manaCost.Add("any")
             Case 2
-
+                c.manaCost.Add("black")
+                c.manaCost.Add("black")
+                c.manaCost.Add("any")
+                c.manaCost.Add("any")
+                c.manaCost.Add("any")
             Case 3
                 'Cost on lands is what they give
                 c.manaCost.Add("blue")
+            Case 4
+                c.manaCost.Add("black")
+            Case 5
+                c.manaCost.Add("green")
+            Case 6
+                c.manaCost.Add("red")
+            Case 7
+                c.manaCost.Add("plains")
+
 
         End Select
 

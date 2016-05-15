@@ -28,7 +28,7 @@
 
             'adds 60 elements
             Randomize()
-            cardInfo.Add(Int(3 * Rnd() + 1))
+            cardInfo.Add(Int(7 * Rnd() + 1))
             deckInfo.Add(1)
         Next
 
