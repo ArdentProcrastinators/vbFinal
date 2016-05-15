@@ -42,3 +42,14 @@ C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\Card Game.v
 C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\WindowsApplication1.Form1.resources
 C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\WindowsApplication1.Resources.resources
 C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\Card Game.vbproj.GenerateResource.Cache
+C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\bin\Debug\Card Game.exe.config
+C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj\Debug\Card Game.exe
+C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj\Debug\Card Game.xml
+C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj\Debug\Card Game.pdb
+C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\bin\Debug\Card Game.exe
+C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\bin\Debug\Card Game.pdb
+C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\bin\Debug\Card Game.xml
+C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj\Debug\Card Game.vbprojResolveAssemblyReference.cache
+C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj\Debug\WindowsApplication1.Form1.resources
+C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj\Debug\WindowsApplication1.Resources.resources
+C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj\Debug\Card Game.vbproj.GenerateResource.Cache

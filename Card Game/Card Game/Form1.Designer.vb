@@ -23,6 +23,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.lblTestP = New System.Windows.Forms.Label()
         Me.lblTestT = New System.Windows.Forms.Label()
         Me.lblNumCreatures = New System.Windows.Forms.Label()
@@ -32,15 +33,14 @@ Partial Class Form1
         Me.btnConfirm = New System.Windows.Forms.Button()
         Me.lblMana = New System.Windows.Forms.Label()
         Me.lblManaStatus = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.btnTS = New System.Windows.Forms.Button()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.btnSpawn = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lblTestP
         '
         Me.lblTestP.AutoSize = True
-        Me.lblTestP.Location = New System.Drawing.Point(332, 9)
+        Me.lblTestP.Location = New System.Drawing.Point(353, 26)
         Me.lblTestP.Name = "lblTestP"
         Me.lblTestP.Size = New System.Drawing.Size(39, 13)
         Me.lblTestP.TabIndex = 1
@@ -58,6 +58,7 @@ Partial Class Form1
         'lblNumCreatures
         '
         Me.lblNumCreatures.AutoSize = True
+        Me.lblNumCreatures.Image = CType(resources.GetObject("lblNumCreatures.Image"), System.Drawing.Image)
         Me.lblNumCreatures.Location = New System.Drawing.Point(399, 61)
         Me.lblNumCreatures.Name = "lblNumCreatures"
         Me.lblNumCreatures.Size = New System.Drawing.Size(39, 13)
@@ -113,15 +114,6 @@ Partial Class Form1
         Me.lblManaStatus.Size = New System.Drawing.Size(0, 13)
         Me.lblManaStatus.TabIndex = 10
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.islandtu
-        Me.PictureBox1.Location = New System.Drawing.Point(796, 12)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(225, 312)
-        Me.PictureBox1.TabIndex = 8
-        Me.PictureBox1.TabStop = False
-        '
         'btnTS
         '
         Me.btnTS.Location = New System.Drawing.Point(557, 98)
@@ -131,24 +123,36 @@ Partial Class Form1
         Me.btnTS.Text = "turn start"
         Me.btnTS.UseVisualStyleBackColor = True
         '
+        'btnSpawn
+        '
+        Me.btnSpawn.Location = New System.Drawing.Point(711, 103)
+        Me.btnSpawn.Name = "btnSpawn"
+        Me.btnSpawn.Size = New System.Drawing.Size(75, 23)
+        Me.btnSpawn.TabIndex = 12
+        Me.btnSpawn.Text = "Spawn"
+        Me.btnSpawn.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Untitled_drawing
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1297, 639)
+        Me.Controls.Add(Me.btnSpawn)
         Me.Controls.Add(Me.btnTS)
         Me.Controls.Add(Me.lblManaStatus)
         Me.Controls.Add(Me.lblMana)
-        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btnConfirm)
         Me.Controls.Add(Me.btnMulligan)
         Me.Controls.Add(Me.btnViewHand)
         Me.Controls.Add(Me.lblNumCreatures)
         Me.Controls.Add(Me.lblTestT)
         Me.Controls.Add(Me.lblTestP)
+        Me.DoubleBuffered = True
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Name = "Form1"
         Me.Text = "Form1"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -160,8 +164,8 @@ Partial Class Form1
     Friend WithEvents tmrUpdater As Timer
     Friend WithEvents btnMulligan As Button
     Friend WithEvents btnConfirm As Button
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents lblMana As Label
     Friend WithEvents lblManaStatus As Label
     Friend WithEvents btnTS As Button
+    Friend WithEvents btnSpawn As System.Windows.Forms.Button
 End Class

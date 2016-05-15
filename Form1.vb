@@ -7,7 +7,7 @@
     'List for each player's creatures
     Public RadiantCreatures As New List(Of Card)
     Public DireCreatures As New List(Of Card)
-    Dim cardScale As Decimal = Me.Height / 1024
+    Dim cardScale As Decimal = Me.Height / 1500
     Public RadinatHealth As Integer
     Public DireHealth As Integer
     'Public Target As Card
@@ -23,7 +23,7 @@
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Me.WindowState = FormWindowState.Maximized
-
+        cardScale = 1 / Me.Height * 150
         For I As Integer = 1 To 60
 
             'adds 60 elements
@@ -181,7 +181,7 @@
             Me.Controls.Add(newCreature)
             Debug.Print(RadiantCreatures.Count)
             newCreature.Top = Me.Height / 2
-            newCreature.Left = Me.Width / 2 + (Me.Width / 32 * (RadiantCreatures.Count - 2))
+            newCreature.Left = Me.Width / 2 + (Me.Width / 40 * (RadiantCreatures.Count - 2))
         Else
             'Same as above only for the Dire side
             Dim newCreature As New Card(CreatureID)
@@ -221,36 +221,22 @@
     End Sub
 
     Public Sub TMC(c As Card)
-
-        Dim payed As Boolean
-
         For x As Integer = 1 To c.manaCost.Count
-
-            Dim v As Integer
-            Dim m As Integer = 0
-            payed = False
-
             If c.manaCost(x - 1) <> "any" Then
-                Do Until payed = True
-                    If m > landInfo.Count - 1 Then MsgBox("error")
-                    If landInfo(m).manaCost(0) = c.manaCost(0) And landInfo(m).used = True And landInfo(m).tapped = False Then
-                        landInfo(m).tapped = True
-                        landInfo(m).BackgroundImage = IDTable.IDImage(landInfo(m))
-                        payed = True
+                For I As Integer = 1 To landInfo.Count
+                    If landInfo(x - 1).manaCost(0) = c.manaCost(x - 1) And landInfo(x - 1).used = True And landInfo(x - 1).tapped = False Then
+                        landInfo(x - 1).tapped = True
+                        landInfo(x - 1).BackgroundImage = IDTable.IDImage(landInfo(x - 1))
                     End If
-                    m += 1
-                Loop
+                Next
                 manaPool.Remove(c.manaCost(x - 1))
             Else
-                Do Until payed = True
-                    If m > landInfo.Count - 1 Then MsgBox("error")
-                    If landInfo(m).used = True And landInfo(m).tapped = False Then
-                        landInfo(m).tapped = True
-                        landInfo(m).BackgroundImage = IDTable.IDImage(landInfo(m))
-                        payed = True
+                For I As Integer = 1 To landInfo.Count
+                    If landInfo(x - 1).used = True And landInfo(x - 1).tapped = False Then
+                        landInfo(x - 1).tapped = True
+                        landInfo(x - 1).BackgroundImage = IDTable.IDImage(landInfo(x - 1))
                     End If
-                    m += 1
-                Loop
+                Next
                 manaPool.RemoveAt(0)
             End If
         Next
@@ -282,5 +268,6 @@
     Private Sub btnSpawn_Click(sender As Object, e As EventArgs) Handles btnSpawn.Click
         GenerateCreature(1, True)
     End Sub
+
 End Class
 
