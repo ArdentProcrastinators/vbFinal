@@ -69,3 +69,5 @@ C:\Users\mpotter\Downloads\vbFinal-master (1)\vbFinal-master\Card Game\Card Game
 C:\Users\mpotter\Downloads\vbFinal-master (1)\vbFinal-master\Card Game\Card Game\obj\Debug\Card Game.vbproj.GenerateResource.Cache
 C:\Users\mpotter\Downloads\vbFinal-master (1)\vbFinal-master\Card Game\Card Game\obj\Debug\WindowsApplication1.frmDeckSelection.resources
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.frmDeckSelection.resources
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.DeckBuilder.resources
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.frmDeckSelection.resources

@@ -1,5 +1,8 @@
 ﻿Public Class frmDeckSelection
 
+    Public deckList As List(Of List(Of Card))
+    Public selectedDeck As Integer
+
     Private Sub DeckSelection_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.WindowState = FormWindowState.Maximized
         grpPlayer1Decks.Top = Me.Height / 2 - grpPlayer1Decks.Height
@@ -25,6 +28,7 @@
 
     Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
         Form1.Show()
+        Form1.usedDeck = deckList(selectedDeck)
         Me.Close()
     End Sub
 End Class

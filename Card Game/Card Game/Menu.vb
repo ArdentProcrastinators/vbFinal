@@ -40,4 +40,8 @@
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         End
     End Sub
+
+    Private Sub btnDeck_Click(sender As Object, e As EventArgs) Handles btnDeck.Click
+        DeckBuilder.Show()
+    End Sub
 End Class
