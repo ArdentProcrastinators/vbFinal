@@ -45,10 +45,10 @@ Partial Class frmDeckSelection
         'lblChooseDeck
         '
         Me.lblChooseDeck.AutoSize = True
-        Me.lblChooseDeck.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 27.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblChooseDeck.Font = New System.Drawing.Font("Microsoft Sans Serif", 27.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblChooseDeck.Location = New System.Drawing.Point(367, 19)
         Me.lblChooseDeck.Name = "lblChooseDeck"
-        Me.lblChooseDeck.Size = New System.Drawing.Size(262, 43)
+        Me.lblChooseDeck.Size = New System.Drawing.Size(333, 42)
         Me.lblChooseDeck.TabIndex = 0
         Me.lblChooseDeck.Text = "Choose Your Deck"
         '
