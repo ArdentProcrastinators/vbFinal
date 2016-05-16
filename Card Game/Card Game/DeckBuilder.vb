@@ -5,7 +5,7 @@
     Private Sub DeckBuilder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         For I As Integer = 1 To 8
-            Dim newC As New Card(I)
+            Dim newC As New Card(I, True)
             newC.Top = 20
             newC.Left = (0.5 * My.Resources.Ardent_Procrastinor.Width + 25) * (I - 1)
             newC.Width = 0.5 * My.Resources.Ardent_Procrastinor.Width

@@ -21,12 +21,8 @@
     Public used As Boolean 'Just for land
 
     Public partOfHand As Boolean = False
-<<<<<<< HEAD
     Public RadiantHand As Boolean
-=======
     Public partOfDB As Boolean = False
-
->>>>>>> origin/master
     Public Sub MeClick() Handles Me.Click
 
         If Form1.started = True Then

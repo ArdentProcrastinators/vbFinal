@@ -28,7 +28,7 @@
 
     Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
         Form1.Show()
-        Form1.usedDeck = deckList(selectedDeck)
+        'Form1.usedDeck = deckList(selectedDeck)
         Me.Close()
     End Sub
 End Class
