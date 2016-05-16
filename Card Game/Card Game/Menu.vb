@@ -33,7 +33,7 @@
     End Sub
 
     Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
-        Form1.Show()
+        frmDeckSelection.Show()
         Me.Close()
     End Sub
 
