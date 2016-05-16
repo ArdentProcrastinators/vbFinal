@@ -14,7 +14,7 @@
     Public Target As Card
     Public NeedTarget As Boolean
     Public IDSearchingForTarget As Integer
-
+    Public RadiantTurn As Boolean = True
     Public cardsInHand
     Public started As Boolean
     Public landPlayed As Integer
@@ -38,6 +38,23 @@
         GenerateCreature(1, True)
 
     End Sub
+
+    Private Function RotateImage(b As Bitmap, angle As Single) As Bitmap
+        'create a new empty bitmap to hold rotated image
+        Dim returnBitmap As New Bitmap(b.Width, b.Height)
+        'make a graphics object from the empty bitmap
+        Dim g As Graphics = Graphics.FromImage(returnBitmap)
+        'move rotation point to center of image
+        g.TranslateTransform(CSng(b.Width) / 2, CSng(b.Height) / 2)
+        'rotate
+        g.RotateTransform(angle)
+        'move image back
+        g.TranslateTransform(-CSng(b.Width) / 2, -CSng(b.Height) / 2)
+        'draw passed in image onto graphics object
+        g.DrawImage(b, New Point(0, 0))
+        Return returnBitmap
+    End Function
+
 
     Public Sub ShuffleCards(deckInfo As List(Of Integer))
 
@@ -75,7 +92,7 @@
     Public Sub DrawCards(n As Integer, desDeck As List(Of Integer), desHand As List(Of Card))
 
         For I As Integer = 1 To n
-            Dim nC As New Card(cardInfo(desDeck(0) - 1))
+            Dim nC As New Card(cardInfo(desDeck(0) - 1), RadiantTurn)
             nC.Name = "card" & I
             desHand.Add(nC)
             desDeck.Remove(desDeck(0))
@@ -105,7 +122,7 @@
         'Adds new cards
         For I As Integer = 1 To handInfo.Count
 
-            Dim newCard As New Card(handInfo(I - 1).ID)
+            Dim newCard As New Card(handInfo(I - 1).ID, RadiantTurn)
             newCard.partOfHand = True
             newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
             newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height 'Sets height accordingly with cardscale
@@ -171,7 +188,7 @@
             For x = 0 To RadiantCreatures.Count - 1
                 RadiantCreatures(x).Left -= Me.Width / 32
             Next
-            Dim newCreature As New Card(CreatureID)
+            Dim newCreature As New Card(CreatureID, True)
             newCreature.BackgroundImageLayout = ImageLayout.Zoom
             newCreature.BackgroundImage = IDTable.IDImage(newCreature)
             newCreature.Height = My.Resources.Ardent_Procrastinor.Height * cardScale
@@ -184,7 +201,7 @@
             newCreature.Left = Me.Width / 2 + (Me.Width / 32 * (RadiantCreatures.Count - 2))
         Else
             'Same as above only for the Dire side
-            Dim newCreature As New Card(CreatureID)
+            Dim newCreature As New Card(CreatureID, False)
             newCreature.BackgroundImageLayout = ImageLayout.Zoom
             newCreature.BackgroundImage = IDTable.IDImage(newCreature)
             newCreature.Height = My.Resources.Ardent_Procrastinor.Height * cardScale
@@ -271,11 +288,32 @@
         landPlayed = 0
         landMax = 1
 
-        DrawCards(1, deckInfo, handInfo)
+        RadiantTurn = Not (RadiantTurn)
+        For Each x As Control In Me.Controls
+            If TypeOf (x) Is Card Then
+                Dim c As Card = x
+                If x.Top < Me.Height Then
+                    x.Top = Me.Height - x.Top - x.Height
+                ElseIf x.Top > Me.Height Then
+                    x.Top = -(x.Top - Me.Height)
+                End If
+                If c.partOfHand = True Then
+                    If RadiantTurn = True And c.RadiantHand = True Then
+                        c.BackgroundImage = IDTable.IDImage(c)
+                    ElseIf RadiantTurn = False And c.RadiantHand = False Then
+                        c.BackgroundImage = IDTable.IDImage(c)
+                    Else
+                        c.BackgroundImage = My.Resources.cardBack
+                    End If
+                End If
+            End If
+        Next
+
+        'DrawCards(1, deckInfo, handInfo)
 
     End Sub
 
-    Private Sub btnTS_Click(sender As Object, e As EventArgs) Handles btnTS.Click
+    Private Sub btnTS_Click(sender As Object, e As EventArgs) Handles btnNextPhase.Click
         TurnStart()
 
     End Sub

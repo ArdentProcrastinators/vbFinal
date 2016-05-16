@@ -21,7 +21,7 @@
     Public used As Boolean 'Just for land
 
     Public partOfHand As Boolean = False
-
+    Public RadiantHand As Boolean
     Public Sub MeClick() Handles Me.Click
 
         If Form1.started = True Then
@@ -35,11 +35,12 @@
 
     End Sub
 
-    Public Sub New(IID As Integer)
+    Public Sub New(IID As Integer, Radiant As Boolean)
         ID = IID
         IDTable.SetMana(Me)
         Me.BackgroundImage = IDTable.IDImage(Me)
         Me.BackgroundImageLayout = ImageLayout.Zoom
+        RadiantHand = Radiant
     End Sub
 
     Public Sub mouseOn() Handles Me.MouseEnter

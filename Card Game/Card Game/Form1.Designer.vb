@@ -28,7 +28,7 @@ Partial Class Form1
         Me.btnConfirm = New System.Windows.Forms.Button()
         Me.lblMana = New System.Windows.Forms.Label()
         Me.lblManaStatus = New System.Windows.Forms.Label()
-        Me.btnTS = New System.Windows.Forms.Button()
+        Me.btnNextPhase = New System.Windows.Forms.Button()
         Me.btnSpawn = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
@@ -72,14 +72,14 @@ Partial Class Form1
         Me.lblManaStatus.Size = New System.Drawing.Size(0, 13)
         Me.lblManaStatus.TabIndex = 10
         '
-        'btnTS
+        'btnNextPhase
         '
-        Me.btnTS.Location = New System.Drawing.Point(486, 20)
-        Me.btnTS.Name = "btnTS"
-        Me.btnTS.Size = New System.Drawing.Size(75, 23)
-        Me.btnTS.TabIndex = 11
-        Me.btnTS.Text = "turn start"
-        Me.btnTS.UseVisualStyleBackColor = True
+        Me.btnNextPhase.Location = New System.Drawing.Point(486, 20)
+        Me.btnNextPhase.Name = "btnNextPhase"
+        Me.btnNextPhase.Size = New System.Drawing.Size(75, 23)
+        Me.btnNextPhase.TabIndex = 11
+        Me.btnNextPhase.Text = "End Turn"
+        Me.btnNextPhase.UseVisualStyleBackColor = True
         '
         'btnSpawn
         '
@@ -98,7 +98,7 @@ Partial Class Form1
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1297, 639)
         Me.Controls.Add(Me.btnSpawn)
-        Me.Controls.Add(Me.btnTS)
+        Me.Controls.Add(Me.btnNextPhase)
         Me.Controls.Add(Me.lblManaStatus)
         Me.Controls.Add(Me.lblMana)
         Me.Controls.Add(Me.btnConfirm)
@@ -116,6 +116,6 @@ Partial Class Form1
     Friend WithEvents btnConfirm As Button
     Friend WithEvents lblMana As Label
     Friend WithEvents lblManaStatus As Label
-    Friend WithEvents btnTS As Button
+    Friend WithEvents btnNextPhase As Button
     Friend WithEvents btnSpawn As System.Windows.Forms.Button
 End Class
