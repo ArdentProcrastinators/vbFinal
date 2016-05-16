@@ -20,6 +20,8 @@
     Public landPlayed As Integer
     Public landMax As Integer = 1
 
+    Public usedDeck As New List(Of Card)
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Me.WindowState = FormWindowState.Maximized
