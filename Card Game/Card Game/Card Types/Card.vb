@@ -53,36 +53,65 @@
             Dim right As Boolean
             Dim rightChanged As Integer
             Dim cumulativeCardLen As Decimal
+            If Form1.RadiantTurn Then
+                If partOfHand = True And Form1.RadiantHandInfo.Count <> 1 Then
+                    For I As Integer = 1 To Form1.RadiantHandInfo.Count
 
-            If partOfHand = True And Form1.handInfo.Count <> 1 Then
-                For I As Integer = 1 To Form1.handInfo.Count
+                        If Form1.Controls("card" & I) IsNot Me And right = True Then
 
-                    If Form1.Controls("card" & I) IsNot Me And right = True Then
+                            Form1.Controls("card" & I).Left += Me.Width / 2
+                            rightChanged += 1
 
-                        Form1.Controls("card" & I).Left += Me.Width / 2
-                        rightChanged += 1
+                        ElseIf Form1.Controls("card" & I) Is Me
+                            right = True
+                        End If
 
-                    ElseIf Form1.Controls("card" & I) Is Me
-                        right = True
-                    End If
+                        cumulativeCardLen += Form1.Controls("card" & I).Width
 
-                    cumulativeCardLen += Form1.Controls("card" & I).Width
-
-                Next
-                Dim leftLevel As Integer
-                'Yo... I don't even know what I made, but it works...
-                If Form1.handInfo.Count <> 0 Then leftLevel = (Form1.Controls("card1").Left - ((Form1.Width - Form1.Controls("card1").Left) - cumulativeCardLen)) / (Form1.handInfo.Count * 2)
+                    Next
+                    Dim leftLevel As Integer
+                    'Yo... I don't even know what I made, but it works...
+                    If Form1.RadiantHandInfo.Count <> 0 Then leftLevel = (Form1.Controls("card1").Left - ((Form1.Width - Form1.Controls("card1").Left) - cumulativeCardLen)) / (Form1.RadiantHandInfo.Count * 2)
 
 
-                For x As Integer = 1 To Form1.handInfo.Count
+                    For x As Integer = 1 To Form1.RadiantHandInfo.Count
 
-                    Form1.Controls("card" & x).Left -= leftLevel
+                        Form1.Controls("card" & x).Left -= leftLevel
 
-                Next
+                    Next
+                End If
+            ElseIf Form1.RadiantTurn = False Then
+                If partOfHand = True And Form1.DireHandInfo.Count <> 1 Then
+                    For I As Integer = 1 To Form1.DireHandInfo.Count
+
+                        If Form1.Controls("card" & I) IsNot Me And right = True Then
+
+                            Form1.Controls("card" & I).Left += Me.Width / 2
+                            rightChanged += 1
+
+                        ElseIf Form1.Controls("card" & I) Is Me
+                            right = True
+                        End If
+
+                        cumulativeCardLen += Form1.Controls("card" & I).Width
+
+                    Next
+                    Dim leftLevel As Integer
+                    'Yo... I don't even know what I made, but it works...
+                    If Form1.DireHandInfo.Count <> 0 Then leftLevel = (Form1.Controls("card1").Left - ((Form1.Width - Form1.Controls("card1").Left) - cumulativeCardLen)) / (Form1.DireHandInfo.Count * 2)
+
+
+                    For x As Integer = 1 To Form1.RadiantHandInfo.Count
+
+                        Form1.Controls("card" & x).Left -= leftLevel
+
+                    Next
+                End If
+            Else
+                Me.Width *= 2
+                Me.Height *= 2
+
             End If
-        Else
-            Me.Width *= 2
-            Me.Height *= 2
 
         End If
 
@@ -95,22 +124,38 @@
             Me.Height *= 1 / 2
             Me.Top += Me.Height
             Dim right As Boolean
+            If Form1.RadiantTurn Then
+                If partOfHand = True And Form1.RadiantHandInfo.Count <> 1 Then
+                    For I As Integer = 1 To Form1.RadiantHandInfo.Count
 
-            If partOfHand = True And Form1.handInfo.Count <> 1 Then
-                For I As Integer = 1 To Form1.handInfo.Count
+                        If Form1.Controls("card" & I) IsNot Me And right = True Then
 
-                    If Form1.Controls("card" & I) IsNot Me And right = True Then
+                            Form1.Controls("card" & I).Left -= Me.Width
 
-                        Form1.Controls("card" & I).Left -= Me.Width
+                        ElseIf Form1.Controls("card" & I) Is Me
+                            right = True
+                        End If
 
-                    ElseIf Form1.Controls("card" & I) Is Me
-                        right = True
+                    Next
+                End If
+            ElseIf Form1.RadiantTurn = False Then
+                    If partOfHand = True And Form1.DireHandInfo.Count <> 1 Then
+                        For I As Integer = 1 To Form1.DireHandInfo.Count
+
+                            If Form1.Controls("card" & I) IsNot Me And right = True Then
+
+                                Form1.Controls("card" & I).Left -= Me.Width
+
+                            ElseIf Form1.Controls("card" & I) Is Me
+                                right = True
+                            End If
+
+                        Next
+
                     End If
-
-                Next
             End If
         Else
-            Me.Width /= 2
+                Me.Width /= 2
             Me.Height /= 2
         End If
 

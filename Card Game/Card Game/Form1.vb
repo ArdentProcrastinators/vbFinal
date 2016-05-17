@@ -1,6 +1,11 @@
 ﻿Public Class Form1
-    Public deckInfo As New List(Of Integer)
-    Public handInfo As New List(Of Card)
+    Public RadiantDeckInfo As New List(Of Integer)
+    Public DireDeckInfo As New List(Of Integer)
+    Public RadiantHandInfo As New List(Of Card)
+    Public DireHandInfo As New List(Of Card)
+    Public RadiantCardsInHand
+    Public DireCardsInHand
+    'Not sure what cardInfo does so you will have to change that
     Public cardInfo As New List(Of Integer)
     Public manaPool As New List(Of String)
     Public landInfo As New List(Of Card)
@@ -8,14 +13,14 @@
     Public RadiantCreatures As New List(Of Card)
     Public DireCreatures As New List(Of Card)
     Dim cardScale As Decimal = Me.Height / 1024
-    Public RadinatHealth As Integer
+    Public RadiantHealth As Integer
     Public DireHealth As Integer
     'Public Target As Card
     Public Target As Card
     Public NeedTarget As Boolean
     Public IDSearchingForTarget As Integer
     Public RadiantTurn As Boolean = True
-    Public cardsInHand
+
     Public started As Boolean
     Public landPlayed As Integer
     Public landMax As Integer = 1
@@ -30,11 +35,17 @@
 
             'adds 60 elements
             Randomize()
-            cardInfo.Add(Int(8 * Rnd() + 1))
-            deckInfo.Add(1)
+            'Not Sure if this is correct, might be tho
+            RadiantCardInfo.Add(Int(8 * Rnd() + 1))
+            RadiantDeckInfo.Add(1)
+            Randomize()
+            DireCardInfo.Add(Int(8 * Rnd() + 1))
+            DireDeckInfo.Add(1)
         Next
 
-        ShuffleCards(deckInfo)
+        ShuffleCards(RadiantDeckInfo)
+        ShuffleCards(DireDeckInfo)
+        'Need to understand cardInfo
         DrawCards(7, deckInfo, handInfo)
 
         GenerateCreature(1, True)
@@ -87,75 +98,133 @@
 
     End Sub
 
-    Public Sub UpdateHand()
+    Public Sub UpdateHand(Radiant As Boolean)
+        If Radiant Then
+            'Disposes old cards
+            If RadiantCardsInHand <> 0 Then
+                For Each c As Card In RadiantHandInfo
 
-        'Disposes old cards
-        If cardsInHand <> 0 Then
-            For Each c As Card In handInfo
+                    If Me.Controls(c.Name) IsNot Nothing And c.Radiant = RadiantTurn Then Me.Controls(c.Name).Dispose()
 
-                If Me.Controls(c.Name) IsNot Nothing Then Me.Controls(c.Name).Dispose()
+                Next
+            End If
+
+            GC.Collect()
+            GC.WaitForPendingFinalizers()
+
+            'Resets cards in hand since all cards have been deleted
+            RadiantCardsInHand = 0
+
+            'Adds new cards
+            For I As Integer = 1 To RadiantHandInfo.Count
+
+                Dim newCard As New Card(RadiantHandInfo(I - 1).ID, RadiantTurn)
+                newCard.partOfHand = True
+                newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
+                newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height 'Sets height accordingly with cardscale
+                newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
+                newCard.Left = cardScale * My.Resources.Ardent_Procrastinor.Width * RadiantCardsInHand + (Me.Width - RadiantHandInfo.Count * cardScale * My.Resources.Ardent_Procrastinor.Width) / 2
+                newCard.Visible = True
+                newCard.Name = "card" & I
+                RadiantHandInfo.Item(I - 1) = newCard
+                Me.Controls.Add(RadiantHandInfo(I - 1))
+
+                RadiantCardsInHand += 1
 
             Next
+
+            RadiantCardsInHand = RadiantHandInfo.Count
+        ElseIf Radiant = False Then
+            'Disposes old cards
+            If DireCardsInHand <> 0 Then
+                For Each c As Card In DireHandInfo
+
+                    If Me.Controls(c.Name) IsNot Nothing And c.Radiant = RadiantTurn Then Me.Controls(c.Name).Dispose()
+
+                Next
+            End If
+
+            GC.Collect()
+            GC.WaitForPendingFinalizers()
+
+            'Resets cards in hand since all cards have been deleted
+            DireCardsInHand = 0
+
+            'Adds new cards
+            For I As Integer = 1 To DireHandInfo.Count
+
+                Dim newCard As New Card(DireHandInfo(I - 1).ID, RadiantTurn)
+                newCard.partOfHand = True
+                newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
+                newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height 'Sets height accordingly with cardscale
+                newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
+                newCard.Left = cardScale * My.Resources.Ardent_Procrastinor.Width * DireCardsInHand + (Me.Width - DireHandInfo.Count * cardScale * My.Resources.Ardent_Procrastinor.Width) / 2
+                newCard.Visible = True
+                newCard.Name = "card" & I
+                DireHandInfo.Item(I - 1) = newCard
+                Me.Controls.Add(DireHandInfo(I - 1))
+
+                DireCardsInHand += 1
+
+            Next
+
+            DireCardsInHand = DireHandInfo.Count
         End If
 
-        GC.Collect()
-        GC.WaitForPendingFinalizers()
-
-        'Resets cards in hand since all cards have been deleted
-        cardsInHand = 0
-
-        'Adds new cards
-        For I As Integer = 1 To handInfo.Count
-
-            Dim newCard As New Card(handInfo(I - 1).ID, RadiantTurn)
-            newCard.partOfHand = True
-            newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
-            newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height 'Sets height accordingly with cardscale
-            newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
-            newCard.Left = cardScale * My.Resources.Ardent_Procrastinor.Width * cardsInHand + (Me.Width - handInfo.Count * cardScale * My.Resources.Ardent_Procrastinor.Width) / 2
-            newCard.Visible = True
-            newCard.Name = "card" & I
-            handInfo.Item(I - 1) = newCard
-            Me.Controls.Add(handInfo(I - 1))
-
-            cardsInHand += 1
-
-        Next
-
-        cardsInHand = handInfo.Count
 
     End Sub
 
     Private Sub formSizeChange() Handles Me.SizeChanged
-
-        UpdateHand()
+        'Probably not necessary anymore because form size can't be changed
+        'UpdateHand(True)
+        'UpdateHand(False)
         Me.WindowState = FormWindowState.Maximized
     End Sub
 
     Private Sub btnMulligan_Click(sender As Object, e As EventArgs) Handles btnMulligan.Click
-
         'Keeps mulligan count to draw the correct amount of cards
         Static mulliganCount As Integer = 1
-        If handInfo.Count > 1 Then
+        If RadiantTurn Then
+            If RadiantHandInfo.Count > 1 Then
 
-            deckInfo.Clear()
-            handInfo.Clear()
+                RadiantDeckInfo.Clear()
+                RadiantHandInfo.Clear()
 
-            For I As Integer = 1 To 60
-                'adds 60 elements
-                deckInfo.Add(1)
-            Next
+                For I As Integer = 1 To 60
+                    'adds 60 elements
+                    RadiantDeckInfo.Add(1)
+                Next
 
-            ShuffleCards(deckInfo)
-            Me.Controls("card" & 8 - mulliganCount).Dispose()
-            DrawCards(7 - mulliganCount, deckInfo, handInfo)
+                ShuffleCards(RadiantDeckInfo)
+                Me.Controls("card" & 8 - mulliganCount).Dispose()
+                DrawCards(7 - mulliganCount, RadiantDeckInfo, RadiantHandInfo)
 
-            mulliganCount += 1
+                mulliganCount += 1
 
-        Else
-            btnMulligan.Enabled = False
+            Else
+                btnMulligan.Enabled = False
+            End If
+        ElseIf RadiantTurn = False Then
+            If DireHandInfo.Count > 1 Then
+
+                DireDeckInfo.Clear()
+                DireHandInfo.Clear()
+
+                For I As Integer = 1 To 60
+                    'adds 60 elements
+                    DireDeckInfo.Add(1)
+                Next
+
+                ShuffleCards(DireDeckInfo)
+                Me.Controls("card" & 8 - mulliganCount).Dispose()
+                DrawCards(7 - mulliganCount, DireDeckInfo, DireHandInfo)
+
+                mulliganCount += 1
+
+            Else
+                btnMulligan.Enabled = False
+            End If
         End If
-
     End Sub
 
     Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
