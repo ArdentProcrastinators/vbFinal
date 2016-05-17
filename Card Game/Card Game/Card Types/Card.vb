@@ -21,7 +21,7 @@
     Public used As Boolean 'Just for land
 
     Public partOfHand As Boolean = False
-    Public RadiantHand As Boolean
+    Public Radiant As Boolean
     Public partOfDB As Boolean = False
     Public Sub MeClick() Handles Me.Click
 
@@ -36,12 +36,12 @@
 
     End Sub
 
-    Public Sub New(IID As Integer, Radiant As Boolean)
+    Public Sub New(IID As Integer, RadiantTurn As Boolean)
         ID = IID
         IDTable.SetMana(Me)
         Me.BackgroundImage = IDTable.IDImage(Me)
         Me.BackgroundImageLayout = ImageLayout.Zoom
-        RadiantHand = Radiant
+        Radiant = RadiantTurn
     End Sub
 
     Public Sub mouseOn() Handles Me.MouseEnter

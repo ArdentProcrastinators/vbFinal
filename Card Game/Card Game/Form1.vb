@@ -41,23 +41,6 @@
 
     End Sub
 
-    Private Function RotateImage(b As Bitmap, angle As Single) As Bitmap
-        'create a new empty bitmap to hold rotated image
-        Dim returnBitmap As New Bitmap(b.Width, b.Height)
-        'make a graphics object from the empty bitmap
-        Dim g As Graphics = Graphics.FromImage(returnBitmap)
-        'move rotation point to center of image
-        g.TranslateTransform(CSng(b.Width) / 2, CSng(b.Height) / 2)
-        'rotate
-        g.RotateTransform(angle)
-        'move image back
-        g.TranslateTransform(-CSng(b.Width) / 2, -CSng(b.Height) / 2)
-        'draw passed in image onto graphics object
-        g.DrawImage(b, New Point(0, 0))
-        Return returnBitmap
-    End Function
-
-
     Public Sub ShuffleCards(deckInfo As List(Of Integer))
 
         'Referenced variables in some for loops
@@ -253,11 +236,11 @@
                 Do Until payed = True
 
                     If landInfo(m).manaCost(0) = c.manaCost(x - 1) And landInfo(m).used = True And landInfo(m).tapped = False Then
-                            landInfo(m).tapped = True
-                            landInfo(m).BackgroundImage = IDTable.IDImage(landInfo(m))
-                            payed = True
-                        End If
-                        m += 1
+                        landInfo(m).tapped = True
+                        landInfo(m).BackgroundImage = IDTable.IDImage(landInfo(m))
+                        payed = True
+                    End If
+                    m += 1
 
                 Loop
                 manaPool.Remove(c.manaCost(x - 1))
@@ -300,9 +283,9 @@
                     x.Top = -(x.Top - Me.Height)
                 End If
                 If c.partOfHand = True Then
-                    If RadiantTurn = True And c.RadiantHand = True Then
+                    If RadiantTurn = True And c.Radiant = True Then
                         c.BackgroundImage = IDTable.IDImage(c)
-                    ElseIf RadiantTurn = False And c.RadiantHand = False Then
+                    ElseIf RadiantTurn = False And c.Radiant = False Then
                         c.BackgroundImage = IDTable.IDImage(c)
                     Else
                         c.BackgroundImage = My.Resources.cardBack
@@ -311,7 +294,7 @@
             End If
         Next
 
-        'DrawCards(1, deckInfo, handInfo)
+        DrawCards(1, deckInfo, handInfo)
 
     End Sub
 
