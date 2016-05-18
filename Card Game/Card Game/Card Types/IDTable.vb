@@ -249,6 +249,7 @@
                 Form1.Controls(c.Name).Top = -50 * Form1.landInfo.Count + Form1.Height * 3 / 4
                 Form1.Controls(c.Name).Left = 100
                 Form1.landPlayed += 1
+                c.Radiant = True
             Else
                 Form1.DireHandInfo.RemoveAt(Form1.DireHandInfo.IndexOf(c))
                 Form1.landInfo.Add(c)
@@ -258,6 +259,7 @@
                 Form1.Controls(c.Name).Top = -50 * Form1.landInfo.Count + Form1.Height * 3 / 4
                 Form1.Controls(c.Name).Left = 100
                 Form1.landPlayed += 1
+                c.Radiant = False
             End If
         End If
     End Sub

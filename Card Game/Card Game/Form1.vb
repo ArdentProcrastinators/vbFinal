@@ -35,7 +35,6 @@
 
             'adds 60 elements
             Randomize()
-            'Not Sure if this is correct, might be tho
             cardInfo.Add(Int(8 * Rnd() + 1))
             RadiantDeckInfo.Add(1)
             DireDeckInfo.Add(1)
@@ -43,10 +42,11 @@
 
         ShuffleCards(RadiantDeckInfo)
         ShuffleCards(DireDeckInfo)
-        'Need to understand cardInfo
-        DrawCards(7, RadiantDeckInfo, RadiantHandInfo)
+        DrawCards(6, RadiantDeckInfo, RadiantHandInfo)
         DrawCards(7, DireDeckInfo, DireHandInfo)
-
+        MoveCards()
+        Debug.Print(RadiantCardsInHand)
+        Debug.Print(DireCardsInHand)
         GenerateCreature(1, True)
 
     End Sub
@@ -74,10 +74,10 @@
         Next
 
         'Prints cards in order for current deck
-        Debug.Print("Start of new deck" & vbNewLine)
+        'Debug.Print("Start of new deck" & vbNewLine)
         For B As Integer = 0 To cardCount - 1
 
-            Debug.Print("Card " & B + 1 & ": " & deckInfo(B))
+            'Debug.Print("Card " & B + 1 & ": " & deckInfo(B))
 
         Next
 
@@ -249,7 +249,6 @@
             newCreature.DefineCreature(newCreature)
             RadiantCreatures.Add(newCreature)
             Me.Controls.Add(newCreature)
-            Debug.Print(RadiantCreatures.Count)
             newCreature.Top = Me.Height / 2
             newCreature.Left = Me.Width / 2 + (Me.Width / 32 * (RadiantCreatures.Count - 2))
         Else
@@ -341,33 +340,34 @@
         landPlayed = 0
         landMax = 1
 
+
         RadiantTurn = Not (RadiantTurn)
+        MoveCards()
+    End Sub
+    Private Sub MoveCards()
         For Each x As Control In Me.Controls
             If TypeOf (x) Is Card Then
                 Dim c As Card = x
-                If x.Top < Me.Height Then
-                    x.Top = Me.Height - x.Top - x.Height
-                ElseIf x.Top > Me.Height Then
-                    x.Top = -(x.Top - Me.Height)
-                End If
                 If c.partOfHand = True Then
-                    If RadiantTurn = True And c.Radiant = True Then
+                    If RadiantTurn = c.Radiant Then
                         c.BackgroundImage = IDTable.IDImage(c)
-                    ElseIf RadiantTurn = False And c.Radiant = False Then
-                        c.BackgroundImage = IDTable.IDImage(c)
+                        c.Top = c.Top - Me.Height / 2 + c.Height
                     Else
                         c.BackgroundImage = My.Resources.cardBack
+                        c.Top = Me.Height / 2 + (Me.Height / 2 - c.Top) - c.Height
                     End If
                 End If
             End If
         Next
         If RadiantTurn Then
             DrawCards(1, RadiantDeckInfo, RadiantHandInfo)
+            If RadiantCardsInHand > 7 Then RadiantCardsInHand = 7
         ElseIf RadiantTurn = False
             DrawCards(1, DireDeckInfo, DireHandInfo)
+            If DireCardsInHand > 7 Then DireCardsInHand = 7
         End If
-
-
+        Debug.Print(RadiantCardsInHand)
+        Debug.Print(DireCardsInHand)
     End Sub
 
     Private Sub btnTS_Click(sender As Object, e As EventArgs) Handles btnNextPhase.Click
