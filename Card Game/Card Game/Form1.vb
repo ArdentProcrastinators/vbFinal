@@ -249,7 +249,7 @@
             newCreature.DefineCreature(newCreature)
             RadiantCreatures.Add(newCreature)
             Me.Controls.Add(newCreature)
-            newCreature.Top = Me.Height / 2
+            newCreature.Top = Me.Height / 1.75
             newCreature.Left = Me.Width / 2 + (Me.Width / 32 * (RadiantCreatures.Count - 2))
         Else
             'Same as above only for the Dire side
@@ -327,11 +327,12 @@
     End Sub
 
     Public Sub TurnStart()
-
+        'Clears mana
         manaPool.Clear()
         ManaLabel()
 
         For Each c As Card In landInfo
+            'Untaps lands
             c.tapped = False
             c.used = False
             c.BackgroundImage = IDTable.IDImage(c)
@@ -340,31 +341,43 @@
         landPlayed = 0
         landMax = 1
 
-
         RadiantTurn = Not (RadiantTurn)
         MoveCards()
-    End Sub
-    Private Sub MoveCards()
-        For Each x As Control In Me.Controls
-            If TypeOf (x) Is Card Then
-                Dim c As Card = x
-                If c.partOfHand = True Then
-                    If RadiantTurn = c.Radiant Then
-                        c.BackgroundImage = IDTable.IDImage(c)
-                        c.Top = c.Top - Me.Height / 2 + c.Height
-                    Else
-                        c.BackgroundImage = My.Resources.cardBack
-                        c.Top = Me.Height / 2 + (Me.Height / 2 - c.Top) - c.Height
-                    End If
-                End If
-            End If
-        Next
         If RadiantTurn Then
             DrawCards(1, RadiantDeckInfo, RadiantHandInfo)
             If RadiantCardsInHand > 7 Then RadiantCardsInHand = 7
         ElseIf RadiantTurn = False
             DrawCards(1, DireDeckInfo, DireHandInfo)
             If DireCardsInHand > 7 Then DireCardsInHand = 7
+        End If
+        Debug.Print(RadiantCardsInHand)
+        Debug.Print(DireCardsInHand)
+        Draw(RadiantTurn)                                   'Implement hand limit and discarding cards
+
+    End Sub
+    Private Sub MoveCards()
+        For Each ThisControl As Control In Me.Controls
+            If TypeOf (ThisControl) Is Card Then
+                Dim c As Card = ThisControl                 'Casts ThisControl as Card so paramaters like Radiant can be used
+                c.Top = Me.Height - (c.Top + c.Height)      'Flips the cards to opposite side of form, top to bottom and bottom to top
+                If c.partOfHand = True Then
+                    If RadiantTurn = c.Radiant Then         'If card is supposed to be in the hand of the current player's turn
+                        'Sets current player's cards in hand's images to the image of the card
+                        c.BackgroundImage = IDTable.IDImage(c)
+                    Else
+                        'Sets other player's cards in hand's image to card back to hide the cards
+                        c.BackgroundImage = My.Resources.cardBack
+                    End If
+                End If
+            End If
+        Next
+    End Sub
+
+    Private Sub Draw(RadiantIsDrawing As Boolean)
+        If RadiantIsDrawing Then                            'If Radiant is drawing
+            DrawCards(1, RadiantDeckInfo, RadiantHandInfo)  'Draws 1 card from the radiant deck to the radiant hand
+        ElseIf RadiantIsDrawing = False                     'If Dire is drawing
+            DrawCards(1, DireDeckInfo, DireHandInfo)        'Draws 1 card from the dire deck to the dire hand
         End If
         Debug.Print(RadiantCardsInHand)
         Debug.Print(DireCardsInHand)
@@ -375,8 +388,5 @@
 
     End Sub
 
-    Private Sub btnSpawn_Click(sender As Object, e As EventArgs) Handles btnSpawn.Click
-        GenerateCreature(1, True)
-    End Sub
 End Class
 

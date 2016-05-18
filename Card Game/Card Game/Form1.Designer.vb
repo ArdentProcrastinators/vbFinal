@@ -29,7 +29,6 @@ Partial Class Form1
         Me.lblMana = New System.Windows.Forms.Label()
         Me.lblManaStatus = New System.Windows.Forms.Label()
         Me.btnNextPhase = New System.Windows.Forms.Button()
-        Me.btnSpawn = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'tmrUpdater
@@ -81,15 +80,6 @@ Partial Class Form1
         Me.btnNextPhase.Text = "End Turn"
         Me.btnNextPhase.UseVisualStyleBackColor = True
         '
-        'btnSpawn
-        '
-        Me.btnSpawn.Location = New System.Drawing.Point(405, 21)
-        Me.btnSpawn.Name = "btnSpawn"
-        Me.btnSpawn.Size = New System.Drawing.Size(75, 23)
-        Me.btnSpawn.TabIndex = 12
-        Me.btnSpawn.Text = "Spawn"
-        Me.btnSpawn.UseVisualStyleBackColor = True
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -97,7 +87,6 @@ Partial Class Form1
         Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Untitled_drawing
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1297, 639)
-        Me.Controls.Add(Me.btnSpawn)
         Me.Controls.Add(Me.btnNextPhase)
         Me.Controls.Add(Me.lblManaStatus)
         Me.Controls.Add(Me.lblMana)
@@ -117,5 +106,4 @@ Partial Class Form1
     Friend WithEvents lblMana As Label
     Friend WithEvents lblManaStatus As Label
     Friend WithEvents btnNextPhase As Button
-    Friend WithEvents btnSpawn As System.Windows.Forms.Button
 End Class

@@ -24,7 +24,6 @@
     Public Radiant As Boolean
     Public partOfDB As Boolean = False
     Public Sub MeClick() Handles Me.Click
-
         If Form1.started = True Then
             Form1.Target = Me
             If partOfHand = False Then
