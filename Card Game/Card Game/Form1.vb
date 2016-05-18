@@ -36,17 +36,16 @@
             'adds 60 elements
             Randomize()
             'Not Sure if this is correct, might be tho
-            RadiantCardInfo.Add(Int(8 * Rnd() + 1))
+            cardInfo.Add(Int(8 * Rnd() + 1))
             RadiantDeckInfo.Add(1)
-            Randomize()
-            DireCardInfo.Add(Int(8 * Rnd() + 1))
             DireDeckInfo.Add(1)
         Next
 
         ShuffleCards(RadiantDeckInfo)
         ShuffleCards(DireDeckInfo)
         'Need to understand cardInfo
-        DrawCards(7, deckInfo, handInfo)
+        DrawCards(7, RadiantDeckInfo, RadiantHandInfo)
+        DrawCards(7, DireDeckInfo, DireHandInfo)
 
         GenerateCreature(1, True)
 
@@ -94,7 +93,7 @@
             desDeck.Remove(desDeck(0))
         Next
 
-        UpdateHand()
+        UpdateHand(RadiantTurn)
 
     End Sub
 
@@ -362,8 +361,12 @@
                 End If
             End If
         Next
+        If RadiantTurn Then
+            DrawCards(1, RadiantDeckInfo, RadiantHandInfo)
+        ElseIf RadiantTurn = False
+            DrawCards(1, DireDeckInfo, DireHandInfo)
+        End If
 
-        DrawCards(1, deckInfo, handInfo)
 
     End Sub
 

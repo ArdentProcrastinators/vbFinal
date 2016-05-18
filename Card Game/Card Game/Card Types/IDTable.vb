@@ -205,38 +205,60 @@
                 playLand(c)
             Case 8
                 If PayMana(c) Then
-                    Form1.GenerateCreature(c.ID, True)
-                    Form1.handInfo.Remove(c)
-                    c.Dispose()
-                    Form1.UpdateHand()
+                    If Form1.RadiantTurn Then
+                        Form1.GenerateCreature(c.ID, True)
+                        Form1.RadiantHandInfo.Remove(c)
+                        c.Dispose()
+                        Form1.UpdateHand(Form1.RadiantTurn)
+                    Else
+                        Form1.GenerateCreature(c.ID, True)
+                        Form1.DireHandInfo.Remove(c)
+                        c.Dispose()
+                        Form1.UpdateHand(Form1.RadiantTurn)
+                    End If
                 End If
-
         End Select
 
     End Sub
 
     Public Shared Sub PlayCreature(c As Card)
         If PayMana(c) Then
-            Form1.GenerateCreature(c.ID, True)
-            Form1.handInfo.Remove(c)
-            c.Dispose()
-            Form1.UpdateHand()
+            If Form1.RadiantTurn Then
+                Form1.GenerateCreature(c.ID, True)
+                Form1.RadiantHandInfo.Remove(c)
+                c.Dispose()
+                Form1.UpdateHand(Form1.RadiantTurn)
+            Else
+                Form1.GenerateCreature(c.ID, True)
+                Form1.DireHandInfo.Remove(c)
+                c.Dispose()
+                Form1.UpdateHand(Form1.RadiantTurn)
+            End If
         End If
     End Sub
 
 
     Public Shared Sub playLand(c As Card)
         If Form1.landPlayed < Form1.landMax Then
-
-            Form1.handInfo.RemoveAt(Form1.handInfo.IndexOf(c))
-            Form1.landInfo.Add(c)
-            c.partOfHand = False
-            Form1.UpdateHand()
-            c.Name = "land" & Form1.landInfo.Count
-            Form1.Controls(c.Name).Top = -50 * Form1.landInfo.Count + Form1.Height * 3 / 4
-            Form1.Controls(c.Name).Left = 100
-            Form1.landPlayed += 1
-
+            If Form1.RadiantTurn Then
+                Form1.RadiantHandInfo.RemoveAt(Form1.RadiantHandInfo.IndexOf(c))
+                Form1.landInfo.Add(c)
+                c.partOfHand = False
+                Form1.UpdateHand(Form1.RadiantTurn)
+                c.Name = "land" & Form1.landInfo.Count
+                Form1.Controls(c.Name).Top = -50 * Form1.landInfo.Count + Form1.Height * 3 / 4
+                Form1.Controls(c.Name).Left = 100
+                Form1.landPlayed += 1
+            Else
+                Form1.DireHandInfo.RemoveAt(Form1.DireHandInfo.IndexOf(c))
+                Form1.landInfo.Add(c)
+                c.partOfHand = False
+                Form1.UpdateHand(Form1.RadiantTurn)
+                c.Name = "land" & Form1.landInfo.Count
+                Form1.Controls(c.Name).Top = -50 * Form1.landInfo.Count + Form1.Height * 3 / 4
+                Form1.Controls(c.Name).Left = 100
+                Form1.landPlayed += 1
+            End If
         End If
     End Sub
 
