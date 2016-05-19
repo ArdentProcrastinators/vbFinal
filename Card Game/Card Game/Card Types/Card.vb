@@ -138,24 +138,24 @@
                     Next
                 End If
             ElseIf Form1.RadiantTurn = False Then
-                    If partOfHand = True And Form1.DireHandInfo.Count <> 1 Then
-                        For I As Integer = 1 To Form1.DireHandInfo.Count
+                If partOfHand = True And Form1.DireHandInfo.Count <> 1 Then
+                    For I As Integer = 1 To Form1.DireHandInfo.Count
 
-                            If Form1.Controls("card" & I) IsNot Me And right = True Then
+                        If Form1.Controls("card" & I) IsNot Me And right = True Then
 
-                                Form1.Controls("card" & I).Left -= Me.Width
+                            Form1.Controls("card" & I).Left -= Me.Width
 
-                            ElseIf Form1.Controls("card" & I) Is Me
-                                right = True
-                            End If
+                        ElseIf Form1.Controls("card" & I) Is Me
+                            right = True
+                        End If
 
-                        Next
+                    Next
 
-                    End If
-            End If
-        Else
+                End If
+            Else
                 Me.Width /= 2
-            Me.Height /= 2
+                Me.Height /= 2
+            End If
         End If
 
         Form1.lblManaStatus.Text = ""

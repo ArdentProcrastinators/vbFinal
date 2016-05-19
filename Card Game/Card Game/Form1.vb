@@ -42,9 +42,9 @@
 
         ShuffleCards(RadiantDeckInfo)
         ShuffleCards(DireDeckInfo)
-        DrawCards(6, RadiantDeckInfo, RadiantHandInfo)
         DrawCards(7, DireDeckInfo, DireHandInfo)
         MoveCards()
+        DrawCards(6, RadiantDeckInfo, RadiantHandInfo)
         Debug.Print(RadiantCardsInHand)
         Debug.Print(DireCardsInHand)
         GenerateCreature(1, True)
@@ -121,7 +121,13 @@
                 newCard.partOfHand = True
                 newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
                 newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height 'Sets height accordingly with cardscale
-                newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
+                If Radiant = RadiantTurn Then
+                    newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
+                Else
+                    newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
+                    newCard.Top = Me.Height - (newCard.Top + newCard.Height)
+                    newCard.BackgroundImage = My.Resources.cardBack
+                End If
                 newCard.Left = cardScale * My.Resources.Ardent_Procrastinor.Width * RadiantCardsInHand + (Me.Width - RadiantHandInfo.Count * cardScale * My.Resources.Ardent_Procrastinor.Width) / 2
                 newCard.Visible = True
                 newCard.Name = "card" & I
@@ -156,10 +162,16 @@
                 newCard.partOfHand = True
                 newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
                 newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height 'Sets height accordingly with cardscale
-                newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
+                If Radiant = RadiantTurn Then
+                    newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
+                Else
+                    newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
+                    newCard.Top = Me.Height - (newCard.Top + newCard.Height)
+                    newCard.BackgroundImage = My.Resources.cardBack
+                End If
                 newCard.Left = cardScale * My.Resources.Ardent_Procrastinor.Width * DireCardsInHand + (Me.Width - DireHandInfo.Count * cardScale * My.Resources.Ardent_Procrastinor.Width) / 2
                 newCard.Visible = True
-                newCard.Name = "card" & I
+                    newCard.Name = "card" & I
                 DireHandInfo.Item(I - 1) = newCard
                 Me.Controls.Add(DireHandInfo(I - 1))
 
