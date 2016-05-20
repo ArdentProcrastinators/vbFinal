@@ -1,6 +1,6 @@
 ﻿Public Class frmDeckSelection
 
-    Public selectedDeck As List(Of Card)
+    Public Shared selectedDeck As List(Of Card)
 
     Private Sub DeckSelection_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -36,13 +36,13 @@
 
     Private Sub rdbP2S1_CheckedChanged(sender As Object, e As EventArgs) Handles rdbP2S1.CheckedChanged
         If rdbP2S1.Checked = True Then
-            selectedDeck = IDTable.decks(0)
+            selectedDeck = IDTable.deck1
         End If
     End Sub
 
     Private Sub rdbP1S1_CheckedChanged(sender As Object, e As EventArgs) Handles rdbP1S1.CheckedChanged
         If rdbP1S1.Checked = True Then
-            selectedDeck = IDTable.decks(0)
+            selectedDeck = IDTable.deck1
         Else
 
         End If
