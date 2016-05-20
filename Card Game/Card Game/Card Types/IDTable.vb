@@ -1,6 +1,11 @@
 ﻿Public Class IDTable
 
-    Public Shared decks As List(Of List(Of Card))
+    Public Shared deck1 As New List(Of Card)
+    Public Shared deck2 As New List(Of Card)
+    Public Shared deck3 As New List(Of Card)
+    Public Shared deck4 As New List(Of Card)
+    Public Shared deck5 As New List(Of Card)
+    Public Shared deck6 As New List(Of Card)
 
     Public Shared Function SetName(ID As Integer) As String
 

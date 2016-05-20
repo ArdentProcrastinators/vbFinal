@@ -68,7 +68,7 @@
     End Sub
 
     Public Sub mouseOn() Handles Me.MouseEnter
-
+        Debug.Print(Radiant)
         If partOfDB = False And (Me.Radiant = Form1.RadiantTurn) Or (Me.partOfHand = False And Me.Radiant <> Form1.RadiantTurn) Then
 
             Me.Width *= 1.75
