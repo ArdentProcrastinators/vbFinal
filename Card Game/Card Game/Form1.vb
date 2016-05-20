@@ -286,20 +286,20 @@
 
     End Sub
 
-    Public Sub TMC(c As Card)
+    Public Sub TMC(manaCost As List(Of String))
 
         Dim payed As Boolean
 
-        For x As Integer = 1 To c.manaCost.Count
+        For x As Integer = 1 To manaCost.Count
 
 
             Dim m As Integer = 0
             payed = False
 
-            If c.manaCost(x - 1) <> "any" Then
+            If manaCost(x - 1) <> "any" Then
                 Do Until payed = True
 
-                    If landInfo(m).manaCost(0) = c.manaCost(x - 1) And landInfo(m).used = True And landInfo(m).tapped = False Then
+                    If landInfo(m).manaCost(0) = manaCost(x - 1) And landInfo(m).used = True And landInfo(m).tapped = False Then
                         landInfo(m).tapped = True
                         landInfo(m).BackgroundImage = IDTable.IDImage(landInfo(m))
                         payed = True
@@ -307,7 +307,7 @@
                     m += 1
 
                 Loop
-                manaPool.Remove(c.manaCost(x - 1))
+                manaPool.Remove(manaCost(x - 1))
             Else
                 Do Until payed = True
                     If m > landInfo.Count - 1 Then MsgBox("error")

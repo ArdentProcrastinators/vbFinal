@@ -269,7 +269,7 @@
             Case 7
                 playLand(c)
             Case 8
-                If PayMana(c) Then
+                If PayMana(c.manaCost) Then
                     If Form1.RadiantTurn Then
                         Form1.GenerateCreature(c.ID, True)
                         Form1.RadiantHandInfo.Remove(c)
@@ -287,7 +287,7 @@
     End Sub
 
     Public Shared Sub PlayCreature(c As Card)
-        If PayMana(c) Then
+        If PayMana(c.manaCost) Then
             If Form1.RadiantTurn Then
                 Form1.GenerateCreature(c.ID, True)
                 Form1.RadiantHandInfo.Remove(c)
@@ -312,7 +312,7 @@
                 c.partOfHand = False
                 Form1.UpdateHand(Form1.RadiantTurn)
                 Form1.Controls(c.Name).Top = Form1.Height - 500
-                Form1.Controls(c.Name).Left = (c.Width * Form1.rLandinfo.Count) + 200
+                Form1.Controls(c.Name).Left = ((Form1.Height / 1024) * 375 * Form1.rLandinfo.Count) + 200
                 Form1.landPlayed += 1
                 c.Radiant = True
             Else
@@ -322,14 +322,14 @@
                 c.partOfHand = False
                 Form1.UpdateHand(Form1.RadiantTurn)
                 Form1.Controls(c.Name).Top = Form1.Height - 500
-                Form1.Controls(c.Name).Left = (c.Width * Form1.dLandinfo.Count) + 200
+                Form1.Controls(c.Name).Left = ((Form1.Height / 1024) * 375 * Form1.dLandinfo.Count) + 200
                 Form1.landPlayed += 1
                 c.Radiant = False
             End If
         End If
     End Sub
 
-    Public Shared Function PayMana(iC As Card) As Boolean
+    Public Shared Function PayMana(manaCost As List(Of String)) As Boolean
 
         'Ill comment this eventually
         If Form1.manaPool.Count <> 0 Then
@@ -342,7 +342,7 @@
             Next
 
 
-            For I As Integer = 0 To iC.manaCost.Count - 1
+            For I As Integer = 0 To manaCost.Count - 1
 
                 counter = 0
                 Dim result As Integer = 0
@@ -351,7 +351,7 @@
 
                     If testList.Count = 0 Then Return False
 
-                    If iC.manaCost(I) = testList(counter) Or iC.manaCost(I) = "any" Then
+                    If manaCost(I) = testList(counter) Or manaCost(I) = "any" Then
 
                         testList.Remove(testList(counter))
                         result = 1
@@ -366,7 +366,7 @@
 
             Next
 
-            Form1.TMC(iC)
+            Form1.TMC(manaCost)
             Form1.ManaLabel()
             Return True
 
