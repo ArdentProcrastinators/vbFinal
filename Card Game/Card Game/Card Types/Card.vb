@@ -20,19 +20,40 @@
     Public tapped As Boolean
     Public used As Boolean 'Just for land
 
+    'true = added and false = removed
+    Public DBinfo As Boolean
+    Public cardname As String
+
     Public partOfHand As Boolean = False
     Public Radiant As Boolean
     Public partOfDB As Boolean = False
-    Public Sub MeClick() Handles Me.Click
-        If Form1.started = True Then
-            Form1.Target = Me
-            If partOfHand = False Then
-                IDTable.IDAbility(Me)
-            ElseIf partOfHand = True
-                IDTable.PlayCard(Me)
-            End If
-        End If
 
+    Public Sub MeClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseDown
+
+        If partOfDB = False And Radiant = Form1.RadiantTurn Then
+            If Radiant = Form1.RadiantTurn Then
+
+                If Form1.started = True Then
+                    Form1.Target = Me
+                    If partOfHand = False Then
+                        IDTable.IDAbility(Me)
+                    ElseIf partOfHand = True
+                        IDTable.PlayCard(Me)
+                    End If
+                End If
+            End If
+        ElseIf partOfDB = True
+
+            If e.Button = MouseButtons.Left Then
+                DBinfo = True
+            Else
+                DBinfo = False
+            End If
+
+            DeckBuilder.UpdateInfo(Me)
+
+
+        End If
     End Sub
 
     Public Sub New(IID As Integer, RadiantTurn As Boolean)
@@ -40,122 +61,39 @@
         IDTable.SetMana(Me)
         Me.BackgroundImage = IDTable.IDImage(Me)
         Me.BackgroundImageLayout = ImageLayout.Zoom
+        Me.cardname = IDTable.SetName(Me.ID)
         Radiant = RadiantTurn
+        Form1.cardKeeper += 1
+        Me.Name = "card" & Form1.cardKeeper
     End Sub
 
     Public Sub mouseOn() Handles Me.MouseEnter
 
-        If partOfDB = False Then
-            Me.Top -= Me.Height
-            Me.Width *= 2
-            Me.Height *= 2
-            Dim right As Boolean
-            Dim rightChanged As Integer
-            Dim cumulativeCardLen As Decimal
-            If Form1.RadiantTurn Then
-                If partOfHand = True And Form1.RadiantHandInfo.Count <> 1 Then
-                    For I As Integer = 1 To Form1.RadiantHandInfo.Count
+        If partOfDB = False And (Me.Radiant = Form1.RadiantTurn) Or (Me.partOfHand = False And Me.Radiant <> Form1.RadiantTurn) Then
 
-                        If Form1.Controls("card" & I) IsNot Me And right = True Then
+            Me.Width *= 1.75
+            Me.Height *= 1.75
+            Me.Top -= Me.Height / 2
 
-                            Form1.Controls("card" & I).Left += Me.Width / 2
-                            rightChanged += 1
-
-                        ElseIf Form1.Controls("card" & I) Is Me
-                            right = True
-                        End If
-
-                        cumulativeCardLen += Form1.Controls("card" & I).Width
-
-                    Next
-                    Dim leftLevel As Integer
-                    'Yo... I don't even know what I made, but it works...
-                    If Form1.RadiantHandInfo.Count <> 0 Then leftLevel = (Form1.Controls("card1").Left - ((Form1.Width - Form1.Controls("card1").Left) - cumulativeCardLen)) / (Form1.RadiantHandInfo.Count * 2)
-
-
-                    For x As Integer = 1 To Form1.RadiantHandInfo.Count
-
-                        Form1.Controls("card" & x).Left -= leftLevel
-
-                    Next
-                End If
-            ElseIf Form1.RadiantTurn = False Then
-                If partOfHand = True And Form1.DireHandInfo.Count <> 1 Then
-                    For I As Integer = 1 To Form1.DireHandInfo.Count
-
-                        If Form1.Controls("card" & I) IsNot Me And right = True Then
-
-                            Form1.Controls("card" & I).Left += Me.Width / 2
-                            rightChanged += 1
-
-                        ElseIf Form1.Controls("card" & I) Is Me
-                            right = True
-                        End If
-
-                        cumulativeCardLen += Form1.Controls("card" & I).Width
-
-                    Next
-                    Dim leftLevel As Integer
-                    'Yo... I don't even know what I made, but it works...
-                    If Form1.DireHandInfo.Count <> 0 Then leftLevel = (Form1.Controls("card1").Left - ((Form1.Width - Form1.Controls("card1").Left) - cumulativeCardLen)) / (Form1.DireHandInfo.Count * 2)
-
-
-                    For x As Integer = 1 To Form1.RadiantHandInfo.Count
-
-                        Form1.Controls("card" & x).Left -= leftLevel
-
-                    Next
-                End If
-            Else
-                Me.Width *= 2
-                Me.Height *= 2
-
-            End If
-
+        ElseIf partOfDB = True
+            Me.Width *= 1.5
+            Me.Height *= 1.5
         End If
 
     End Sub
 
     Public Sub MouseExit() Handles Me.MouseLeave
 
-        If partOfDB = False Then
-            Me.Width *= 1 / 2
-            Me.Height *= 1 / 2
-            Me.Top += Me.Height
-            Dim right As Boolean
-            If Form1.RadiantTurn Then
-                If partOfHand = True And Form1.RadiantHandInfo.Count <> 1 Then
-                    For I As Integer = 1 To Form1.RadiantHandInfo.Count
+        If partOfDB = False And (Me.Radiant = Form1.RadiantTurn) Or (Me.partOfHand = False And Me.Radiant <> Form1.RadiantTurn) Then
 
-                        If Form1.Controls("card" & I) IsNot Me And right = True Then
+            Me.Top += Me.Height / 2
+            Me.Width /= 1.75
+            Me.Height /= 1.75
 
-                            Form1.Controls("card" & I).Left -= Me.Width
 
-                        ElseIf Form1.Controls("card" & I) Is Me
-                            right = True
-                        End If
-
-                    Next
-                End If
-            ElseIf Form1.RadiantTurn = False Then
-                If partOfHand = True And Form1.DireHandInfo.Count <> 1 Then
-                    For I As Integer = 1 To Form1.DireHandInfo.Count
-
-                        If Form1.Controls("card" & I) IsNot Me And right = True Then
-
-                            Form1.Controls("card" & I).Left -= Me.Width
-
-                        ElseIf Form1.Controls("card" & I) Is Me
-                            right = True
-                        End If
-
-                    Next
-
-                End If
-            Else
-                Me.Width /= 2
-                Me.Height /= 2
-            End If
+        ElseIf partOfDB = True
+            Me.Width /= 1.5
+            Me.Height /= 1.5
         End If
 
         Form1.lblManaStatus.Text = ""

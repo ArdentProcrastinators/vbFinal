@@ -75,3 +75,6 @@ C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.vbproj.Gene
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.exe
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.xml
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.pdb
+C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\WindowsApplication1.DeckBuilder.resources
+C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\WindowsApplication1.frmDeckSelection.resources
+C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\WindowsApplication1.frmMenu.resources

@@ -1,4 +1,30 @@
 ﻿Public Class IDTable
+
+    Public Shared decks As List(Of List(Of Card))
+
+    Public Shared Function SetName(ID As Integer) As String
+
+        Select Case ID
+            Case 1
+                Return "Noob Memer"
+            Case 2
+                Return "Ardent Procrastinator"
+            Case 3
+                Return "Island"
+            Case 4
+                Return "Swamp"
+            Case 5
+                Return "Forest"
+            Case 6
+                Return "Mountain"
+            Case 7
+                Return "Plains"
+            Case 8
+                Return "Levent's Bearded Dragon"
+        End Select
+
+    End Function
+
     Public Shared Function IDPower(ID As Integer) As Integer
         'Retuns power of creature from ID
         Select Case ID
@@ -36,6 +62,94 @@
                 Return 100
         End Select
     End Function
+
+    Public Shared Sub SetMana(c As Card)
+
+        Select Case c.ID
+            Case 1
+                'Add anys last
+                c.manaCost.Add("green")
+                c.manaCost.Add("any")
+            Case 2
+                c.manaCost.Add("black")
+                c.manaCost.Add("black")
+                c.manaCost.Add("any")
+                c.manaCost.Add("any")
+                c.manaCost.Add("any")
+            Case 3
+                'Cost on lands is what they give
+                c.manaCost.Add("blue")
+            Case 4
+                c.manaCost.Add("black")
+            Case 5
+                c.manaCost.Add("green")
+            Case 6
+                c.manaCost.Add("red")
+            Case 7
+                c.manaCost.Add("plains")
+            Case 8
+                c.manaCost.Add("red")
+                c.manaCost.Add("green")
+                c.manaCost.Add("any")
+
+        End Select
+
+    End Sub
+
+    Public Shared Function IDImage(C As Card) As Image
+        'Sets the new Card's Image to the card played
+        Select Case C.ID
+            Case 1
+                Return My.Resources.NoobMemer
+            Case 2
+                Return My.Resources.Ardent_Procrastinor
+            Case 3
+                'Island
+                If C.tapped = False Then
+                    Return My.Resources.island
+                Else
+                    Return My.Resources.islandtu
+                End If
+
+            Case 4
+                'Swamp
+                If C.tapped = False Then
+                    Return My.Resources.swamp
+                Else
+                    Return My.Resources.swamptu
+                End If
+
+            Case 5
+                'Forest
+                If C.tapped = False Then
+                    Return My.Resources.forest
+                Else
+                    Return My.Resources.foresttu
+                End If
+            Case 6
+                'Mountain
+                If C.tapped = False Then
+                    Return My.Resources.mountain
+                Else
+                    Return My.Resources.mountaintu
+                End If
+            Case 7
+                'Plains
+                If C.tapped = False Then
+                    Return My.Resources.plains
+                Else
+                    Return My.Resources.plainstu
+                End If
+            Case 8
+                Return My.Resources.Levent_s_Bearded_Dragon
+            Case 31
+
+        End Select
+    End Function
+
+    ''
+    'END OF DEFAULT STUFF TO SET
+    ''
 
     Public Shared Function IDAbility(c As Card) As Integer
         Select Case c.ID
@@ -135,56 +249,7 @@
 
     End Function
 
-    Public Shared Function IDImage(C As Card) As Image
-        'Sets the new Card's Image to the card played
-        Select Case C.ID
-            Case 1
-                Return My.Resources.NoobMemer
-            Case 2
-                Return My.Resources.Ardent_Procrastinor
-            Case 3
-                'Island
-                If C.tapped = False Then
-                    Return My.Resources.island
-                Else
-                    Return My.Resources.islandtu
-                End If
 
-            Case 4
-                'Swamp
-                If C.tapped = False Then
-                    Return My.Resources.swamp
-                Else
-                    Return My.Resources.swamptu
-                End If
-
-            Case 5
-                'Forest
-                If C.tapped = False Then
-                    Return My.Resources.forest
-                Else
-                    Return My.Resources.foresttu
-                End If
-            Case 6
-                'Mountain
-                If C.tapped = False Then
-                    Return My.Resources.mountain
-                Else
-                    Return My.Resources.mountaintu
-                End If
-            Case 7
-                'Plains
-                If C.tapped = False Then
-                    Return My.Resources.plains
-                Else
-                    Return My.Resources.plainstu
-                End If
-            Case 8
-                Return My.Resources.Levent_s_Bearded_Dragon
-            Case 31
-
-        End Select
-    End Function
 
     Public Shared Sub PlayCard(c As Card)
 
@@ -243,21 +308,21 @@
             If Form1.RadiantTurn Then
                 Form1.RadiantHandInfo.RemoveAt(Form1.RadiantHandInfo.IndexOf(c))
                 Form1.landInfo.Add(c)
+                Form1.rLandinfo.Add(c)
                 c.partOfHand = False
                 Form1.UpdateHand(Form1.RadiantTurn)
-                c.Name = "land" & Form1.landInfo.Count
-                Form1.Controls(c.Name).Top = -50 * Form1.landInfo.Count + Form1.Height * 3 / 4
-                Form1.Controls(c.Name).Left = 100
+                Form1.Controls(c.Name).Top = Form1.Height - 500
+                Form1.Controls(c.Name).Left = (c.Width * Form1.rLandinfo.Count) + 200
                 Form1.landPlayed += 1
                 c.Radiant = True
             Else
                 Form1.DireHandInfo.RemoveAt(Form1.DireHandInfo.IndexOf(c))
                 Form1.landInfo.Add(c)
+                Form1.dLandinfo.Add(c)
                 c.partOfHand = False
                 Form1.UpdateHand(Form1.RadiantTurn)
-                c.Name = "land" & Form1.landInfo.Count
-                Form1.Controls(c.Name).Top = -50 * Form1.landInfo.Count + Form1.Height * 3 / 4
-                Form1.Controls(c.Name).Left = 100
+                Form1.Controls(c.Name).Top = Form1.Height - 500
+                Form1.Controls(c.Name).Left = (c.Width * Form1.dLandinfo.Count) + 200
                 Form1.landPlayed += 1
                 c.Radiant = False
             End If
@@ -309,37 +374,6 @@
 
     End Function
 
-    Public Shared Sub SetMana(c As Card)
 
-        Select Case c.ID
-            Case 1
-                'Add anys last
-                c.manaCost.Add("green")
-                c.manaCost.Add("any")
-            Case 2
-                c.manaCost.Add("black")
-                c.manaCost.Add("black")
-                c.manaCost.Add("any")
-                c.manaCost.Add("any")
-                c.manaCost.Add("any")
-            Case 3
-                'Cost on lands is what they give
-                c.manaCost.Add("blue")
-            Case 4
-                c.manaCost.Add("black")
-            Case 5
-                c.manaCost.Add("green")
-            Case 6
-                c.manaCost.Add("red")
-            Case 7
-                c.manaCost.Add("plains")
-            Case 8
-                c.manaCost.Add("red")
-                c.manaCost.Add("green")
-                c.manaCost.Add("any")
-
-        End Select
-
-    End Sub
 
 End Class

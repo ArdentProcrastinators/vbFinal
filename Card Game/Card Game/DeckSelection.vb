@@ -1,9 +1,9 @@
 ﻿Public Class frmDeckSelection
 
-    Public deckList As List(Of List(Of Card))
-    Public selectedDeck As Integer
+    Public selectedDeck As List(Of Card)
 
     Private Sub DeckSelection_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         Me.WindowState = FormWindowState.Maximized
         grpPlayer1Decks.Top = Me.Height / 2 - grpPlayer1Decks.Height
         grpPlayer1Decks.Left = 12
@@ -12,6 +12,8 @@
         lblChooseDeck.Left = Me.Width / 2 - lblChooseDeck.Width / 2
         btnStart.Top = Me.Height - btnStart.Height * 1.5
         btnStart.Left = Me.Width / 2 - btnStart.Width / 2
+
+
     End Sub
 
     Private Sub formSizeChanged() Handles Me.SizeChanged
@@ -28,7 +30,21 @@
 
     Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
         Form1.Show()
-        'Form1.usedDeck = deckList(selectedDeck)
+        Form1.usedDeck = selectedDeck
         Me.Close()
+    End Sub
+
+    Private Sub rdbP2S1_CheckedChanged(sender As Object, e As EventArgs) Handles rdbP2S1.CheckedChanged
+        If rdbP2S1.Checked = True Then
+            selectedDeck = IDTable.decks(0)
+        End If
+    End Sub
+
+    Private Sub rdbP1S1_CheckedChanged(sender As Object, e As EventArgs) Handles rdbP1S1.CheckedChanged
+        If rdbP1S1.Checked = True Then
+            selectedDeck = IDTable.decks(0)
+        Else
+
+        End If
     End Sub
 End Class

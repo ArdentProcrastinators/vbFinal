@@ -55,12 +55,10 @@ Partial Class frmDeckSelection
         'rdbP1S1
         '
         Me.rdbP1S1.AutoSize = True
-        Me.rdbP1S1.Checked = True
         Me.rdbP1S1.Location = New System.Drawing.Point(6, 30)
         Me.rdbP1S1.Name = "rdbP1S1"
         Me.rdbP1S1.Size = New System.Drawing.Size(260, 41)
         Me.rdbP1S1.TabIndex = 1
-        Me.rdbP1S1.TabStop = True
         Me.rdbP1S1.Text = "Empty Deck Slot"
         Me.rdbP1S1.UseVisualStyleBackColor = True
         '
@@ -71,7 +69,6 @@ Partial Class frmDeckSelection
         Me.rdbP1S2.Name = "rdbP1S2"
         Me.rdbP1S2.Size = New System.Drawing.Size(260, 41)
         Me.rdbP1S2.TabIndex = 2
-        Me.rdbP1S2.TabStop = True
         Me.rdbP1S2.Text = "Empty Deck Slot"
         Me.rdbP1S2.UseVisualStyleBackColor = True
         '
@@ -98,7 +95,6 @@ Partial Class frmDeckSelection
         Me.rdbP1S6.Name = "rdbP1S6"
         Me.rdbP1S6.Size = New System.Drawing.Size(260, 41)
         Me.rdbP1S6.TabIndex = 7
-        Me.rdbP1S6.TabStop = True
         Me.rdbP1S6.Text = "Empty Deck Slot"
         Me.rdbP1S6.UseVisualStyleBackColor = True
         '
@@ -109,7 +105,6 @@ Partial Class frmDeckSelection
         Me.rdbP1S4.Name = "rdbP1S4"
         Me.rdbP1S4.Size = New System.Drawing.Size(260, 41)
         Me.rdbP1S4.TabIndex = 6
-        Me.rdbP1S4.TabStop = True
         Me.rdbP1S4.Text = "Empty Deck Slot"
         Me.rdbP1S4.UseVisualStyleBackColor = True
         '
@@ -120,7 +115,6 @@ Partial Class frmDeckSelection
         Me.rdbP1S3.Name = "rdbP1S3"
         Me.rdbP1S3.Size = New System.Drawing.Size(260, 41)
         Me.rdbP1S3.TabIndex = 4
-        Me.rdbP1S3.TabStop = True
         Me.rdbP1S3.Text = "Empty Deck Slot"
         Me.rdbP1S3.UseVisualStyleBackColor = True
         '
@@ -131,7 +125,6 @@ Partial Class frmDeckSelection
         Me.rdbP1S5.Name = "rdbP1S5"
         Me.rdbP1S5.Size = New System.Drawing.Size(260, 41)
         Me.rdbP1S5.TabIndex = 5
-        Me.rdbP1S5.TabStop = True
         Me.rdbP1S5.Text = "Empty Deck Slot"
         Me.rdbP1S5.UseVisualStyleBackColor = True
         '
@@ -158,7 +151,6 @@ Partial Class frmDeckSelection
         Me.rdbP2S6.Name = "rdbP2S6"
         Me.rdbP2S6.Size = New System.Drawing.Size(260, 41)
         Me.rdbP2S6.TabIndex = 7
-        Me.rdbP2S6.TabStop = True
         Me.rdbP2S6.Text = "Empty Deck Slot"
         Me.rdbP2S6.UseVisualStyleBackColor = True
         '
@@ -169,7 +161,6 @@ Partial Class frmDeckSelection
         Me.rdbP2S4.Name = "rdbP2S4"
         Me.rdbP2S4.Size = New System.Drawing.Size(260, 41)
         Me.rdbP2S4.TabIndex = 6
-        Me.rdbP2S4.TabStop = True
         Me.rdbP2S4.Text = "Empty Deck Slot"
         Me.rdbP2S4.UseVisualStyleBackColor = True
         '
@@ -180,7 +171,6 @@ Partial Class frmDeckSelection
         Me.rdbP2S3.Name = "rdbP2S3"
         Me.rdbP2S3.Size = New System.Drawing.Size(260, 41)
         Me.rdbP2S3.TabIndex = 4
-        Me.rdbP2S3.TabStop = True
         Me.rdbP2S3.Text = "Empty Deck Slot"
         Me.rdbP2S3.UseVisualStyleBackColor = True
         '
@@ -191,7 +181,6 @@ Partial Class frmDeckSelection
         Me.rdbP2S5.Name = "rdbP2S5"
         Me.rdbP2S5.Size = New System.Drawing.Size(260, 41)
         Me.rdbP2S5.TabIndex = 5
-        Me.rdbP2S5.TabStop = True
         Me.rdbP2S5.Text = "Empty Deck Slot"
         Me.rdbP2S5.UseVisualStyleBackColor = True
         '
@@ -202,19 +191,16 @@ Partial Class frmDeckSelection
         Me.rdbP2S2.Name = "rdbP2S2"
         Me.rdbP2S2.Size = New System.Drawing.Size(260, 41)
         Me.rdbP2S2.TabIndex = 2
-        Me.rdbP2S2.TabStop = True
         Me.rdbP2S2.Text = "Empty Deck Slot"
         Me.rdbP2S2.UseVisualStyleBackColor = True
         '
         'rdbP2S1
         '
         Me.rdbP2S1.AutoSize = True
-        Me.rdbP2S1.Checked = True
         Me.rdbP2S1.Location = New System.Drawing.Point(6, 30)
         Me.rdbP2S1.Name = "rdbP2S1"
         Me.rdbP2S1.Size = New System.Drawing.Size(260, 41)
         Me.rdbP2S1.TabIndex = 1
-        Me.rdbP2S1.TabStop = True
         Me.rdbP2S1.Text = "Empty Deck Slot"
         Me.rdbP2S1.UseVisualStyleBackColor = True
         '

@@ -9,6 +9,8 @@
     Public cardInfo As New List(Of Integer)
     Public manaPool As New List(Of String)
     Public landInfo As New List(Of Card)
+    Public rLandinfo As New List(Of Card)
+    Public dLandinfo As New List(Of Card)
     'List for each player's creatures
     Public RadiantCreatures As New List(Of Card)
     Public DireCreatures As New List(Of Card)
@@ -27,24 +29,26 @@
 
     Public usedDeck As New List(Of Card)
 
+    Public cardKeeper As Integer
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Me.WindowState = FormWindowState.Maximized
+        usedDeck = DeckBuilder.Deck
 
-        For I As Integer = 1 To 60
+        For I As Integer = 1 To usedDeck.Count
 
-            'adds 60 elements
-            Randomize()
-            cardInfo.Add(Int(8 * Rnd() + 1))
+            cardInfo.Add(usedDeck(I - 1).ID)
             RadiantDeckInfo.Add(1)
             DireDeckInfo.Add(1)
+
         Next
 
         ShuffleCards(RadiantDeckInfo)
         ShuffleCards(DireDeckInfo)
+        DrawCards(6, RadiantDeckInfo, RadiantHandInfo)
         DrawCards(7, DireDeckInfo, DireHandInfo)
         MoveCards()
-        DrawCards(6, RadiantDeckInfo, RadiantHandInfo)
         Debug.Print(RadiantCardsInHand)
         Debug.Print(DireCardsInHand)
         GenerateCreature(1, True)
@@ -58,7 +62,6 @@
 
         Dim cardsLeft As New List(Of Integer)
 
-        'Sets the 30 cards and adds 30 members to each list
         For V As Integer = 1 To cardCount
             cardsLeft.Add(V)
         Next
@@ -73,14 +76,6 @@
 
         Next
 
-        'Prints cards in order for current deck
-        'Debug.Print("Start of new deck" & vbNewLine)
-        For B As Integer = 0 To cardCount - 1
-
-            'Debug.Print("Card " & B + 1 & ": " & deckInfo(B))
-
-        Next
-
     End Sub
 
 
@@ -88,7 +83,6 @@
 
         For I As Integer = 1 To n
             Dim nC As New Card(cardInfo(desDeck(0) - 1), RadiantTurn)
-            nC.Name = "card" & I
             desHand.Add(nC)
             desDeck.Remove(desDeck(0))
         Next
@@ -121,16 +115,9 @@
                 newCard.partOfHand = True
                 newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
                 newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height 'Sets height accordingly with cardscale
-                If Radiant = RadiantTurn Then
-                    newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
-                Else
-                    newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
-                    newCard.Top = Me.Height - (newCard.Top + newCard.Height)
-                    newCard.BackgroundImage = My.Resources.cardBack
-                End If
+                newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
                 newCard.Left = cardScale * My.Resources.Ardent_Procrastinor.Width * RadiantCardsInHand + (Me.Width - RadiantHandInfo.Count * cardScale * My.Resources.Ardent_Procrastinor.Width) / 2
                 newCard.Visible = True
-                newCard.Name = "card" & I
                 RadiantHandInfo.Item(I - 1) = newCard
                 Me.Controls.Add(RadiantHandInfo(I - 1))
 
@@ -162,16 +149,9 @@
                 newCard.partOfHand = True
                 newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
                 newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height 'Sets height accordingly with cardscale
-                If Radiant = RadiantTurn Then
-                    newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
-                Else
-                    newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
-                    newCard.Top = Me.Height - (newCard.Top + newCard.Height)
-                    newCard.BackgroundImage = My.Resources.cardBack
-                End If
+                newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
                 newCard.Left = cardScale * My.Resources.Ardent_Procrastinor.Width * DireCardsInHand + (Me.Width - DireHandInfo.Count * cardScale * My.Resources.Ardent_Procrastinor.Width) / 2
                 newCard.Visible = True
-                    newCard.Name = "card" & I
                 DireHandInfo.Item(I - 1) = newCard
                 Me.Controls.Add(DireHandInfo(I - 1))
 
@@ -201,13 +181,16 @@
                 RadiantDeckInfo.Clear()
                 RadiantHandInfo.Clear()
 
-                For I As Integer = 1 To 60
-                    'adds 60 elements
+                For I As Integer = 1 To usedDeck.Count
+
                     RadiantDeckInfo.Add(1)
+
                 Next
 
                 ShuffleCards(RadiantDeckInfo)
-                Me.Controls("card" & 8 - mulliganCount).Dispose()
+                For Each c As Card In RadiantHandInfo
+                    Me.Controls(c.Name).Dispose()
+                Next
                 DrawCards(7 - mulliganCount, RadiantDeckInfo, RadiantHandInfo)
 
                 mulliganCount += 1
@@ -221,13 +204,15 @@
                 DireDeckInfo.Clear()
                 DireHandInfo.Clear()
 
-                For I As Integer = 1 To 60
+                For I As Integer = 1 To usedDeck.Count
                     'adds 60 elements
                     DireDeckInfo.Add(1)
                 Next
 
                 ShuffleCards(DireDeckInfo)
-                Me.Controls("card" & 8 - mulliganCount).Dispose()
+                For Each c As Card In DireHandInfo
+                    Me.Controls(c.Name).Dispose()
+                Next
                 DrawCards(7 - mulliganCount, DireDeckInfo, DireHandInfo)
 
                 mulliganCount += 1
