@@ -15,14 +15,15 @@
     Public RadiantCreatures As New List(Of Card)
     Public DireCreatures As New List(Of Card)
     Dim cardScale As Decimal = Me.Height / 1024
-    Public RadiantHealth As Integer
-    Public DireHealth As Integer
+    Public RadiantHealth As Integer = 20
+    Public DireHealth As Integer = 20
     'Public Target As Card
     Public Target As Card
     Public NeedTarget As Boolean
     Public IDSearchingForTarget As Integer
     Public RadiantTurn As Boolean = True
-
+    'Parts of turn, 0 is main phase, 1 is attacking
+    Public Phase As Integer
     Public started As Boolean
     Public landPlayed As Integer
     Public landMax As Integer = 1
@@ -35,7 +36,8 @@
 
         Me.WindowState = FormWindowState.Maximized
         usedDeck = IDTable.deck1
-
+        lblBottomHealth.Text = RadiantHealth
+        lblTopHealth.Text = DireHealth
         For I As Integer = 1 To usedDeck.Count
 
             cardInfo.Add(usedDeck(I - 1).ID)
@@ -228,6 +230,7 @@
         btnMulligan.Dispose()
         btnConfirm.Dispose()
         started = True
+        btnNextPhase.Enabled = True
     End Sub
 
     'Sub is called when a creature is played
@@ -340,15 +343,19 @@
 
         landPlayed = 0
         landMax = 1
-
+        MsgBox("Please switch seats with the other player", MsgBoxStyle.OkOnly)
         RadiantTurn = Not (RadiantTurn)
         MoveCards()
         If RadiantTurn Then
             DrawCards(1, RadiantDeckInfo, RadiantHandInfo)
             If RadiantCardsInHand > 7 Then RadiantCardsInHand = 7
+            lblBottomHealth.Text = RadiantHealth
+            lblTopHealth.Text = DireHealth
         ElseIf RadiantTurn = False
             DrawCards(1, DireDeckInfo, DireHandInfo)
             If DireCardsInHand > 7 Then DireCardsInHand = 7
+            lblBottomHealth.Text = DireHealth
+            lblTopHealth.Text = RadiantHealth
         End If
         Debug.Print(RadiantCardsInHand)
         Debug.Print(DireCardsInHand)
@@ -384,8 +391,12 @@
     End Sub
 
     Private Sub btnTS_Click(sender As Object, e As EventArgs) Handles btnNextPhase.Click
-        TurnStart()
-
+        If Phase = 0 Then
+            Phase = 1
+        ElseIf Phase = 1 Then
+            Phase = 0
+            TurnStart()
+        End If
     End Sub
 
 End Class

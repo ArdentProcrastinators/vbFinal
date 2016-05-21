@@ -35,7 +35,15 @@
 
                 If Form1.started = True Then
                     Form1.Target = Me
-                    If partOfHand = False Then
+                    If Form1.Phase = 1 Then
+                        If Radiant Then
+                            Form1.DireHealth -= Me.MaxPower
+                            Form1.lblTopHealth.Text = Form1.DireHealth
+                        ElseIf Radiant = False
+                            Form1.RadiantHealth -= Me.MaxPower
+                            Form1.lblTopHealth.Text = Form1.RadiantHealth
+                        End If
+                    ElseIf partOfHand = False Then
                         IDTable.IDAbility(Me)
                     ElseIf partOfHand = True
                         IDTable.PlayCard(Me)

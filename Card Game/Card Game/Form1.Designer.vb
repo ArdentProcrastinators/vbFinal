@@ -29,6 +29,8 @@ Partial Class Form1
         Me.lblMana = New System.Windows.Forms.Label()
         Me.lblManaStatus = New System.Windows.Forms.Label()
         Me.btnNextPhase = New System.Windows.Forms.Button()
+        Me.lblTopHealth = New System.Windows.Forms.Label()
+        Me.lblBottomHealth = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'tmrUpdater
@@ -73,12 +75,33 @@ Partial Class Form1
         '
         'btnNextPhase
         '
+        Me.btnNextPhase.Enabled = False
         Me.btnNextPhase.Location = New System.Drawing.Point(486, 20)
         Me.btnNextPhase.Name = "btnNextPhase"
         Me.btnNextPhase.Size = New System.Drawing.Size(75, 23)
         Me.btnNextPhase.TabIndex = 11
-        Me.btnNextPhase.Text = "End Turn"
+        Me.btnNextPhase.Text = "Next Phase"
         Me.btnNextPhase.UseVisualStyleBackColor = True
+        '
+        'lblTopHealth
+        '
+        Me.lblTopHealth.AutoSize = True
+        Me.lblTopHealth.Font = New System.Drawing.Font("Impact", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTopHealth.Location = New System.Drawing.Point(1161, 257)
+        Me.lblTopHealth.Name = "lblTopHealth"
+        Me.lblTopHealth.Size = New System.Drawing.Size(90, 34)
+        Me.lblTopHealth.TabIndex = 12
+        Me.lblTopHealth.Text = "Label1"
+        '
+        'lblBottomHealth
+        '
+        Me.lblBottomHealth.AutoSize = True
+        Me.lblBottomHealth.Font = New System.Drawing.Font("Impact", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblBottomHealth.Location = New System.Drawing.Point(1157, 362)
+        Me.lblBottomHealth.Name = "lblBottomHealth"
+        Me.lblBottomHealth.Size = New System.Drawing.Size(94, 34)
+        Me.lblBottomHealth.TabIndex = 13
+        Me.lblBottomHealth.Text = "Label2"
         '
         'Form1
         '
@@ -87,6 +110,8 @@ Partial Class Form1
         Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Untitled_drawing
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1297, 639)
+        Me.Controls.Add(Me.lblBottomHealth)
+        Me.Controls.Add(Me.lblTopHealth)
         Me.Controls.Add(Me.btnNextPhase)
         Me.Controls.Add(Me.lblManaStatus)
         Me.Controls.Add(Me.lblMana)
@@ -106,4 +131,6 @@ Partial Class Form1
     Friend WithEvents lblMana As Label
     Friend WithEvents lblManaStatus As Label
     Friend WithEvents btnNextPhase As Button
+    Friend WithEvents lblTopHealth As Label
+    Friend WithEvents lblBottomHealth As Label
 End Class

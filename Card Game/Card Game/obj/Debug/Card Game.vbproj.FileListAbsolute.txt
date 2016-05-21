@@ -69,7 +69,6 @@ C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.vbprojResol
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.DeckBuilder.resources
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.frmDeckSelection.resources
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.Form1.resources
-C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.Menu.resources
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.Resources.resources
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.vbproj.GenerateResource.Cache
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.exe
@@ -80,3 +79,7 @@ C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\WindowsAppl
 C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\WindowsApplication1.frmMenu.resources
 C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.frmMenu.resources
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.frmMenu.resources
+C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\bin\Debug\Card Game.exe.manifest
+C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\bin\Debug\Card Game.application
+C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.exe.manifest
+C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.application
