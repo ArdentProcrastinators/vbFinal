@@ -30,6 +30,7 @@ Partial Class Form1
         Me.lblManaStatus = New System.Windows.Forms.Label()
         Me.btnNextPhase = New System.Windows.Forms.Button()
         Me.lblTurn = New System.Windows.Forms.Label()
+        Me.btnNext = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'tmrUpdater
@@ -90,6 +91,15 @@ Partial Class Form1
         Me.lblTurn.TabIndex = 12
         Me.lblTurn.Text = "Label1"
         '
+        'btnNext
+        '
+        Me.btnNext.Location = New System.Drawing.Point(955, 373)
+        Me.btnNext.Name = "btnNext"
+        Me.btnNext.Size = New System.Drawing.Size(75, 23)
+        Me.btnNext.TabIndex = 13
+        Me.btnNext.Text = "Next Phase"
+        Me.btnNext.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -97,6 +107,7 @@ Partial Class Form1
         Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Untitled_drawing
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1297, 639)
+        Me.Controls.Add(Me.btnNext)
         Me.Controls.Add(Me.lblTurn)
         Me.Controls.Add(Me.btnNextPhase)
         Me.Controls.Add(Me.lblManaStatus)
@@ -118,4 +129,5 @@ Partial Class Form1
     Friend WithEvents lblManaStatus As Label
     Friend WithEvents btnNextPhase As Button
     Friend WithEvents lblTurn As Label
+    Friend WithEvents btnNext As Button
 End Class
