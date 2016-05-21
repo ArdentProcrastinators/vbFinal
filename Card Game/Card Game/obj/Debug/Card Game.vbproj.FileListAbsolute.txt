@@ -76,8 +76,5 @@ C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.pdb
 C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\WindowsApplication1.DeckBuilder.resources
 C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\WindowsApplication1.frmDeckSelection.resources
 C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\WindowsApplication1.frmMenu.resources
-<<<<<<< HEAD
 C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.frmMenu.resources
-=======
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.frmMenu.resources
->>>>>>> origin/master

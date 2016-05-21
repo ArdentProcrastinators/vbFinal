@@ -3,10 +3,15 @@
     Private Sub Menu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.WindowState = FormWindowState.Maximized
         'Declares starting decks
-        For cards As Integer = 0 To 31
-            Dim NewCard As Card = New Card(1, True)
-            Me.Controls.Add(NewCard)
-            IDTable.deck1.Add(NewCard)
+        For cards As Integer = 0 To 16
+            Dim NoobMemer As Card = New Card(1, True)
+            Me.Controls.Add(NoobMemer)
+            NoobMemer.Visible = False
+            IDTable.deck1.Add(NoobMemer)
+            Dim Forest As Card = New Card(5, True)
+            Me.Controls.Add(Forest)
+            Forest.Visible = False
+            IDTable.deck1.Add(Forest)
         Next
 
     End Sub

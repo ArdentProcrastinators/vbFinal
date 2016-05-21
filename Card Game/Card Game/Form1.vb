@@ -118,8 +118,8 @@
                 newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
                 newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height 'Sets height accordingly with cardscale
                 newCard.Top = Me.Height - newCard.Height - 50
-                If RadiantTurn = True And newCard.Top < Me.Height / 2 Then
-                    newCard.Top = Me.Height - (newCard.Top + newCard.Height)
+                If RadiantTurn = True Then
+                    newCard.BackgroundImage = My.Resources.cardBack
                 End If
                 newCard.Left = cardScale * My.Resources.Ardent_Procrastinor.Width * RadiantCardsInHand + (Me.Width - RadiantHandInfo.Count * cardScale * My.Resources.Ardent_Procrastinor.Width) / 2
                 newCard.Visible = True
@@ -340,11 +340,27 @@
         landMax = 1
 
         RadiantTurn = Not (RadiantTurn)
-        If RadiantTurn Then lblTurn.Text = "Radiant"
-        If RadiantTurn = False Then lblTurn.Text = "Dire"
         MoveCards()
         UpdateHand(True)
         UpdateHand(False)
+        If RadiantTurn = False Then
+            If RadiantTurn Then
+                lblTurn.Text = "Radiant"
+                For Each DireCard As Card In DireHandInfo
+                    DireCard.BackgroundImage = My.Resources.cardBack
+                Next
+                For Each RadiantCard As Card In RadiantHandInfo
+                    'RadiantCard.BackgroundImage = IDTable.IDImage(RadiantCard)
+                Next
+            End If
+            lblTurn.Text = "Dire"
+            For Each RadiantCard As Card In RadiantHandInfo
+                RadiantCard.BackgroundImage = My.Resources.cardBack
+            Next
+            For Each DireCard As Card In DireHandInfo
+                'DireCard.BackgroundImage = IDTable.IDImage(DireCard)
+            Next
+        End If
         If RadiantTurn Then
             DrawCards(1, RadiantDeckInfo, RadiantHandInfo)
             If RadiantCardsInHand > 7 Then RadiantCardsInHand = 7
@@ -363,16 +379,15 @@
         For Each ThisControl As Control In Me.Controls
             If TypeOf (ThisControl) Is Card Then
                 Dim c As Card = ThisControl                 'Casts ThisControl as Card so paramaters like Radiant can be used
-                'c.Top = Me.Height - (c.Top + c.Height)      'Flips the cards to opposite side of form, top to bottom and bottom to top
                 If c.partOfHand = True Then
                     If RadiantTurn = c.Radiant Then         'If card is supposed to be in the hand of the current player's turn
                         'Sets current player's cards in hand's images to the image of the card
-                        c.BackgroundImage = IDTable.IDImage(c)
+                        'c.BackgroundImage = IDTable.IDImage(c)
                     Else
                         'Sets other player's cards in hand's image to card back to hide the cards
                         c.BackgroundImage = My.Resources.cardBack
-                    End If
-                ElseIf c.partOfHand = False Then
+                End If
+            ElseIf c.partOfHand = False Then
                     c.Top = Me.Height - (c.Top + c.Height)
                 End If
             End If
