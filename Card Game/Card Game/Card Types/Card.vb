@@ -71,8 +71,8 @@
         Debug.Print(Radiant)
         If partOfDB = False And (Me.Radiant = Form1.RadiantTurn) Or (Me.partOfHand = False And Me.Radiant <> Form1.RadiantTurn) Then
 
-            Me.Width *= 1.75
-            Me.Height *= 1.75
+            Me.Width *= 1.9
+            Me.Height *= 1.9
             Me.Top -= Me.Height / 2
 
         ElseIf partOfDB = True
@@ -87,8 +87,8 @@
         If partOfDB = False And (Me.Radiant = Form1.RadiantTurn) Or (Me.partOfHand = False And Me.Radiant <> Form1.RadiantTurn) Then
 
             Me.Top += Me.Height / 2
-            Me.Width /= 1.75
-            Me.Height /= 1.75
+            Me.Width /= 1.9
+            Me.Height /= 1.9
 
 
         ElseIf partOfDB = True
