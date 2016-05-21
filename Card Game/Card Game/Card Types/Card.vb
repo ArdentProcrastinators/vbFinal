@@ -30,7 +30,7 @@
 
     Public Sub MeClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseDown
 
-        If partOfDB = False And Radiant = Form1.RadiantTurn Then
+        If partOfDB = False Then
             If Radiant = Form1.RadiantTurn Then
 
                 If Form1.started = True Then
@@ -68,11 +68,11 @@
     End Sub
 
     Public Sub mouseOn() Handles Me.MouseEnter
-        Debug.Print(Radiant)
+
         If partOfDB = False And (Me.Radiant = Form1.RadiantTurn) Or (Me.partOfHand = False And Me.Radiant <> Form1.RadiantTurn) Then
 
-            Me.Width *= 1.9
-            Me.Height *= 1.9
+            Me.Width *= 1.85
+            Me.Height *= 1.85
             Me.Top -= Me.Height / 2
 
         ElseIf partOfDB = True
@@ -87,8 +87,8 @@
         If partOfDB = False And (Me.Radiant = Form1.RadiantTurn) Or (Me.partOfHand = False And Me.Radiant <> Form1.RadiantTurn) Then
 
             Me.Top += Me.Height / 2
-            Me.Width /= 1.9
-            Me.Height /= 1.9
+            Me.Width /= 1.85
+            Me.Height /= 1.85
 
 
         ElseIf partOfDB = True
