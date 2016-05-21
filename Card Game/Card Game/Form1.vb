@@ -1,6 +1,6 @@
 ﻿Public Class Form1
-    Public RadiantDeckInfo As New List(Of Card)
-    Public DireDeckInfo As New List(Of Card)
+    Public RadiantDeckInfo As New List(Of Integer)
+    Public DireDeckInfo As New List(Of Integer)
     Public RadiantHandInfo As New List(Of Card)
     Public DireHandInfo As New List(Of Card)
     Public RadiantCardsInHand
@@ -22,8 +22,7 @@
     Public NeedTarget As Boolean
     Public IDSearchingForTarget As Integer
     Public RadiantTurn As Boolean = True
-    'Stores turn phases, 0 is main phase 1, 1 is attack, 2 is blocking, 3 is main phase 2
-    Public Phase As Integer = 0
+
     Public started As Boolean
     Public landPlayed As Integer
     Public landMax As Integer = 1
@@ -35,19 +34,19 @@
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Me.WindowState = FormWindowState.Maximized
-        RadiantDeckInfo = frmDeckSelection.selectedDeck
-        DireDeckInfo = frmDeckSelection.selectedDeck
-        usedDeck = RadiantDeckInfo
+        usedDeck = DeckBuilder.Deck
 
         For I As Integer = 1 To usedDeck.Count
 
             cardInfo.Add(usedDeck(I - 1).ID)
+            RadiantDeckInfo.Add(1)
+            DireDeckInfo.Add(1)
 
         Next
 
         ShuffleCards(RadiantDeckInfo)
         ShuffleCards(DireDeckInfo)
-        DrawCards(7, RadiantDeckInfo, RadiantHandInfo)
+        DrawCards(6, RadiantDeckInfo, RadiantHandInfo)
         DrawCards(7, DireDeckInfo, DireHandInfo)
         MoveCards()
         Debug.Print(RadiantCardsInHand)
@@ -56,7 +55,7 @@
 
     End Sub
 
-    Public Sub ShuffleCards(deckInfo As List(Of Card))
+    Public Sub ShuffleCards(deckInfo As List(Of Integer))
 
         'Referenced variables in some for loops
         Dim cardCount As Integer = deckInfo.Count
@@ -72,7 +71,7 @@
 
             Randomize()
             Dim x As Integer = Int(cardsLeft.Count() * Rnd())
-            deckInfo.Item(I).ID = cardsLeft(x)
+            deckInfo.Item(I) = cardsLeft(x)
             cardsLeft.Remove(cardsLeft(x))
 
         Next
@@ -80,16 +79,15 @@
     End Sub
 
 
-    Public Sub DrawCards(n As Integer, desDeck As List(Of Card), desHand As List(Of Card))
+    Public Sub DrawCards(n As Integer, desDeck As List(Of Integer), desHand As List(Of Card))
 
         For I As Integer = 1 To n
-            Dim nC As New Card(cardInfo(desDeck(0).ID - 1), RadiantTurn)
+            Dim nC As New Card(cardInfo(desDeck(0) - 1), RadiantTurn)
             desHand.Add(nC)
             desDeck.Remove(desDeck(0))
         Next
 
-        If desHand Is RadiantHandInfo Then UpdateHand(True)
-        If desHand Is DireHandInfo Then UpdateHand(False)
+        UpdateHand(RadiantTurn)
 
     End Sub
 
@@ -113,14 +111,18 @@
             'Adds new cards
             For I As Integer = 1 To RadiantHandInfo.Count
 
-                Dim newCard As New Card(RadiantHandInfo(I - 1).ID, True)
+                Dim newCard As New Card(RadiantHandInfo(I - 1).ID, RadiantTurn)
                 newCard.partOfHand = True
                 newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
                 newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height 'Sets height accordingly with cardscale
+<<<<<<< HEAD
                 newCard.Top = Me.Height - newCard.Height - 50
                 If RadiantTurn = True Then
                     newCard.BackgroundImage = My.Resources.cardBack
                 End If
+=======
+                newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
+>>>>>>> origin/master
                 newCard.Left = cardScale * My.Resources.Ardent_Procrastinor.Width * RadiantCardsInHand + (Me.Width - RadiantHandInfo.Count * cardScale * My.Resources.Ardent_Procrastinor.Width) / 2
                 newCard.Visible = True
                 RadiantHandInfo.Item(I - 1) = newCard
@@ -150,14 +152,11 @@
             'Adds new cards
             For I As Integer = 1 To DireHandInfo.Count
 
-                Dim newCard As New Card(DireHandInfo(I - 1).ID, False)
+                Dim newCard As New Card(DireHandInfo(I - 1).ID, RadiantTurn)
                 newCard.partOfHand = True
                 newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
                 newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height 'Sets height accordingly with cardscale
-                newCard.Top = Me.Height - newCard.Height - 50
-                If RadiantTurn = False Then
-                    newCard.Top = Me.Height - (newCard.Top + newCard.Height)
-                End If
+                newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
                 newCard.Left = cardScale * My.Resources.Ardent_Procrastinor.Width * DireCardsInHand + (Me.Width - DireHandInfo.Count * cardScale * My.Resources.Ardent_Procrastinor.Width) / 2
                 newCard.Visible = True
                 DireHandInfo.Item(I - 1) = newCard
@@ -189,7 +188,11 @@
                 RadiantDeckInfo.Clear()
                 RadiantHandInfo.Clear()
 
-                RadiantDeckInfo = usedDeck
+                For I As Integer = 1 To usedDeck.Count
+
+                    RadiantDeckInfo.Add(1)
+
+                Next
 
                 ShuffleCards(RadiantDeckInfo)
                 For Each c As Card In RadiantHandInfo
@@ -208,7 +211,10 @@
                 DireDeckInfo.Clear()
                 DireHandInfo.Clear()
 
-                DireDeckInfo = usedDeck
+                For I As Integer = 1 To usedDeck.Count
+                    'adds 60 elements
+                    DireDeckInfo.Add(1)
+                Next
 
                 ShuffleCards(DireDeckInfo)
                 For Each c As Card In DireHandInfo
@@ -247,7 +253,7 @@
             newCreature.DefineCreature(newCreature)
             RadiantCreatures.Add(newCreature)
             Me.Controls.Add(newCreature)
-            newCreature.Top = Me.Height / 1.75
+            newCreature.Top = Me.Height / 2
             newCreature.Left = Me.Width / 2 + (Me.Width / 32 * (RadiantCreatures.Count - 2))
         Else
             'Same as above only for the Dire side
@@ -259,6 +265,9 @@
             newCreature.DefineCreature(newCreature)
             DireCreatures.Add(newCreature)
             Me.Controls.Add(newCreature)
+            newCreature.Top = Me.Height / 2
+            newCreature.Left = Me.Width / 2 + (Me.Width / 32 * (RadiantCreatures.Count - 2))
+
         End If
 
     End Sub
@@ -287,20 +296,20 @@
 
     End Sub
 
-    Public Sub TMC(manaCost As List(Of String))
+    Public Sub TMC(c As Card)
 
         Dim payed As Boolean
 
-        For x As Integer = 1 To manaCost.Count
+        For x As Integer = 1 To c.manaCost.Count
 
 
             Dim m As Integer = 0
             payed = False
 
-            If manaCost(x - 1) <> "any" Then
+            If c.manaCost(x - 1) <> "any" Then
                 Do Until payed = True
 
-                    If landInfo(m).manaCost(0) = manaCost(x - 1) And landInfo(m).used = True And landInfo(m).tapped = False Then
+                    If landInfo(m).manaCost(0) = c.manaCost(x - 1) And landInfo(m).used = True And landInfo(m).tapped = False Then
                         landInfo(m).tapped = True
                         landInfo(m).BackgroundImage = IDTable.IDImage(landInfo(m))
                         payed = True
@@ -308,7 +317,7 @@
                     m += 1
 
                 Loop
-                manaPool.Remove(manaCost(x - 1))
+                manaPool.Remove(c.manaCost(x - 1))
             Else
                 Do Until payed = True
                     If m > landInfo.Count - 1 Then MsgBox("error")
@@ -341,6 +350,7 @@
 
         RadiantTurn = Not (RadiantTurn)
         MoveCards()
+<<<<<<< HEAD
         UpdateHand(True)
         UpdateHand(False)
         If RadiantTurn = False Then
@@ -361,6 +371,8 @@
                 'DireCard.BackgroundImage = IDTable.IDImage(DireCard)
             Next
         End If
+=======
+>>>>>>> origin/master
         If RadiantTurn Then
             DrawCards(1, RadiantDeckInfo, RadiantHandInfo)
             If RadiantCardsInHand > 7 Then RadiantCardsInHand = 7
@@ -374,11 +386,10 @@
 
     End Sub
     Private Sub MoveCards()
-        'If RadiantTurn Then lblTurn.Text = "Radiant"
-        'If RadiantTurn = False Then lblTurn.Text = "Dire"
         For Each ThisControl As Control In Me.Controls
             If TypeOf (ThisControl) Is Card Then
                 Dim c As Card = ThisControl                 'Casts ThisControl as Card so paramaters like Radiant can be used
+<<<<<<< HEAD
                 If c.partOfHand = True Then
                     If RadiantTurn = c.Radiant Then         'If card is supposed to be in the hand of the current player's turn
                         'Sets current player's cards in hand's images to the image of the card
@@ -389,6 +400,17 @@
                 End If
             ElseIf c.partOfHand = False Then
                     c.Top = Me.Height - (c.Top + c.Height)
+=======
+                c.Top = Me.Height - (c.Top + c.Height)      'Flips the cards to opposite side of form, top to bottom and bottom to top
+                If c.partOfHand = True Then
+                    If RadiantTurn = c.Radiant Then         'If card is supposed to be in the hand of the current player's turn
+                        'Sets current player's cards in hand's images to the image of the card
+                        c.BackgroundImage = IDTable.IDImage(c)
+                    Else
+                        'Sets other player's cards in hand's image to card back to hide the cards
+                        c.BackgroundImage = My.Resources.cardBack
+                    End If
+>>>>>>> origin/master
                 End If
             End If
         Next
@@ -409,14 +431,5 @@
 
     End Sub
 
-    Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
-        Phase += 1
-        Select Case Phase
-
-            Case Is = 3
-                Phase = 0
-                TurnStart()
-        End Select
-    End Sub
 End Class
 

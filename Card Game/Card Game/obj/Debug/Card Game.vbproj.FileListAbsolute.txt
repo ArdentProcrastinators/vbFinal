@@ -42,6 +42,7 @@ C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj
 C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj\Debug\WindowsApplication1.Form1.resources
 C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj\Debug\WindowsApplication1.Resources.resources
 C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj\Debug\Card Game.vbproj.GenerateResource.Cache
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.Menu.resources
 C:\Users\mpotter\Downloads\vbFinal-master (1)\vbFinal-master\Card Game\Card Game\bin\Debug\Card Game.exe.config
 C:\Users\mpotter\Downloads\vbFinal-master (1)\vbFinal-master\Card Game\Card Game\obj\Debug\Card Game.exe
 C:\Users\mpotter\Downloads\vbFinal-master (1)\vbFinal-master\Card Game\Card Game\obj\Debug\Card Game.xml
@@ -68,6 +69,7 @@ C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.vbprojResol
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.DeckBuilder.resources
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.frmDeckSelection.resources
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.Form1.resources
+C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.Menu.resources
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.Resources.resources
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.vbproj.GenerateResource.Cache
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.exe
@@ -76,5 +78,8 @@ C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.pdb
 C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\WindowsApplication1.DeckBuilder.resources
 C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\WindowsApplication1.frmDeckSelection.resources
 C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\WindowsApplication1.frmMenu.resources
+<<<<<<< HEAD
 C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.frmMenu.resources
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.frmMenu.resources
+=======
+>>>>>>> origin/master

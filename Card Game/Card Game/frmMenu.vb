@@ -2,6 +2,7 @@
 
     Private Sub Menu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.WindowState = FormWindowState.Maximized
+<<<<<<< HEAD
         'Declares starting decks
         For cards As Integer = 0 To 16
             Dim NoobMemer As Card = New Card(1, True)
@@ -14,6 +15,8 @@
             IDTable.deck1.Add(Forest)
         Next
 
+=======
+>>>>>>> origin/master
     End Sub
 
     Private Sub formSizeChanged() Handles Me.SizeChanged
