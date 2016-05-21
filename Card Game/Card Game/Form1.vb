@@ -22,7 +22,8 @@
     Public NeedTarget As Boolean
     Public IDSearchingForTarget As Integer
     Public RadiantTurn As Boolean = True
-
+    'Stores turn phases, 0 is main phase 1, 1 is attack, 2 is blocking, 3 is main phase 2
+    Public Phase As Integer = 0
     Public started As Boolean
     Public landPlayed As Integer
     Public landMax As Integer = 1
@@ -47,7 +48,7 @@
         ShuffleCards(RadiantDeckInfo)
         ShuffleCards(DireDeckInfo)
         DrawCards(7, RadiantDeckInfo, RadiantHandInfo)
-        DrawCards(8, DireDeckInfo, DireHandInfo)
+        DrawCards(7, DireDeckInfo, DireHandInfo)
         MoveCards()
         Debug.Print(RadiantCardsInHand)
         Debug.Print(DireCardsInHand)
@@ -116,8 +117,8 @@
                 newCard.partOfHand = True
                 newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
                 newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height 'Sets height accordingly with cardscale
-                newCard.Top = Me.Height - (cardScale * My.Resources.Ardent_Procrastinor.Height + 50)
-                If RadiantTurn = True Then
+                newCard.Top = Me.Height - newCard.Height - 50
+                If RadiantTurn = True And newCard.Top < Me.Height / 2 Then
                     newCard.Top = Me.Height - (newCard.Top + newCard.Height)
                 End If
                 newCard.Left = cardScale * My.Resources.Ardent_Procrastinor.Width * RadiantCardsInHand + (Me.Width - RadiantHandInfo.Count * cardScale * My.Resources.Ardent_Procrastinor.Width) / 2
@@ -153,7 +154,7 @@
                 newCard.partOfHand = True
                 newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
                 newCard.Height = cardScale * My.Resources.Ardent_Procrastinor.Height 'Sets height accordingly with cardscale
-                newCard.Top = Me.Height - cardScale * My.Resources.Ardent_Procrastinor.Height - 50
+                newCard.Top = Me.Height - newCard.Height - 50
                 If RadiantTurn = False Then
                     newCard.Top = Me.Height - (newCard.Top + newCard.Height)
                 End If
@@ -339,7 +340,11 @@
         landMax = 1
 
         RadiantTurn = Not (RadiantTurn)
+        If RadiantTurn Then lblTurn.Text = "Radiant"
+        If RadiantTurn = False Then lblTurn.Text = "Dire"
         MoveCards()
+        UpdateHand(True)
+        UpdateHand(False)
         If RadiantTurn Then
             DrawCards(1, RadiantDeckInfo, RadiantHandInfo)
             If RadiantCardsInHand > 7 Then RadiantCardsInHand = 7
@@ -353,12 +358,12 @@
 
     End Sub
     Private Sub MoveCards()
-        If RadiantTurn Then lblTurn.Text = "Radiant"
-        If RadiantTurn = False Then lblTurn.Text = "Dire"
+        'If RadiantTurn Then lblTurn.Text = "Radiant"
+        'If RadiantTurn = False Then lblTurn.Text = "Dire"
         For Each ThisControl As Control In Me.Controls
             If TypeOf (ThisControl) Is Card Then
                 Dim c As Card = ThisControl                 'Casts ThisControl as Card so paramaters like Radiant can be used
-                c.Top = Me.Height - (c.Top + c.Height)      'Flips the cards to opposite side of form, top to bottom and bottom to top
+                'c.Top = Me.Height - (c.Top + c.Height)      'Flips the cards to opposite side of form, top to bottom and bottom to top
                 If c.partOfHand = True Then
                     If RadiantTurn = c.Radiant Then         'If card is supposed to be in the hand of the current player's turn
                         'Sets current player's cards in hand's images to the image of the card
@@ -367,6 +372,8 @@
                         'Sets other player's cards in hand's image to card back to hide the cards
                         c.BackgroundImage = My.Resources.cardBack
                     End If
+                ElseIf c.partOfHand = False Then
+                    c.Top = Me.Height - (c.Top + c.Height)
                 End If
             End If
         Next
@@ -387,5 +394,14 @@
 
     End Sub
 
+    Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
+        Phase += 1
+        Select Case Phase
+
+            Case Is = 3
+                Phase = 0
+                TurnStart()
+        End Select
+    End Sub
 End Class
 
