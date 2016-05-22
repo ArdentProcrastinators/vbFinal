@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Card Game.exe" size="3609512">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Card Game.exe" size="3611048">
       <assemblyIdentity name="Card Game" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>b2Nls9RrHpLwZBRuYLrVW543c4Rfa1LOnUKToo3baR0=</dsig:DigestValue>
+        <dsig:DigestValue>p0gURluwCMT08AYvl+nO7p8RDwtvjma3CmhERayvQQo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

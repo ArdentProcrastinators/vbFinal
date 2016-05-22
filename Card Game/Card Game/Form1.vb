@@ -218,7 +218,14 @@
         'Keeps mulligan count to draw the correct amount of cards
         Static mulliganCount As Integer = 1
         If RadiantTurn Then
+
             If RadiantHandInfo.Count > 1 Then
+
+                For Each c As Card In RadiantHandInfo
+
+                    If Me.Controls(c.Name) IsNot Nothing And c.Radiant = RadiantTurn Then Me.Controls(c.Name).Dispose()
+
+                Next
 
                 RadiantDeckInfo.Clear()
                 RadiantHandInfo.Clear()
@@ -242,6 +249,12 @@
             End If
         ElseIf RadiantTurn = False Then
             If DireHandInfo.Count > 1 Then
+
+                For Each c As Card In DireHandInfo
+
+                    If Me.Controls(c.Name) IsNot Nothing And c.Radiant = RadiantTurn Then Me.Controls(c.Name).Dispose()
+
+                Next
 
                 DireDeckInfo.Clear()
                 DireHandInfo.Clear()
@@ -387,13 +400,11 @@
         RadiantTurn = Not (RadiantTurn)
         MoveCards()
         If RadiantTurn Then
-            DrawCards(1, RadiantDeckInfo, RadiantHandInfo, RadiantCardInfo)
             If RadiantCardsInHand > 7 Then RadiantCardsInHand = 7
             lblBottomHealth.Text = RadiantHealth
             lblTopHealth.Text = DireHealth
             lblTurn.Text = "Radiant's Turn"
         ElseIf RadiantTurn = False
-            DrawCards(1, DireDeckInfo, DireHandInfo, DireCardInfo)
             If DireCardsInHand > 7 Then DireCardsInHand = 7
             lblBottomHealth.Text = DireHealth
             lblTopHealth.Text = RadiantHealth
