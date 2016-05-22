@@ -35,7 +35,9 @@
 
                 If Form1.started = True Then
                     Form1.Target = Me
+                    'If in combat phase
                     If Form1.Phase = 1 Then
+                        'Deals damage to the opponents health
                         If Radiant Then
                             Form1.DireHealth -= Me.MaxPower
                             Form1.lblTopHealth.Text = Form1.DireHealth

@@ -350,11 +350,13 @@
             If RadiantCardsInHand > 7 Then RadiantCardsInHand = 7
             lblBottomHealth.Text = RadiantHealth
             lblTopHealth.Text = DireHealth
+            lblTurn.Text = "Radiant's Turn"
         ElseIf RadiantTurn = False
             DrawCards(1, DireDeckInfo, DireHandInfo)
             If DireCardsInHand > 7 Then DireCardsInHand = 7
             lblBottomHealth.Text = DireHealth
             lblTopHealth.Text = RadiantHealth
+            lblTurn.Text = "Dire's Turn"
         End If
         Debug.Print(RadiantCardsInHand)
         Debug.Print(DireCardsInHand)
@@ -390,10 +392,13 @@
     End Sub
 
     Private Sub btnTS_Click(sender As Object, e As EventArgs) Handles btnNextPhase.Click
+        'Changes the phase and ends the turn if needed
         If Phase = 0 Then
             Phase = 1
+            lblPhase.Text = "Combat Phase"
         ElseIf Phase = 1 Then
             Phase = 0
+            lblPhase.Text = "Main Phase"
             TurnStart()
         End If
     End Sub

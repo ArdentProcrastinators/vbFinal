@@ -27,6 +27,8 @@ Partial Class DeckBuilder
         Me.txtTotal = New System.Windows.Forms.TextBox()
         Me.btnClear = New System.Windows.Forms.Button()
         Me.btnCreate = New System.Windows.Forms.Button()
+        Me.cmbDeck = New System.Windows.Forms.ComboBox()
+        Me.lblDeck = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'sbarCards
@@ -49,7 +51,7 @@ Partial Class DeckBuilder
         '
         'txtTotal
         '
-        Me.txtTotal.Location = New System.Drawing.Point(1000, 648)
+        Me.txtTotal.Location = New System.Drawing.Point(988, 638)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.ReadOnly = True
         Me.txtTotal.Size = New System.Drawing.Size(139, 20)
@@ -75,11 +77,32 @@ Partial Class DeckBuilder
         Me.btnCreate.Text = "Create Deck"
         Me.btnCreate.UseVisualStyleBackColor = True
         '
+        'cmbDeck
+        '
+        Me.cmbDeck.FormattingEnabled = True
+        Me.cmbDeck.Items.AddRange(New Object() {"Deck 1", "Deck 2", "Deck 3", "Deck 4", "Deck 5", "Deck 6"})
+        Me.cmbDeck.Location = New System.Drawing.Point(861, 638)
+        Me.cmbDeck.Name = "cmbDeck"
+        Me.cmbDeck.Size = New System.Drawing.Size(121, 21)
+        Me.cmbDeck.TabIndex = 5
+        '
+        'lblDeck
+        '
+        Me.lblDeck.AutoSize = True
+        Me.lblDeck.Font = New System.Drawing.Font("Franklin Gothic Medium", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDeck.Location = New System.Drawing.Point(461, 632)
+        Me.lblDeck.Name = "lblDeck"
+        Me.lblDeck.Size = New System.Drawing.Size(394, 26)
+        Me.lblDeck.TabIndex = 6
+        Me.lblDeck.Text = "Which Deck would you like to save this as?"
+        '
         'DeckBuilder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1139, 667)
+        Me.Controls.Add(Me.lblDeck)
+        Me.Controls.Add(Me.cmbDeck)
         Me.Controls.Add(Me.btnCreate)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.txtTotal)
@@ -97,4 +120,6 @@ Partial Class DeckBuilder
     Friend WithEvents txtTotal As TextBox
     Friend WithEvents btnClear As Button
     Friend WithEvents btnCreate As Button
+    Friend WithEvents cmbDeck As ComboBox
+    Friend WithEvents lblDeck As Label
 End Class
