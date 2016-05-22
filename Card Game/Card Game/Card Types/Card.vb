@@ -124,5 +124,7 @@
         BuffPower += IBuffPower
         BuffHealth += IBuffHealth
         CurrentHealth += IBuffHealth
+        MaxPower = BasePower + BuffPower
+        MaxHealth = BaseHealth + BuffHealth
     End Sub
 End Class

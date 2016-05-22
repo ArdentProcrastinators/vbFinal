@@ -161,12 +161,12 @@
             Case Is = 1
                 If Form1.NeedTarget = True Then
                     'Confirms this is target of ability
-                    If MsgBox("Would you like to give this creature -1/-0?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                    If MsgBox("This Creature's stats are " & c.MaxPower & "/" & c.CurrentHealth & ". Would you Like to give this creature -1/-0?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
                         'Applies debuff and stops ability process
                         Form1.Target.Buff(-1, 0)
                         Form1.NeedTarget = False
                     End If
-                ElseIf MsgBox("Would you like to use this card's ability?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                ElseIf MsgBox("This Creature's stats are " & c.MaxPower & "/" & c.CurrentHealth & ". Would you Like to use this card's ability?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
                     'Says a target is needed if ability is used
                     Form1.NeedTarget = True
                     Form1.IDSearchingForTarget = c.ID
@@ -177,13 +177,13 @@
                 'If a target is being searched for
                 If Form1.NeedTarget = True Then
                     'Confirms this is target of ability
-                    If MsgBox("Would you like to [list ability]", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                    If MsgBox("This Creature's stats are " & c.MaxPower & "/" & c.CurrentHealth & ". Would you like to [list ability]", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
                         'Ability code
                         'Disables target search
                         Form1.NeedTarget = False
                     End If
                     'If no target is needed currently
-                ElseIf MsgBox("Would you like to use this card's ability?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                ElseIf MsgBox("This Creature's stats are " & c.MaxPower & "/" & c.CurrentHealth & ". Would you like to use this card's ability?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
                     'Says a target is needed if ability is used, starts search for target
                     Form1.NeedTarget = True
                     Form1.IDSearchingForTarget = c.ID

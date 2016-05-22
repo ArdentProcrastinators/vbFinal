@@ -53,7 +53,6 @@
         MoveCards()
         Debug.Print(RadiantCardsInHand)
         Debug.Print(DireCardsInHand)
-        GenerateCreature(1, True)
 
     End Sub
 
