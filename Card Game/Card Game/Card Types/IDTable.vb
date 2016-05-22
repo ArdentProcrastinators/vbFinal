@@ -26,6 +26,14 @@
                 Return "Plains"
             Case 8
                 Return "Levent's Bearded Dragon"
+            Case 9
+                Return "Dr Kirby"
+            Case 10
+                Return "Kevin the Lovemaker"
+            Case 11
+                Return "King of all Memes"
+            Case 12
+                Return "The Mad-Dabber"
         End Select
 
     End Function
@@ -37,14 +45,18 @@
                 Return 2
             Case 2
                 Return 2
-            Case 3
+            Case 8
                 Return 3
-            Case 4
-                Return 4
-            Case 5
+            Case 9
                 Return 5
+            Case 10
+                Return 3
+            Case 11
+                Return 7
+            Case 12
+                Return 4
             Case Else
-                'Error return, returned if ID does not exist
+
                 Return 100
         End Select
     End Function
@@ -56,12 +68,16 @@
                 Return 2
             Case 2
                 Return 2
-            Case 3
-                Return 4
-            Case 4
+            Case 8
+                Return 2
+            Case 9
                 Return 5
-            Case 5
+            Case 10
+                Return 2
+            Case 11
                 Return 6
+            Case 12
+                Return 2
             Case Else
                 'Error return, returned if ID does not exist
                 Return 100
@@ -95,6 +111,29 @@
             Case 8
                 c.manaCost.Add("red")
                 c.manaCost.Add("green")
+                c.manaCost.Add("any")
+            Case 9
+                c.manaCost.Add("white")
+                c.manaCost.Add("white")
+                c.manaCost.Add("any")
+                c.manaCost.Add("any")
+                c.manaCost.Add("any")
+            Case 10
+                c.manaCost.Add("red")
+                c.manaCost.Add("green")
+                c.manaCost.Add("any")
+                c.manaCost.Add("any")
+            Case 11
+                c.manaCost.Add("green")
+                c.manaCost.Add("green")
+                c.manaCost.Add("green")
+                c.manaCost.Add("any")
+                c.manaCost.Add("any")
+                c.manaCost.Add("any")
+            Case 12
+                c.manaCost.Add("blue")
+                c.manaCost.Add("green")
+                c.manaCost.Add("any")
                 c.manaCost.Add("any")
 
         End Select
@@ -147,6 +186,14 @@
                 End If
             Case 8
                 Return My.Resources.Levent_s_Bearded_Dragon
+            Case 9
+                Return My.Resources.Dr__Kirby
+            Case 10
+                Return My.Resources.Kevin_the_lovemaker
+            Case 11
+                Return My.Resources.The_King_of_all_Memes
+            Case 12
+                Return My.Resources.The_Mad_Dabber
             Case 31
 
         End Select

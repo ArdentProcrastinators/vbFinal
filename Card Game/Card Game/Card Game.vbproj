@@ -15,7 +15,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Max\Desktop\</PublishUrl>
+    <PublishUrl>s\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -251,6 +251,10 @@
   <ItemGroup>
     <Content Include="Resources\amCool.ico" />
     <Content Include="Resources\cardBack.jpg" />
+    <None Include="Resources\Kevin the lovemaker.png" />
+    <None Include="Resources\Dr. Kirby.png" />
+    <None Include="Resources\The Mad-Dabber.png" />
+    <None Include="Resources\The King of all Memes.png" />
     <None Include="Resources\cardBack1.jpg" />
     <None Include="Resources\Levent%27s Bearded Dragon.png" />
   </ItemGroup>

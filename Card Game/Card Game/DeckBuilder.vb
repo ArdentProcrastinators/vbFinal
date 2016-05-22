@@ -8,7 +8,7 @@
 
     Private Sub DeckBuilder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        For I As Integer = 1 To 8
+        For I As Integer = 1 To 12
             Dim newC As New Card(I, True)
             newC.Top = 20
             newC.Left = (0.5 * My.Resources.Ardent_Procrastinor.Width + 25) * (I - 1)
@@ -53,7 +53,7 @@
 
             txtCards.Text = ""
 
-            For I As Integer = 1 To 8
+            For I As Integer = 1 To 12
 
                 If cardsCount(I) > 0 Then txtCards.Text &= cardsCount(I) & " X " & IDTable.SetName(I) & "        "
                 txtTotal.Text = "Total: " & total
@@ -69,7 +69,7 @@
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-        For I As Integer = 1 To 8
+        For I As Integer = 1 To 12
             cardsCount(I) = 0
         Next
 

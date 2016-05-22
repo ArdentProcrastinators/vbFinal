@@ -83,6 +83,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property Dr__Kirby() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Dr. Kirby", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property forest() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("forest", resourceCulture)
@@ -136,6 +146,16 @@ Namespace My.Resources
         Friend ReadOnly Property islandtu() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("islandtu", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property Kevin_the_lovemaker() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Kevin the lovemaker", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -246,6 +266,26 @@ Namespace My.Resources
         Friend ReadOnly Property swampu() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("swampu", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property The_King_of_all_Memes() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("The King of all Memes", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property The_Mad_Dabber() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("The Mad-Dabber", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

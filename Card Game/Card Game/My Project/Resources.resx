@@ -121,8 +121,11 @@
   <data name="foresttu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\foresttu.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="swamp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\swamp.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="islandtu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\islandtu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="swamptu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\swamptu.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Levent's Bearded Dragon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Levent's Bearded Dragon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,31 +154,40 @@
   <data name="plainsu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\plainsu.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cardBack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cardBack1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="plains" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\plains.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="plainstu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\plainstu.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="NoobMemer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NoobMemer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="swampu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\swampu.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="swamptu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\swamptu.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="swamp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\swamp.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="forest" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forest.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="islandtu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\islandtu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="NoobMemer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NoobMemer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mountain" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mountain.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cardBack" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cardBack1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="The King of all Memes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\The King of all Memes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="The Mad-Dabber" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\The Mad-Dabber.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Dr. Kirby" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dr. Kirby.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Kevin the lovemaker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Kevin the lovemaker.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

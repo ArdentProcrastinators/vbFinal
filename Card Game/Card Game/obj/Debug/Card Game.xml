@@ -32,6 +32,11 @@ Card Game
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:WindowsApplication1.My.Resources.Resources.Dr__Kirby">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:WindowsApplication1.My.Resources.Resources.forest">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -58,6 +63,11 @@ Card Game
 </summary>
 </member>
 <member name="P:WindowsApplication1.My.Resources.Resources.islandtu">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:WindowsApplication1.My.Resources.Resources.Kevin_the_lovemaker">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
@@ -113,6 +123,16 @@ Card Game
 </summary>
 </member>
 <member name="P:WindowsApplication1.My.Resources.Resources.swampu">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:WindowsApplication1.My.Resources.Resources.The_King_of_all_Memes">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:WindowsApplication1.My.Resources.Resources.The_Mad_Dabber">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
