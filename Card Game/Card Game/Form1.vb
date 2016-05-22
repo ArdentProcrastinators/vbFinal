@@ -6,7 +6,8 @@
     Public RadiantCardsInHand
     Public DireCardsInHand
     'Not sure what cardInfo does so you will have to change that
-    Public cardInfo As New List(Of Integer)
+    Public RadiantCardInfo As New List(Of Integer)
+    Public DireCardInfo As New List(Of Integer)
     Public manaPool As New List(Of String)
     Public landInfo As New List(Of Card)
     Public rLandinfo As New List(Of Card)
@@ -28,33 +29,73 @@
     Public landPlayed As Integer
     Public landMax As Integer = 1
 
-    Public usedDeck As New List(Of Card)
+    Public RadiantUsedDeck As New List(Of Card)
+    Public DireUsedDeck As New List(Of Card)
 
     Public cardKeeper As Integer
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Me.WindowState = FormWindowState.Maximized
-        usedDeck = IDTable.deck1
+        SetDecks()
         lblBottomHealth.Text = RadiantHealth
         lblTopHealth.Text = DireHealth
-        For I As Integer = 1 To usedDeck.Count
+        lblTopHealth.Top = Me.Height / 2 - lblTopHealth.Height * 2
+        lblTopHealth.Left = Me.Width - lblTopHealth.Width - 25
+        lblBottomHealth.Top = Me.Height / 2 + lblBottomHealth.Height * 2
+        lblBottomHealth.Left = Me.Width - lblBottomHealth.Width - 25
+        For I As Integer = 1 To RadiantUsedDeck.Count
 
-            cardInfo.Add(usedDeck(I - 1).ID)
+            RadiantCardInfo.Add(RadiantUsedDeck(I - 1).ID)
             RadiantDeckInfo.Add(1)
+        Next
+        For I As Integer = 1 To DireUsedDeck.Count
+            DireCardInfo.Add(DireUsedDeck(I - 1).ID)
             DireDeckInfo.Add(1)
 
         Next
 
         ShuffleCards(RadiantDeckInfo)
         ShuffleCards(DireDeckInfo)
-        DrawCards(6, RadiantDeckInfo, RadiantHandInfo)
-        DrawCards(7, DireDeckInfo, DireHandInfo)
+        DrawCards(6, RadiantDeckInfo, RadiantHandInfo, RadiantCardInfo)
+        DrawCards(7, DireDeckInfo, DireHandInfo, DireCardInfo)
         MoveCards()
         Debug.Print(RadiantCardsInHand)
         Debug.Print(DireCardsInHand)
 
     End Sub
+
+    Private Sub SetDecks()
+        'Sets the deckInfo for the player to the chosen deck
+        If frmDeckSelection.rdbP1S1.Checked = True Then
+            RadiantUsedDeck = IDTable.deck1
+        ElseIf frmDeckSelection.rdbP1S2.Checked = True Then
+            RadiantUsedDeck = IDTable.deck2
+        ElseIf frmDeckSelection.rdbP1S3.Checked = True Then
+            RadiantUsedDeck = IDTable.deck3
+        ElseIf frmDeckSelection.rdbP1S4.Checked = True Then
+            RadiantUsedDeck = IDTable.deck4
+        ElseIf frmDeckSelection.rdbP1S5.Checked = True Then
+            RadiantUsedDeck = IDTable.deck5
+        ElseIf frmDeckSelection.rdbP1S6.Checked = True Then
+            RadiantUsedDeck = IDTable.deck6
+        End If
+
+        If frmDeckSelection.rdbP2S1.Checked = True Then
+            DireUsedDeck = IDTable.deck1
+        ElseIf frmDeckSelection.rdbP2S2.Checked = True Then
+            DireUsedDeck = IDTable.deck2
+        ElseIf frmDeckSelection.rdbP2S3.Checked = True Then
+            DireUsedDeck = IDTable.deck3
+        ElseIf frmDeckSelection.rdbP2S4.Checked = True Then
+            DireUsedDeck = IDTable.deck4
+        ElseIf frmDeckSelection.rdbP2S5.Checked = True Then
+            DireUsedDeck = IDTable.deck5
+        ElseIf frmDeckSelection.rdbP2S6.Checked = True Then
+            DireUsedDeck = IDTable.deck6
+        End If
+    End Sub
+
 
     Public Sub ShuffleCards(deckInfo As List(Of Integer))
 
@@ -80,10 +121,10 @@
     End Sub
 
 
-    Public Sub DrawCards(n As Integer, desDeck As List(Of Integer), desHand As List(Of Card))
+    Public Sub DrawCards(n As Integer, desDeck As List(Of Integer), desHand As List(Of Card), desCardInfo As List(Of Integer))
 
         For I As Integer = 1 To n
-            Dim nC As New Card(cardInfo(desDeck(0) - 1), RadiantTurn)
+            Dim nC As New Card(desCardInfo(desDeck(0) - 1), RadiantTurn)
             desHand.Add(nC)
             desDeck.Remove(desDeck(0))
         Next
@@ -182,7 +223,7 @@
                 RadiantDeckInfo.Clear()
                 RadiantHandInfo.Clear()
 
-                For I As Integer = 1 To usedDeck.Count
+                For I As Integer = 1 To RadiantUsedDeck.Count
 
                     RadiantDeckInfo.Add(1)
 
@@ -192,7 +233,7 @@
                 For Each c As Card In RadiantHandInfo
                     Me.Controls(c.Name).Dispose()
                 Next
-                DrawCards(7 - mulliganCount, RadiantDeckInfo, RadiantHandInfo)
+                DrawCards(7 - mulliganCount, RadiantDeckInfo, RadiantHandInfo, RadiantCardInfo)
 
                 mulliganCount += 1
 
@@ -205,7 +246,7 @@
                 DireDeckInfo.Clear()
                 DireHandInfo.Clear()
 
-                For I As Integer = 1 To usedDeck.Count
+                For I As Integer = 1 To DireUsedDeck.Count
                     'adds 60 elements
                     DireDeckInfo.Add(1)
                 Next
@@ -214,7 +255,7 @@
                 For Each c As Card In DireHandInfo
                     Me.Controls(c.Name).Dispose()
                 Next
-                DrawCards(7 - mulliganCount, DireDeckInfo, DireHandInfo)
+                DrawCards(7 - mulliganCount, DireDeckInfo, DireHandInfo, DireDeckInfo)
 
                 mulliganCount += 1
 
@@ -346,13 +387,13 @@
         RadiantTurn = Not (RadiantTurn)
         MoveCards()
         If RadiantTurn Then
-            DrawCards(1, RadiantDeckInfo, RadiantHandInfo)
+            DrawCards(1, RadiantDeckInfo, RadiantHandInfo, RadiantCardInfo)
             If RadiantCardsInHand > 7 Then RadiantCardsInHand = 7
             lblBottomHealth.Text = RadiantHealth
             lblTopHealth.Text = DireHealth
             lblTurn.Text = "Radiant's Turn"
         ElseIf RadiantTurn = False
-            DrawCards(1, DireDeckInfo, DireHandInfo)
+            DrawCards(1, DireDeckInfo, DireHandInfo, DireCardInfo)
             If DireCardsInHand > 7 Then DireCardsInHand = 7
             lblBottomHealth.Text = DireHealth
             lblTopHealth.Text = RadiantHealth
@@ -383,9 +424,9 @@
 
     Private Sub Draw(RadiantIsDrawing As Boolean)
         If RadiantIsDrawing Then                            'If Radiant is drawing
-            DrawCards(1, RadiantDeckInfo, RadiantHandInfo)  'Draws 1 card from the radiant deck to the radiant hand
+            DrawCards(1, RadiantDeckInfo, RadiantHandInfo, RadiantCardInfo)  'Draws 1 card from the radiant deck to the radiant hand
         ElseIf RadiantIsDrawing = False                     'If Dire is drawing
-            DrawCards(1, DireDeckInfo, DireHandInfo)        'Draws 1 card from the dire deck to the dire hand
+            DrawCards(1, DireDeckInfo, DireHandInfo, DireCardInfo)        'Draws 1 card from the dire deck to the dire hand
         End If
         Debug.Print(RadiantCardsInHand)
         Debug.Print(DireCardsInHand)

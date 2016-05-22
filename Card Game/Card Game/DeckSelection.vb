@@ -30,21 +30,6 @@
 
     Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
         Form1.Show()
-        Form1.usedDeck = selectedDeck
         Me.Close()
-    End Sub
-
-    Private Sub rdbP2S1_CheckedChanged(sender As Object, e As EventArgs) Handles rdbP2S1.CheckedChanged
-        If rdbP2S1.Checked = True Then
-            selectedDeck = IDTable.deck1
-        End If
-    End Sub
-
-    Private Sub rdbP1S1_CheckedChanged(sender As Object, e As EventArgs) Handles rdbP1S1.CheckedChanged
-        If rdbP1S1.Checked = True Then
-            selectedDeck = IDTable.deck1
-        Else
-
-        End If
     End Sub
 End Class
