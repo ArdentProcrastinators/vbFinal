@@ -31,6 +31,8 @@ Partial Class Form1
         Me.btnNextPhase = New System.Windows.Forms.Button()
         Me.lblTopHealth = New System.Windows.Forms.Label()
         Me.lblBottomHealth = New System.Windows.Forms.Label()
+        Me.lblPhase = New System.Windows.Forms.Label()
+        Me.lblTurn = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'tmrUpdater
@@ -103,6 +105,24 @@ Partial Class Form1
         Me.lblBottomHealth.TabIndex = 13
         Me.lblBottomHealth.Text = "Label2"
         '
+        'lblPhase
+        '
+        Me.lblPhase.AutoSize = True
+        Me.lblPhase.Location = New System.Drawing.Point(819, 350)
+        Me.lblPhase.Name = "lblPhase"
+        Me.lblPhase.Size = New System.Drawing.Size(63, 13)
+        Me.lblPhase.TabIndex = 14
+        Me.lblPhase.Text = "Main Phase"
+        '
+        'lblTurn
+        '
+        Me.lblTurn.AutoSize = True
+        Me.lblTurn.Location = New System.Drawing.Point(1049, 451)
+        Me.lblTurn.Name = "lblTurn"
+        Me.lblTurn.Size = New System.Drawing.Size(76, 13)
+        Me.lblTurn.TabIndex = 15
+        Me.lblTurn.Text = "Radiant's Turn"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -110,6 +130,8 @@ Partial Class Form1
         Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Untitled_drawing
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1297, 639)
+        Me.Controls.Add(Me.lblTurn)
+        Me.Controls.Add(Me.lblPhase)
         Me.Controls.Add(Me.lblBottomHealth)
         Me.Controls.Add(Me.lblTopHealth)
         Me.Controls.Add(Me.btnNextPhase)
@@ -133,4 +155,6 @@ Partial Class Form1
     Friend WithEvents btnNextPhase As Button
     Friend WithEvents lblTopHealth As Label
     Friend WithEvents lblBottomHealth As Label
+    Friend WithEvents lblPhase As Label
+    Friend WithEvents lblTurn As Label
 End Class

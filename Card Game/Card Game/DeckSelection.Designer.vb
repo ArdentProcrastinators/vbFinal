@@ -55,10 +55,12 @@ Partial Class frmDeckSelection
         'rdbP1S1
         '
         Me.rdbP1S1.AutoSize = True
+        Me.rdbP1S1.Checked = True
         Me.rdbP1S1.Location = New System.Drawing.Point(6, 30)
         Me.rdbP1S1.Name = "rdbP1S1"
         Me.rdbP1S1.Size = New System.Drawing.Size(260, 41)
         Me.rdbP1S1.TabIndex = 1
+        Me.rdbP1S1.TabStop = True
         Me.rdbP1S1.Text = "Empty Deck Slot"
         Me.rdbP1S1.UseVisualStyleBackColor = True
         '
@@ -197,10 +199,12 @@ Partial Class frmDeckSelection
         'rdbP2S1
         '
         Me.rdbP2S1.AutoSize = True
+        Me.rdbP2S1.Checked = True
         Me.rdbP2S1.Location = New System.Drawing.Point(6, 30)
         Me.rdbP2S1.Name = "rdbP2S1"
         Me.rdbP2S1.Size = New System.Drawing.Size(260, 41)
         Me.rdbP2S1.TabIndex = 1
+        Me.rdbP2S1.TabStop = True
         Me.rdbP2S1.Text = "Empty Deck Slot"
         Me.rdbP2S1.UseVisualStyleBackColor = True
         '

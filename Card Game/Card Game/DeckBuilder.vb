@@ -80,9 +80,23 @@
     End Sub
 
     Private Sub btnCreate_Click(sender As Object, e As EventArgs) Handles btnCreate.Click
-        MsgBox("This is deck one")
-        Form1.Show()
-        Form1.usedDeck = Deck
+        'Saves the deck to the appropriate deck List
+        Select Case cmbDeck.SelectedIndex
+            Case 0
+                IDTable.deck1 = Deck
+            Case 1
+                IDTable.deck2 = Deck
+            Case 2
+                IDTable.deck3 = Deck
+            Case 3
+                IDTable.deck4 = Deck
+            Case 4
+                IDTable.deck5 = Deck
+            Case 5
+                IDTable.deck6 = Deck
+        End Select
+        frmMenu.Show()
+        Me.Close()
     End Sub
 
 End Class
