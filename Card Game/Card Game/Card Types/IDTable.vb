@@ -254,6 +254,76 @@
                 landUse(c)
             Case 7
                 landUse(c)
+            Case 8
+                If Form1.NeedTarget = True Then
+                    'Confirms this is target of ability
+                    If MsgBox("This Creature's stats are " & c.MaxPower & "/" & c.CurrentHealth & ". Would you like to [list ability]", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                        'Ability code
+                        'Disables target search
+                        Form1.NeedTarget = False
+                    End If
+                    'If no target is needed currently
+                ElseIf MsgBox("This Creature's stats are " & c.MaxPower & "/" & c.CurrentHealth & ". Would you like to use this card's ability?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                    'Says a target is needed if ability is used, starts search for target
+                    Form1.NeedTarget = True
+                    Form1.IDSearchingForTarget = c.ID
+                End If
+            Case 9
+                If Form1.NeedTarget = True Then
+                    'Confirms this is target of ability
+                    If MsgBox("This Creature's stats are " & c.MaxPower & "/" & c.CurrentHealth & ". Would you like to [list ability]", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                        'Ability code
+                        'Disables target search
+                        Form1.NeedTarget = False
+                    End If
+                    'If no target is needed currently
+                ElseIf MsgBox("This Creature's stats are " & c.MaxPower & "/" & c.CurrentHealth & ". Would you like to use this card's ability?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                    'Says a target is needed if ability is used, starts search for target
+                    Form1.NeedTarget = True
+                    Form1.IDSearchingForTarget = c.ID
+                End If
+            Case 10
+                If Form1.NeedTarget = True Then
+                    'Confirms this is target of ability
+                    If MsgBox("This Creature's stats are " & c.MaxPower & "/" & c.CurrentHealth & ". Would you like to [list ability]", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                        'Ability code
+                        'Disables target search
+                        Form1.NeedTarget = False
+                    End If
+                    'If no target is needed currently
+                ElseIf MsgBox("This Creature's stats are " & c.MaxPower & "/" & c.CurrentHealth & ". Would you like to use this card's ability?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                    'Says a target is needed if ability is used, starts search for target
+                    Form1.NeedTarget = True
+                    Form1.IDSearchingForTarget = c.ID
+                End If
+            Case 11
+                If Form1.NeedTarget = True Then
+                    'Confirms this is target of ability
+                    If MsgBox("This Creature's stats are " & c.MaxPower & "/" & c.CurrentHealth & ". Would you like to [list ability]", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                        'Ability code
+                        'Disables target search
+                        Form1.NeedTarget = False
+                    End If
+                    'If no target is needed currently
+                ElseIf MsgBox("This Creature's stats are " & c.MaxPower & "/" & c.CurrentHealth & ". Would you like to use this card's ability?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                    'Says a target is needed if ability is used, starts search for target
+                    Form1.NeedTarget = True
+                    Form1.IDSearchingForTarget = c.ID
+                End If
+            Case 12
+                If Form1.NeedTarget = True Then
+                    'Confirms this is target of ability
+                    If MsgBox("This Creature's stats are " & c.MaxPower & "/" & c.CurrentHealth & ". Would you like to [list ability]", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                        'Ability code
+                        'Disables target search
+                        Form1.NeedTarget = False
+                    End If
+                    'If no target is needed currently
+                ElseIf MsgBox("This Creature's stats are " & c.MaxPower & "/" & c.CurrentHealth & ". Would you like to use this card's ability?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                    'Says a target is needed if ability is used, starts search for target
+                    Form1.NeedTarget = True
+                    Form1.IDSearchingForTarget = c.ID
+                End If
         End Select
         Return 0
     End Function
@@ -341,7 +411,17 @@
                         Form1.UpdateHand(Form1.RadiantTurn)
                     End If
                 End If
+<<<<<<< HEAD
             Case 13
+=======
+            Case 9
+                PlayCreature(c)
+            Case 10
+                PlayCreature(c)
+            Case 11
+                PlayCreature(c)
+            Case 12
+>>>>>>> origin/master
                 PlayCreature(c)
         End Select
 

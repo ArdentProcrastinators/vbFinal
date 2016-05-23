@@ -9,17 +9,6 @@ C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\obj\Debug\Card Game.vb
 C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.Form1.resources
 C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.Resources.resources
 C:\Users\Max\Documents\GitHub\vbFinal\Card Game\Card Game\obj\Debug\Card Game.vbproj.GenerateResource.Cache
-C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\bin\Debug\Card Game.exe.config
-C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.exe
-C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.xml
-C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.pdb
-C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.vbprojResolveAssemblyReference.cache
-C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.Form1.resources
-C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.Resources.resources
-C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.vbproj.GenerateResource.Cache
-C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\bin\Debug\Card Game.exe
-C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\bin\Debug\Card Game.pdb
-C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\bin\Debug\Card Game.xml
 C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\bin\Debug\Card Game.exe.config
 C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\Card Game.exe
 C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\Card Game.xml
@@ -42,7 +31,6 @@ C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj
 C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj\Debug\WindowsApplication1.Form1.resources
 C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj\Debug\WindowsApplication1.Resources.resources
 C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj\Debug\Card Game.vbproj.GenerateResource.Cache
-C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.Menu.resources
 C:\Users\mpotter\Downloads\vbFinal-master (1)\vbFinal-master\Card Game\Card Game\bin\Debug\Card Game.exe.config
 C:\Users\mpotter\Downloads\vbFinal-master (1)\vbFinal-master\Card Game\Card Game\obj\Debug\Card Game.exe
 C:\Users\mpotter\Downloads\vbFinal-master (1)\vbFinal-master\Card Game\Card Game\obj\Debug\Card Game.xml
@@ -56,8 +44,6 @@ C:\Users\mpotter\Downloads\vbFinal-master (1)\vbFinal-master\Card Game\Card Game
 C:\Users\mpotter\Downloads\vbFinal-master (1)\vbFinal-master\Card Game\Card Game\obj\Debug\WindowsApplication1.Resources.resources
 C:\Users\mpotter\Downloads\vbFinal-master (1)\vbFinal-master\Card Game\Card Game\obj\Debug\Card Game.vbproj.GenerateResource.Cache
 C:\Users\mpotter\Downloads\vbFinal-master (1)\vbFinal-master\Card Game\Card Game\obj\Debug\WindowsApplication1.frmDeckSelection.resources
-C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.DeckBuilder.resources
-C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.frmDeckSelection.resources
 C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj\Debug\WindowsApplication1.DeckBuilder.resources
 C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj\Debug\WindowsApplication1.frmDeckSelection.resources
 C:\Users\mpotter\Downloads\vbFinal-master\vbFinal-master\Card Game\Card Game\obj\Debug\WindowsApplication1.Menu.resources
@@ -77,9 +63,26 @@ C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.pdb
 C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\WindowsApplication1.DeckBuilder.resources
 C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\WindowsApplication1.frmDeckSelection.resources
 C:\Users\Levent\Desktop\vbFinal - Copy\Card Game\Card Game\obj\Debug\WindowsApplication1.frmMenu.resources
-C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.frmMenu.resources
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.frmMenu.resources
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\bin\Debug\Card Game.exe.manifest
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\bin\Debug\Card Game.application
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.exe.manifest
 C:\Users\Max\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.application
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\bin\Debug\Card Game.exe.config
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\bin\Debug\Card Game.exe.manifest
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\bin\Debug\Card Game.application
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\bin\Debug\Card Game.exe
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\bin\Debug\Card Game.pdb
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\bin\Debug\Card Game.xml
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.vbprojResolveAssemblyReference.cache
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.DeckBuilder.resources
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.frmDeckSelection.resources
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.Form1.resources
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.frmMenu.resources
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\WindowsApplication1.Resources.resources
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.vbproj.GenerateResource.Cache
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.exe.manifest
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.application
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.exe
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.xml
+C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.pdb
