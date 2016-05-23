@@ -36,16 +36,26 @@
                 If Form1.started = True Then
                     Form1.Target = Me
                     'If in combat phase
-                    If Form1.Phase = 1 Then
+                    If Form1.Phase = 1 And Me.partOfHand = False Then
                         'Deals damage to the opponents health
                         If Radiant Then
                             Form1.DireHealth -= Me.MaxPower
                             Form1.lblTopHealth.Text = Form1.DireHealth
-                        ElseIf Radiant = False
+                            If Form1.DireHealth <= 0 Then
+                                MsgBox("Radiant Wins!", MsgBoxStyle.OkOnly)
+                                frmMenu.Show()
+                                Form1.Close()
+                            End If
+                        ElseIf Radiant = False Then
                             Form1.RadiantHealth -= Me.MaxPower
                             Form1.lblTopHealth.Text = Form1.RadiantHealth
+                            If Form1.RadiantHealth <= 0 Then
+                                MsgBox("Dire Wins!", MsgBoxStyle.OkOnly)
+                                frmMenu.Show()
+                                Form1.Close()
+                            End If
                         End If
-                    ElseIf partOfHand = False Then
+                        ElseIf partOfHand = False Then
                         IDTable.IDAbility(Me)
                     ElseIf partOfHand = True
                         IDTable.PlayCard(Me)

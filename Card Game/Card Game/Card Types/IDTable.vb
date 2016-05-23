@@ -34,6 +34,8 @@
                 Return "King of all Memes"
             Case 12
                 Return "The Mad-Dabber"
+            Case 13
+                Return "League Scrub"
         End Select
 
     End Function
@@ -55,6 +57,8 @@
                 Return 7
             Case 12
                 Return 4
+            Case 13
+                Return 3
             Case Else
 
                 Return 100
@@ -77,6 +81,8 @@
             Case 11
                 Return 6
             Case 12
+                Return 2
+            Case 13
                 Return 2
             Case Else
                 'Error return, returned if ID does not exist
@@ -135,7 +141,8 @@
                 c.manaCost.Add("green")
                 c.manaCost.Add("any")
                 c.manaCost.Add("any")
-
+            Case 13
+                c.manaCost.Add("red")
         End Select
 
     End Sub
@@ -185,17 +192,17 @@
                     Return My.Resources.plainstu
                 End If
             Case 8
-                Return My.Resources.Levent_s_Bearded_Dragon
+                Return My.Resources.Levents_Bearded_Dragon
             Case 9
-                Return My.Resources.Dr__Kirby
+                Return My.Resources.Dr_Kirby
             Case 10
                 Return My.Resources.Kevin_the_lovemaker
             Case 11
                 Return My.Resources.The_King_of_all_Memes
             Case 12
                 Return My.Resources.The_Mad_Dabber
-            Case 31
-
+            Case 13
+                Return My.Resources.LeagueScrub
         End Select
     End Function
 
@@ -334,6 +341,8 @@
                         Form1.UpdateHand(Form1.RadiantTurn)
                     End If
                 End If
+            Case 13
+                PlayCreature(c)
         End Select
 
     End Sub

@@ -64,7 +64,8 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\amCool.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>547CD72C9CC139736A87D1B936AF280B3F420E0A</ManifestCertificateThumbprint>
@@ -164,9 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -181,12 +182,31 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Ardent Procrastinor.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Resources\Dr. Kirby.png" />
+    <None Include="Resources\forest.jpg" />
+    <None Include="Resources\foresttu.jpg" />
+    <None Include="Resources\forestu.jpg" />
+    <None Include="Resources\island.jpg" />
+    <None Include="Resources\islandt.png" />
+    <None Include="Resources\islandtu.png" />
+    <None Include="Resources\Kevin the lovemaker.png" />
+    <None Include="Resources\LeagueScrub.png" />
+    <None Include="Resources\Levent%27s Bearded Dragon.png" />
+    <None Include="Resources\mountain.jpg" />
+    <None Include="Resources\mountaintu.jpg" />
+    <None Include="Resources\mountainu.jpg" />
     <None Include="Resources\NoobMemer.png" />
+    <None Include="Resources\plains.jpg" />
+    <None Include="Resources\plainstu.jpg" />
+    <None Include="Resources\plainsu.jpg" />
+    <None Include="Resources\swamp.jpg" />
+    <None Include="Resources\swamptu.jpg" />
+    <None Include="Resources\swampu.jpg" />
+    <None Include="Resources\The King of all Memes.png" />
+    <None Include="Resources\The Mad-Dabber.png" />
+    <None Include="Resources\Thumbs.db" />
+    <None Include="Resources\Untitled drawing.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -201,62 +221,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\island.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\islandt.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\islandtu.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Untitled drawing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\forest.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\mountain.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\plains.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\swamp.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\plainstu.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\plainsu.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\mountaintu.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\mountainu.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\swamptu.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\swampu.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\foresttu.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\forestu.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Resources\amCool.ico" />
     <Content Include="Resources\cardBack.jpg" />
-    <None Include="Resources\Kevin the lovemaker.png" />
-    <None Include="Resources\Dr. Kirby.png" />
-    <None Include="Resources\The Mad-Dabber.png" />
-    <None Include="Resources\The King of all Memes.png" />
-    <None Include="Resources\cardBack1.jpg" />
-    <None Include="Resources\Levent%27s Bearded Dragon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

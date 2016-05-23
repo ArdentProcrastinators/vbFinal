@@ -40,10 +40,14 @@
         SetDecks()
         lblBottomHealth.Text = RadiantHealth
         lblTopHealth.Text = DireHealth
-        lblTopHealth.Top = Me.Height / 2 - lblTopHealth.Height * 2
-        lblTopHealth.Left = Me.Width - lblTopHealth.Width - 25
-        lblBottomHealth.Top = Me.Height / 2 + lblBottomHealth.Height * 2
-        lblBottomHealth.Left = Me.Width - lblBottomHealth.Width - 25
+        lblTopHealth.Top = Me.Height / 2 - lblTopHealth.Height * 2 - 40
+        lblTopHealth.Left = Me.Width - lblTopHealth.Width - 125
+        lblBottomHealth.Top = Me.Height / 2 + lblBottomHealth.Height * 2 - 10
+        lblBottomHealth.Left = Me.Width - lblBottomHealth.Width - 125
+        lblTurn.Top = Me.Height / 2 - 20
+        lblTurn.Left = Me.Width - 150
+        lblPhase.Top = Me.Height / 2
+        lblPhase.Left = Me.Width - 150
         For I As Integer = 1 To RadiantUsedDeck.Count
 
             RadiantCardInfo.Add(RadiantUsedDeck(I - 1).ID)
