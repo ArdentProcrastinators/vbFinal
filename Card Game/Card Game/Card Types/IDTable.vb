@@ -94,7 +94,7 @@
 
         Select Case c.ID
             Case 1
-                'Add anys last
+                'Add anys last because of how the mana-paying works
                 c.manaCost.Add("green")
                 c.manaCost.Add("any")
             Case 2
@@ -468,43 +468,53 @@
         End If
     End Sub
 
+    'Function that checks if spell can be cast
     Public Shared Function PayMana(iC As Card) As Boolean
 
-        'Ill comment this eventually
+        'Makes sure manapool has atleast one element
         If Form1.manaPool.Count <> 0 Then
 
+            'List made to test if spell is payable
             Dim testList As New List(Of String)
             Static counter As Integer
 
+            'Sets testlist to manapool
             For x As Integer = 1 To Form1.manaPool.Count
                 testList.Add(Form1.manaPool(x - 1))
             Next
 
-
+            'Loop that checks the payability of each color of mana needed
             For I As Integer = 0 To iC.manaCost.Count - 1
 
+                'Counter keeps track of which land we are on
                 counter = 0
-                Dim result As Integer = 0
+                Dim result As Integer = 0 'Used for do loop
 
                 Do Until result <> 0
 
+                    'If the manapool has no elements left, this returns false
                     If testList.Count = 0 Then Return False
 
+                    'If the mana is of the specified color or the mana needed is any, this will move to the start of the loop
                     If iC.manaCost(I) = testList(counter) Or iC.manaCost(I) = "any" Then
 
+                        'Removes used mana
                         testList.Remove(testList(counter))
                         result = 1
 
+                        'This will go through if the manalist is at an end but the needed mana couldnt be payed
                     ElseIf counter = testList.Count - 1
                         Return False
                     End If
 
+                    'Increases the counter by 1
                     counter += 1
 
                 Loop
 
             Next
 
+            'Transfers the manacost to form 1
             Form1.TMC(iC)
             Form1.ManaLabel()
             Return True

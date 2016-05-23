@@ -15,7 +15,7 @@
     'List for each player's creatures
     Public RadiantCreatures As New List(Of Card)
     Public DireCreatures As New List(Of Card)
-    Dim cardScale As Decimal = Me.Height / 1024
+    Dim cardScale As Decimal = 0.25
     Public RadiantHealth As Integer = 20
     Public DireHealth As Integer = 20
     'Public Target As Card
@@ -37,9 +37,12 @@
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Me.WindowState = FormWindowState.Maximized
+        'Sets each player's deck to their chosen deck
         SetDecks()
+        'Sets the health labels
         lblBottomHealth.Text = RadiantHealth
         lblTopHealth.Text = DireHealth
+        'Places the health and turn labels in their correct places
         lblTopHealth.Top = Me.Height / 2 - lblTopHealth.Height * 2 - 40
         lblTopHealth.Left = Me.Width - lblTopHealth.Width - 125
         lblBottomHealth.Top = Me.Height / 2 + lblBottomHealth.Height * 2 - 10
@@ -50,22 +53,27 @@
         lblPhase.Left = Me.Width - 150
         For I As Integer = 1 To RadiantUsedDeck.Count
 
+            'Adds the cards to Radiant's deck list
             RadiantCardInfo.Add(RadiantUsedDeck(I - 1).ID)
-            RadiantDeckInfo.Add(1)
+            RadiantDeckInfo.Add(1) 'Adds the proper amount of items to radiant deck info so it can be set without erroring
         Next
+        'Adds the cards to Dire's deck
         For I As Integer = 1 To DireUsedDeck.Count
+
+            'Adds the cards to Dire's deck list
             DireCardInfo.Add(DireUsedDeck(I - 1).ID)
-            DireDeckInfo.Add(1)
+            DireDeckInfo.Add(1) 'Adds the proper amount of items to Dire deck info so it can be set without erroring
 
         Next
 
+        'Shuffles
         ShuffleCards(RadiantDeckInfo)
         ShuffleCards(DireDeckInfo)
-        DrawCards(6, RadiantDeckInfo, RadiantHandInfo, RadiantCardInfo)
+
+        'Draws
+        DrawCards(7, RadiantDeckInfo, RadiantHandInfo, RadiantCardInfo)
         DrawCards(7, DireDeckInfo, DireHandInfo, DireCardInfo)
         MoveCards()
-        Debug.Print(RadiantCardsInHand)
-        Debug.Print(DireCardsInHand)
 
     End Sub
 
@@ -109,16 +117,16 @@
         Dim cardsLeft As New List(Of Integer)
 
         For V As Integer = 1 To cardCount
-            cardsLeft.Add(V)
+            cardsLeft.Add(V) 'Adds proper items to the list
         Next
 
         'Shuffles cards
         For I As Integer = 0 To cardCount - 1
 
             Randomize()
-            Dim x As Integer = Int(cardsLeft.Count() * Rnd())
-            deckInfo.Item(I) = cardsLeft(x)
-            cardsLeft.Remove(cardsLeft(x))
+            Dim x As Integer = Int(cardsLeft.Count() * Rnd()) 'Chooses a random item in the list
+            deckInfo.Item(I) = cardsLeft(x) 'Sets deckinfo's item to that value
+            cardsLeft.Remove(cardsLeft(x)) 'Removes that value from the list so that it cannot be picked again
 
         Next
 
@@ -148,6 +156,7 @@
                 Next
             End If
 
+            'I don't know if this is even important
             GC.Collect()
             GC.WaitForPendingFinalizers()
 
@@ -157,6 +166,7 @@
             'Adds new cards
             For I As Integer = 1 To RadiantHandInfo.Count
 
+                'Makes a new card with correct ID
                 Dim newCard As New Card(RadiantHandInfo(I - 1).ID, RadiantTurn)
                 newCard.partOfHand = True
                 newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
@@ -191,6 +201,7 @@
             'Adds new cards
             For I As Integer = 1 To DireHandInfo.Count
 
+                'Makes new card
                 Dim newCard As New Card(DireHandInfo(I - 1).ID, RadiantTurn)
                 newCard.partOfHand = True
                 newCard.Width = cardScale * My.Resources.Ardent_Procrastinor.Width 'Sets width accordingly with cardscale
@@ -226,7 +237,7 @@
             If RadiantHandInfo.Count > 1 Then
 
                 For Each c As Card In RadiantHandInfo
-
+                    'Deletes cards
                     If Me.Controls(c.Name) IsNot Nothing And c.Radiant = RadiantTurn Then Me.Controls(c.Name).Dispose()
 
                 Next
@@ -235,7 +246,7 @@
                 RadiantHandInfo.Clear()
 
                 For I As Integer = 1 To RadiantUsedDeck.Count
-
+                    'Adds proper amount of elements
                     RadiantDeckInfo.Add(1)
 
                 Next
@@ -255,7 +266,7 @@
             If DireHandInfo.Count > 1 Then
 
                 For Each c As Card In DireHandInfo
-
+                    'Deletes cards
                     If Me.Controls(c.Name) IsNot Nothing And c.Radiant = RadiantTurn Then Me.Controls(c.Name).Dispose()
 
                 Next
@@ -264,7 +275,7 @@
                 DireHandInfo.Clear()
 
                 For I As Integer = 1 To DireUsedDeck.Count
-                    'adds 60 elements
+                    'adds proper amount of elements
                     DireDeckInfo.Add(1)
                 Next
 
@@ -337,6 +348,7 @@
 
     Public Sub AddMana(m As String)
 
+        'Adds mana to manapool
         manaPool.Add(m)
         ManaLabel()
 
@@ -349,6 +361,7 @@
 
     End Sub
 
+    'Transfers mana cost(removes mana and taps land)
     Public Sub TMC(c As Card)
 
         Dim payed As Boolean
@@ -359,12 +372,14 @@
             Dim m As Integer = 0
             payed = False
 
+            'Checks whether mana is specified
             If c.manaCost(x - 1) <> "any" Then
                 Do Until payed = True
 
+                    'Checks whether the land is of the desired mana
                     If landInfo(m).manaCost(0) = c.manaCost(x - 1) And landInfo(m).used = True And landInfo(m).tapped = False Then
-                        landInfo(m).tapped = True
-                        landInfo(m).BackgroundImage = IDTable.IDImage(landInfo(m))
+                        landInfo(m).tapped = True 'taps land
+                        landInfo(m).BackgroundImage = IDTable.IDImage(landInfo(m)) 'sets image
                         payed = True
                     End If
                     m += 1
@@ -373,6 +388,8 @@
                 manaPool.Remove(c.manaCost(x - 1))
             Else
                 Do Until payed = True
+
+                    'Checks whether the land is of the desired mana
                     If m > landInfo.Count - 1 Then MsgBox("error")
                     If landInfo(m).used = True And landInfo(m).tapped = False Then
                         landInfo(m).tapped = True
@@ -381,7 +398,7 @@
                     End If
                     m += 1
                 Loop
-                manaPool.Remove(landInfo(m - 1).manaCost(0))
+                manaPool.Remove(landInfo(m - 1).manaCost(0)) 'Removes mana uses from mana pool
             End If
         Next
     End Sub
