@@ -411,9 +411,6 @@
                         Form1.UpdateHand(Form1.RadiantTurn)
                     End If
                 End If
-<<<<<<< HEAD
-            Case 13
-=======
             Case 9
                 PlayCreature(c)
             Case 10
@@ -421,7 +418,8 @@
             Case 11
                 PlayCreature(c)
             Case 12
->>>>>>> origin/master
+                PlayCreature(c)
+            Case 13
                 PlayCreature(c)
         End Select
 

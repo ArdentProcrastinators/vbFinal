@@ -1,6 +1,6 @@
 ﻿Public Class DeckBuilder
 
-    Public cardsCount(12) As Integer
+    Public cardsCount(13) As Integer
     Public Deck As New List(Of Card)
     Dim CardList As New List(Of Card)
     Dim total As Integer
