@@ -224,6 +224,7 @@
     End Sub
 
     Private Sub formSizeChange() Handles Me.SizeChanged
+        'If they change the form's size remaximizes it, doesn't let them resize form
         Me.WindowState = FormWindowState.Maximized
     End Sub
 
@@ -261,6 +262,7 @@
                 mulliganCount += 1
                 'Else if they only have 1 card in their hand
             Else
+                'Doesn't let them mulligan because they don't have enough cards
                 btnMulligan.Enabled = False
             End If
             'Won't ever be run, Dire can't mulligan
@@ -292,13 +294,14 @@
                 mulliganCount += 1
                 'Else if they only have 1 card in their hand
             Else
+                'Doesn't let them mulligan because they don't have enough cards
                 btnMulligan.Enabled = False
             End If
         End If
     End Sub
 
     Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
-        'Confirms hand and disables mulliganning
+        'Confirms hand and disables mulliganing
         btnMulligan.Dispose()
         btnConfirm.Dispose()
         started = True
@@ -313,18 +316,28 @@
             For x = 0 To RadiantCreatures.Count - 1
                 RadiantCreatures(x).Left -= Me.Width / 32
             Next
+            'Makes new Card object
             Dim newCreature As New Card(CreatureID, True)
+            'Sets image
             newCreature.BackgroundImageLayout = ImageLayout.Zoom
             newCreature.BackgroundImage = IDTable.IDImage(newCreature)
+            'Sets size
             newCreature.Height = My.Resources.Ardent_Procrastinor.Height * cardScale
             newCreature.Width = My.Resources.Ardent_Procrastinor.Width * cardScale
+            'Sets stats
             newCreature.DefineCreature(newCreature)
+            'Adds it to the creatures list
             RadiantCreatures.Add(newCreature)
+            'Adds the card to the controls list, required for making new control
             Me.Controls.Add(newCreature)
+            'Sets the card's position
             newCreature.Top = Me.Height / 2
             newCreature.Left = Me.Width / 2 + (Me.Width / 32 * (RadiantCreatures.Count - 2))
         Else
             'Same as above only for the Dire side
+            For x = 0 To DireCreatures.Count - 1
+                DireCreatures(x).Left -= Me.Width / 32
+            Next
             Dim newCreature As New Card(CreatureID, False)
             newCreature.BackgroundImageLayout = ImageLayout.Zoom
             newCreature.BackgroundImage = IDTable.IDImage(newCreature)
@@ -341,9 +354,9 @@
     End Sub
 
     Public Sub ManaLabel()
-
+        'Resets mana label
         lblMana.Text = "Mana:" & vbNewLine
-
+        'Adds the current mana to the label
         For Each m As String In manaPool
             lblMana.Text &= m & vbNewLine
         Next
@@ -359,7 +372,7 @@
     End Sub
 
     Public Sub RemMana(m As String)
-
+        'Clears manaPool list and the label
         manaPool.Remove(m)
         ManaLabel()
 
@@ -402,7 +415,7 @@
                     End If
                     m += 1
                 Loop
-                manaPool.Remove(landInfo(m - 1).manaCost(0)) 'Removes mana uses from mana pool
+                manaPool.Remove(landInfo(m - 1).manaCost(0))                 'Removes mana uses from mana pool
             End If
         Next
     End Sub
@@ -413,45 +426,37 @@
         ManaLabel()
 
         For Each c As Card In landInfo
-            'Untaps lands
             c.tapped = False
             c.used = False
-            c.BackgroundImage = IDTable.IDImage(c)
+            c.BackgroundImage = IDTable.IDImage(c)                           'Untaps lands
         Next
-
-        landPlayed = 0
+        landPlayed = 0                                                       'Resets lands playable
         landMax = 1
-        MsgBox("Please switch seats with the other player", MsgBoxStyle.OkOnly)
-        RadiantTurn = Not (RadiantTurn)
-        MoveCards()
-        If RadiantTurn Then
-            If RadiantCardsInHand > 7 Then RadiantCardsInHand = 7
+        MsgBox("Please switch seats with the other player", MsgBoxStyle.OkOnly) 'Tells the players to switch
+        RadiantTurn = Not (RadiantTurn)                                      'Switches RadiantTurn's value
+        MoveCards()                                                          'Moves cards to the opposite side of the field and changes their image
+        If RadiantTurn Then                                                  'Switches the health labels and changes the turn label
             lblBottomHealth.Text = RadiantHealth
             lblTopHealth.Text = DireHealth
             lblTurn.Text = "Radiant's Turn"
-        ElseIf RadiantTurn = False
-            If DireCardsInHand > 7 Then DireCardsInHand = 7
+        ElseIf RadiantTurn = False Then
             lblBottomHealth.Text = DireHealth
             lblTopHealth.Text = RadiantHealth
             lblTurn.Text = "Dire's Turn"
         End If
-        Debug.Print(RadiantCardsInHand)
-        Debug.Print(DireCardsInHand)
-        Draw(RadiantTurn)                                   'Implement hand limit and discarding cards
+        Draw(RadiantTurn)                                                    'Draws a card for whoever's turn it is
 
     End Sub
     Private Sub MoveCards()
         For Each ThisControl As Control In Me.Controls
             If TypeOf (ThisControl) Is Card Then
-                Dim c As Card = ThisControl                 'Casts ThisControl as Card so paramaters like Radiant can be used
-                c.Top = Me.Height - (c.Top + c.Height)      'Flips the cards to opposite side of form, top to bottom and bottom to top
+                Dim c As Card = ThisControl                                  'Casts ThisControl as Card so paramaters like Radiant can be used
+                c.Top = Me.Height - (c.Top + c.Height)                       'Flips the cards to opposite side of form, top to bottom and bottom to top
                 If c.partOfHand = True Then
-                    If RadiantTurn = c.Radiant Then         'If card is supposed to be in the hand of the current player's turn
-                        'Sets current player's cards in hand's images to the image of the card
-                        c.BackgroundImage = IDTable.IDImage(c)
+                    If RadiantTurn = c.Radiant Then                          'If card is supposed to be in the hand of the current player's turn
+                        c.BackgroundImage = IDTable.IDImage(c)               'Sets current player's cards in hand's images to the image of the card
                     Else
-                        'Sets other player's cards in hand's image to card back to hide the cards
-                        c.BackgroundImage = My.Resources.cardBack
+                        c.BackgroundImage = My.Resources.cardBack            'Sets other player's cards in hand's image to card back to hide the cards
                     End If
                 End If
             End If
@@ -459,18 +464,18 @@
     End Sub
 
     Private Sub Draw(RadiantIsDrawing As Boolean)
-        If RadiantIsDrawing Then                            'If Radiant is drawing
+        If RadiantIsDrawing Then                                             'If Radiant is drawing
             DrawCards(1, RadiantDeckInfo, RadiantHandInfo, RadiantCardInfo)  'Draws 1 card from the radiant deck to the radiant hand
-        ElseIf RadiantIsDrawing = False                     'If Dire is drawing
-            DrawCards(1, DireDeckInfo, DireHandInfo, DireCardInfo)        'Draws 1 card from the dire deck to the dire hand
+        ElseIf RadiantIsDrawing = False Then                                 'If Dire is drawing
+            DrawCards(1, DireDeckInfo, DireHandInfo, DireCardInfo)           'Draws 1 card from the dire deck to the dire hand
         End If
         Debug.Print(RadiantCardsInHand)
         Debug.Print(DireCardsInHand)
     End Sub
 
     Private Sub btnTS_Click(sender As Object, e As EventArgs) Handles btnNextPhase.Click
-        'Changes the phase and ends the turn if needed
-        If Phase = 0 Then
+
+        If Phase = 0 Then                                                    'Changes the phase and ends the turn if needed
             Phase = 1
             lblPhase.Text = "Combat Phase"
         ElseIf Phase = 1 Then
