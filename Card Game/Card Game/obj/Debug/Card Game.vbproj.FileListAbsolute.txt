@@ -86,3 +86,7 @@ C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.applicat
 C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.exe
 C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.xml
 C:\Users\Levent\Desktop\vbFinal\Card Game\Card Game\obj\Debug\Card Game.pdb
+C:\Users\Levent\Desktop\code\eclipse\vbFinal\Card Game\Card Game\bin\Debug\Card Game.exe.config
+C:\Users\Levent\Desktop\code\eclipse\vbFinal\Card Game\Card Game\obj\Debug\Card Game.exe
+C:\Users\Levent\Desktop\code\eclipse\vbFinal\Card Game\Card Game\obj\Debug\Card Game.xml
+C:\Users\Levent\Desktop\code\eclipse\vbFinal\Card Game\Card Game\obj\Debug\Card Game.pdb
