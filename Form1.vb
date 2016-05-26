@@ -1,11 +1,12 @@
 ﻿Public Class Form1
+    'Info of the decks
     Public RadiantDeckInfo As New List(Of Integer)
     Public DireDeckInfo As New List(Of Integer)
     Public RadiantHandInfo As New List(Of Card)
     Public DireHandInfo As New List(Of Card)
     Public RadiantCardsInHand
     Public DireCardsInHand
-    '
+    'Somewhat redundant list of card ids
     Public RadiantCardInfo As New List(Of Integer)
     Public DireCardInfo As New List(Of Integer)
     Public manaPool As New List(Of String)
@@ -28,7 +29,7 @@
     Public started As Boolean
     Public landPlayed As Integer
     Public landMax As Integer = 1
-
+    'Decks being used
     Public RadiantUsedDeck As New List(Of Card)
     Public DireUsedDeck As New List(Of Card)
 
@@ -112,7 +113,7 @@
 
         'Referenced variables in some for loops
         Dim cardCount As Integer = deckInfo.Count
-
+        'Keeps track what indexes are left
         Dim cardsLeft As New List(Of Integer)
 
         For V As Integer = 1 To cardCount
@@ -133,11 +134,11 @@
 
 
     Public Sub DrawCards(n As Integer, desDeck As List(Of Integer), desHand As List(Of Card), desCardInfo As List(Of Integer))
-        'n is the number of cards to draw, desDeck is the deck to draw them from, desHand is the hand to draw them to, and ADFSFSFIDONTKNOWWHATCARDINFODOES
+        'Draws n cards
         For I As Integer = 1 To n
-            Dim nC As New Card(desCardInfo(desDeck(0) - 1), RadiantTurn)
-            desHand.Add(nC)
-            desDeck.Remove(desDeck(0))
+            Dim nC As New Card(desCardInfo(desDeck(0) - 1), RadiantTurn) ' makes new card
+            desHand.Add(nC) ' adds it to hand
+            desDeck.Remove(desDeck(0)) ' removes from deck
         Next
 
         UpdateHand(RadiantTurn)
